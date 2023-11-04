@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\examp\OneDrive\Desktop\publish 20-10-2023</_PublishTargetUrl>
+    <History>True|2023-10-20T13:52:18.7338095Z;True|2023-10-18T08:04:56.1879334+02:00;True|2023-10-13T19:13:01.3858872+02:00;True|2023-10-02T14:47:35.3612394+02:00;True|2023-09-28T15:56:59.4949157+02:00;True|2023-09-21T10:49:10.8916174+02:00;True|2023-09-21T09:41:50.6235676+02:00;True|2023-09-21T09:40:41.4822832+02:00;True|2023-09-05T15:13:39.2941527+02:00;True|2023-09-02T16:36:11.6391939+02:00;True|2023-09-02T16:35:10.2097108+02:00;True|2023-09-02T16:33:28.6429828+02:00;True|2023-09-02T12:33:48.9341145+02:00;True|2023-09-02T11:53:45.2296340+02:00;False|2023-09-02T11:49:55.7077527+02:00;True|2023-09-01T18:40:01.5118881+02:00;True|2023-09-01T16:52:34.2546098+02:00;True|2023-09-01T13:52:27.1094093+02:00;True|2023-09-01T07:11:58.1112388+02:00;True|2023-08-28T13:40:31.7148470+02:00;</History>
+    <LastFailureDetails />
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Server=tcp:appportaldb.database.windows.net,1433%3bInitial Catalog=portalCloudDB%3bPersist Security Info=False%3bUser ID=eportal%3bPassword=Portal%40Auth2023!!%3bMultipleActiveResultSets=True%3bEncrypt=True%3bTrustServerCertificate=False%3bConnection Timeout=0%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

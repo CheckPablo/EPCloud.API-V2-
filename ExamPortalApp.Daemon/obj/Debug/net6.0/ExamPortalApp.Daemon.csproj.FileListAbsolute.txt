@@ -1,0 +1,15 @@
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Daemon\bin\Debug\net6.0\ExamPortalApp.Daemon.deps.json
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Daemon\bin\Debug\net6.0\ExamPortalApp.Daemon.dll
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Daemon\bin\Debug\net6.0\ExamPortalApp.Daemon.pdb
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Daemon\bin\Debug\net6.0\ExamPortalApp.Contracts.dll
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Daemon\bin\Debug\net6.0\ExamPortalApp.Contracts.pdb
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Daemon\obj\Debug\net6.0\ExamPortalApp.Daemon.csproj.AssemblyReference.cache
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Daemon\obj\Debug\net6.0\ExamPortalApp.Daemon.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Daemon\obj\Debug\net6.0\ExamPortalApp.Daemon.AssemblyInfoInputs.cache
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Daemon\obj\Debug\net6.0\ExamPortalApp.Daemon.AssemblyInfo.cs
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Daemon\obj\Debug\net6.0\ExamPortalApp.Daemon.csproj.CoreCompileInputs.cache
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Daemon\obj\Debug\net6.0\ExamPortalApp.Daemon.csproj.CopyComplete
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Daemon\obj\Debug\net6.0\ExamPortalApp.Daemon.dll
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Daemon\obj\Debug\net6.0\refint\ExamPortalApp.Daemon.dll
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Daemon\obj\Debug\net6.0\ExamPortalApp.Daemon.pdb
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Daemon\obj\Debug\net6.0\ref\ExamPortalApp.Daemon.dll

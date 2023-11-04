@@ -1,0 +1,17 @@
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Infrastructure\bin\Release\net6.0\ExamPortalApp.Infrastructure.deps.json
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Infrastructure\bin\Release\net6.0\ExamPortalApp.Infrastructure.dll
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Infrastructure\bin\Release\net6.0\ExamPortalApp.Infrastructure.pdb
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Infrastructure\bin\Release\net6.0\ExamPortalApp.Contracts.dll
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Infrastructure\bin\Release\net6.0\ExamPortalApp.Data.dll
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Infrastructure\bin\Release\net6.0\ExamPortalApp.Contracts.pdb
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Infrastructure\bin\Release\net6.0\ExamPortalApp.Data.pdb
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Infrastructure\obj\Release\net6.0\ExamPortalApp.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Infrastructure\obj\Release\net6.0\ExamPortalApp.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Infrastructure\obj\Release\net6.0\ExamPortalApp.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Infrastructure\obj\Release\net6.0\ExamPortalApp.Infrastructure.AssemblyInfo.cs
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Infrastructure\obj\Release\net6.0\ExamPortalApp.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Infrastructure\obj\Release\net6.0\ExamPortalApp.Infrastructure.csproj.CopyComplete
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Infrastructure\obj\Release\net6.0\ExamPortalApp.Infrastructure.dll
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Infrastructure\obj\Release\net6.0\refint\ExamPortalApp.Infrastructure.dll
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Infrastructure\obj\Release\net6.0\ExamPortalApp.Infrastructure.pdb
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Infrastructure\obj\Release\net6.0\ref\ExamPortalApp.Infrastructure.dll

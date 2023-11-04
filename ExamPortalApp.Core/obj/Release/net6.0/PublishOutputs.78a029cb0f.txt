@@ -1,0 +1,14 @@
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\publish\ExamPortalApp.Core.dll
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\publish\ExamPortalApp.Core.deps.json
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\publish\ExamPortalApp.Core.pdb
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\publish\AutoMapper.dll
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\publish\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\publish\MediatR.dll
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\publish\MediatR.Contracts.dll
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\publish\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\publish\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\publish\Microsoft.Extensions.Options.dll
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\publish\Microsoft.Extensions.Primitives.dll
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\publish\Newtonsoft.Json.dll
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\publish\ExamPortalApp.Contracts.dll
+C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\publish\ExamPortalApp.Contracts.pdb
