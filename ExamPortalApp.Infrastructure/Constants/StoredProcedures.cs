@@ -1,4 +1,5 @@
 ﻿using ExamPortalApp.Contracts.Data.Entities;
+using Microsoft.Identity.Client;
 using Syncfusion.Pdf.Graphics;
 
 namespace ExamPortalApp.Infrastructure.Constants
@@ -25,7 +26,9 @@ namespace ExamPortalApp.Infrastructure.Constants
         internal const string Get_ConfirmTestOTPExist = "Get_ConfirmTestOTPExist";
         internal const string AcceptDisclaimerInsert = "DisclaimerAccept_ins";
         internal const string LiveMonitoringCanidateList = "LiveMonitoringCanidateList";
+        internal const string LiveMonitoringKeypressTracking = "LiveMonitoringKeypressTracking";
         internal const string StudentTestAnswersIntervalSave = "IntervalSave";
+        internal const string KeyPressTracking_ins = "KeyPressTracking_ins";
         internal const string LiveMonitoringIrregularities = "LiveMonitoringIrregularities";
         internal static string LiveMonitoringStudentAnswerProgress = "LiveMonitoringStudentAnswerProgress";
         internal static string GetStudentTestDetails = "get_StudentTestDetails";
@@ -35,6 +38,8 @@ namespace ExamPortalApp.Infrastructure.Constants
         internal static string LinkStudentSubjects = "LinkStudentSubjects";
         internal static string Get_CenterSummary = "Get_CenterSummary";
         internal static string SubjectMaintenance_InsUpd = "SubjectMaintenance_InsUpd";
+        internal static string get_StudentAnswersList = "get_StudentAnswersList";
+        internal static string CompleteTest = "CompleteTest";
 
         internal static class Params
         {
@@ -82,6 +87,9 @@ namespace ExamPortalApp.Infrastructure.Constants
             internal static readonly string ModifiedBy = "ModifiedBy";
             internal static string TestDocument = "TestDocument";
             internal static string StudentSubjectID = "StudentSubjectID";
+            internal static string Event = "Event";
+            internal static string Reason = "Reason";
+            internal static string RegionId = "RegionId";
         }
 
         internal static class Responses

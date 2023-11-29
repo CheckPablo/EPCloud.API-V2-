@@ -50,6 +50,18 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
 
             return keyPressTrackings.ToList();
         }
+        public async Task<List<KeyPressTracking>> GetInvalidKeyPresses(int testId, int studentId)
+        {
+            var parameters = new Dictionary<string, object>
+            {
+                { StoredProcedures.Params.TestID, testId  },
+                { StoredProcedures.Params.StudentId, studentId }
+            };
+
+            var keyPressTrackings = await _repository.ExecuteStoredProcAsync<KeyPressTracking>(StoredProcedures.LiveMonitoringKeypressTracking, parameters).ConfigureAwait(false);
+
+            return keyPressTrackings.ToList();
+        }
 
         public async Task<List<AnswerProgressTracking>> GetLiveMonitoringStudentAnswerProgress(int testId, int studentId)
         {

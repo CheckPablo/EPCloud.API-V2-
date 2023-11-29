@@ -18,6 +18,7 @@
           "Newtonsoft.Json": "13.0.3",
           "Syncfusion.DocIO.Net.Core": "21.2.9",
           "Syncfusion.DocIORenderer.Net.Core": "21.2.9",
+          "Syncfusion.EJ2.SpellChecker.AspNet.Core": "23.2.5",
           "Syncfusion.Pdf.Net.Core": "21.2.9"
         },
         "runtime": {
@@ -740,6 +741,14 @@
           "lib/net6.0/Syncfusion.DocIORenderer.Portable.dll": {
             "assemblyVersion": "21.2.9.0",
             "fileVersion": "21.2.9.0"
+          }
+        }
+      },
+      "Syncfusion.EJ2.SpellChecker.AspNet.Core/23.2.5": {
+        "runtime": {
+          "lib/net6.0/Syncfusion.EJ2.SpellChecker.dll": {
+            "assemblyVersion": "23.2.5.0",
+            "fileVersion": "23.2.5.0"
           }
         }
       },
@@ -1979,6 +1988,13 @@
       "sha512": "sha512-Ib+2r5FCFVtKg0oTZw0TPaUn6JpRUhUTNL+UOKn+UZTBQoYF4gufZyXLqDqbZLH7ZODMGfweO9oB6hHJwD0JOQ==",
       "path": "syncfusion.dociorenderer.net.core/21.2.9",
       "hashPath": "syncfusion.dociorenderer.net.core.21.2.9.nupkg.sha512"
+    },
+    "Syncfusion.EJ2.SpellChecker.AspNet.Core/23.2.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ppnxcSgJsNQO4rvc9vehsFMUOZcwui/OVO6YILqHLKLP0HSYi26FXOR62quyybE44lP9RUgnXOU5hliIWRWK8g==",
+      "path": "syncfusion.ej2.spellchecker.aspnet.core/23.2.5",
+      "hashPath": "syncfusion.ej2.spellchecker.aspnet.core.23.2.5.nupkg.sha512"
     },
     "Syncfusion.Licensing/21.2.9": {
       "type": "package",

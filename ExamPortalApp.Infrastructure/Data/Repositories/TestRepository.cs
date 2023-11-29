@@ -37,6 +37,13 @@ using Syncfusion.Pdf.Interactive;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Identity.Client;
 using static SkiaSharp.HarfBuzz.SKShaper;
+//using Syncfusion.EJ2.DocumentEditor;
+//using Syncfusion.EJ2.SpellChecker;
+//using IHostingEnvironment = Microsoft.Extensions.Hosting.IHostingEnvironment;
+using WDocument = Syncfusion.DocIO.DLS.WordDocument;
+using WFormatType = Syncfusion.DocIO.FormatType;
+using Syncfusion.Compression.Zip;
+//using System.IO.Compression;
 
 namespace ExamPortalApp.Infrastructure.Data.Repositories
 {
@@ -49,6 +56,8 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
         private List<string> StudentListResult;
         private Stream? streamTemp;
         private byte[] WordFileBytes;
+        private UserDocumentAnswer userDoc;
+
         //private string base64;
 
         public TestRepository(IRepository repository, ExamPortalDatabaseContext context, IHttpContextAccessor accessor, IMemoryCache memoryCache)
@@ -56,6 +65,7 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             _repository = repository;
             _context = context;
             _user = accessor.GetLoggedInUser();
+            // = accesor.Id-f
             _memoryCache = memoryCache; 
         }
 
@@ -128,6 +138,7 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
 
         public async Task<bool> CheckFileConvertedAsync(int testId)
         {
+            testId = 4383; 
             var checkAnswerDocEntry = await _repository.GetWhereAsync<UploadedAnswerDocument>(x => x.TestId == testId);
             if (checkAnswerDocEntry.Count() == 0 || checkAnswerDocEntry == null)
             {
@@ -146,6 +157,8 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             return fileBytes.ToBase64String();
         }
 
+
+      
         public async Task<bool> CreateNewOTPAsync(TestOTPSearcher otpGenerator)
         {
             //if (question paper is missing){ Prompt user to upload a question paper}
@@ -265,6 +278,46 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             return doc.TestDocument;
         }
 
+        /*public async Task<byte[]> GetUserAnswerFileAsync(int studentId,int testId)
+        {
+            var docs = await GetUserAnswerDocumentAsync(studentId, testId);
+             var doc = docs?.FirstOrDefault();
+
+            if (doc?.TestDocument is null) //throw new Exception("No test document found");
+            {
+                try
+                {
+                    byte[] bytes;
+                    bytes = new byte[0];
+                    return bytes;
+                }
+                catch (Exception ex)
+                { }
+            }
+            return doc.TestDocument;
+        */
+
+      
+
+        /*public  Task<byte[]> GetUserAnswerFile(int studentId, int testId)
+        {
+            var docs = await GetUserAnswerDocumentAsync(studentId, testId);
+            var doc = docs?.FirstOrDefault();
+
+            if (doc?.TestDocument is null) //throw new Exception("No test document found");
+            {
+                try
+                {
+                    byte[] bytes;
+                    bytes = new byte[0];
+                    return bytes;
+                }
+                catch (Exception ex)
+                { }
+            }
+            return doc.TestDocument;
+        }*/
+
         public async Task<Test> GetAsync(int id)
         {
             var entity = await _repository.GetByIdAsync<Test>(id);
@@ -274,6 +327,18 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             return entity;
         }
 
+        public async Task<UserDocumentAnswer> GetUserAnswerDocAsync(int id, int studentId)
+        {
+            //var entity = await _repository.GetByIdAsync<UserDocumentAnswer>(id);
+            var entity = await _repository.GetWhereAsync<UserDocumentAnswer>(x => x.TestId == id && x.StudentId == studentId );
+           // var entity = entity.FirstOrDefault(); 
+
+            //if (entity == null) throw new EntityNotFoundException<UserDocumentAnswer>(id);
+
+            return entity.FirstOrDefault(); 
+
+        }
+
         private async Task<IEnumerable<Student>> GetEligibleStudentsAsync(int testId)
         {
             var test = await GetAsync(testId);
@@ -281,6 +346,23 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
 
             return students;
         }
+
+        public async Task<IEnumerable<Resulting>> SearchStudentAnswerAsync(int gradeId, int subjectId, int testId, int regionId)
+        {
+
+            var parameters = new Dictionary<string, object>();
+
+            parameters.Add(StoredProcedures.Params.CenterID, _user.CenterId);
+            parameters.Add(StoredProcedures.Params.SectorId, gradeId);
+            parameters.Add(StoredProcedures.Params.SubjectId, subjectId);
+            parameters.Add(StoredProcedures.Params.TestID, testId);
+            parameters.Add(StoredProcedures.Params.RegionId, regionId);
+
+            var result = await _repository.ExecuteStoredProcAsync<Resulting>(StoredProcedures.get_StudentAnswersList, parameters);
+            return result;
+
+        }
+
 
         public async Task<IEnumerable<RandomOtp>> GetOTP(TestOTPSearcher? searcher)
         {
@@ -295,7 +377,18 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
 
         public async Task<IEnumerable<UploadedAnswerDocument>> GetUploadedAnswerDocumentAsync(int testId)
         {
+            
             return await _repository.GetWhereAsync<UploadedAnswerDocument>(x => x.TestId == testId);
+        }
+
+        public async Task<IEnumerable<UserDocumentAnswer>> GetUserAnswerDocumentAsync(int studentId, int testId) // there are one or many testId in this tabe so USE STUDENTID
+        {
+            return await _repository.GetWhereAsync<UserDocumentAnswer>(x => x.StudentId == studentId && x.TestId== testId);
+        }
+
+        public  Task<IEnumerable<UserDocumentAnswer>> GetUserAnswerDocument(int studentId, int testId) // there are one or many testId in this tabe so USE STUDENTID
+        {
+            return  _repository.GetWhereAsync<UserDocumentAnswer>(x => x.StudentId == studentId && x.TestId == testId);
         }
 
         public async Task<IEnumerable<UploadedSourceDocument>> GetUploadedSourceDocumentsAsync(int testId)
@@ -376,6 +469,25 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             await _repository.CompleteAsync();
         }
 
+       /* public async Task<bool> studentAnswersBulkDownload(int studentId, int[] subjectIds)
+        {
+            //DeleteSubjectStudentLinks(studentId);
+            var parameters = new Dictionary<string, object>();
+            foreach (var subjectId in subjectIds)
+            {
+                parameters.Clear();
+                parameters.Add(StoredProcedures.Params.StudentId, studentId);
+                parameters.Add(StoredProcedures.Params.SubjectId, subjectId);
+
+                linkResult = await _repository.ExecuteStoredProcAsync<StudentSubject>(StoredProcedures.LinkStudentSubjects, parameters);
+            }
+            if (linkResult is not null)
+            {
+                return true;
+            }
+            return false;
+        }*/
+
         public async Task<bool> LinkStudentsTestAsync(StudentTestLinker linker) //method not being used yet
         {
             if (_user is null) return false;
@@ -450,6 +562,67 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
          
             return (test, base64);
         }
+
+        public async Task<(UserDocumentAnswer, string)> GetStudentFinalAnswerFileAsync(int testId, int studentId)
+        {
+            var test = await GetUserAnswerDocAsync(testId, studentId);
+            if (test is null) throw new InvalidOperationException();
+           
+             var answerFileToDownLoad= await GetUserAnswerFileDownload(testId, studentId);
+            
+            Console.WriteLine(answerFileToDownLoad.ToString());
+            return (test, answerFileToDownLoad.ToString());
+        }
+
+        /* public async Task<(UserDocumentAnswer, string)> studentAnswersBulkDownload(int testId, int[] studentIds)*/
+        public async Task<List<string>> studentAnswersBulkDownload(int testId, int[] studentIds)
+        {
+            List<string> filesList = new ();
+            foreach (var studentId in studentIds)
+            {
+                if (testId > 0)
+                {
+                    //var test = await GetUserAnswerDocAsync(testId, studentId);
+                    var test = await GetUserAnswerFileDownloadBulk(testId, studentId);
+                    if (test is null) throw new InvalidOperationException();
+                   
+                    filesList.Add(test); 
+   
+                }
+            }
+            return filesList;
+        }
+        /*public async Task<(UserDocumentAnswer, string)> GetStudentFinalAnswerFileAsync(int testId, int studentId)
+        {
+            var test = await GetUserAnswerDocAsync(testId, studentId);
+            if (test is null) throw new InvalidOperationException();
+
+            var answerFileToDownLoad = await GetUserAnswerFileDownload(testId, studentId);
+
+            Console.WriteLine(answerFileToDownLoad.ToString());
+            return (test, answerFileToDownLoad.ToString());
+        */
+
+
+        public async Task<string> GetUserAnswerFileDownload(int testId, int studentId)
+        {
+            //studentId = 9476; 
+            //testId = 4385; 
+            var uploadTestEntry = await _repository.GetFirstOrDefaultAsync<UserDocumentAnswer>(x => x.Id == testId && x.StudentId == studentId);
+            var base64 = (uploadTestEntry?.TestDocument is not null) ? uploadTestEntry?.TestDocument.ToBase64String() : string.Empty;
+            return base64;
+        }
+
+        public async Task<string> GetUserAnswerFileDownloadBulk(int testId, int studentId)
+        {
+            //studentId = 9476; 
+            //testId = 4385; 
+            var uploadTestEntry = await _repository.GetFirstOrDefaultAsync<UserDocumentAnswer>(x => x.TestId == testId && x.StudentId == studentId);
+            var base64 = (uploadTestEntry?.TestDocument is not null) ? uploadTestEntry?.TestDocument.ToBase64String() : string.Empty;
+            return base64;
+        }
+
+
 
         public async Task<(Test, string)> GetTestQuestionWithFileAsync(int testId)
         {
@@ -580,15 +753,45 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
 
             var fileBytes = file.ToByteArray();
 
-            var answerDocument = new UploadedAnswerDocument
+            if (testId == 0)
             {
-                DateModified = DateTime.Now,
-                FileName = file.FileName,
-                TestId = test.Id,
-                TestDocument = fileBytes,
-            };
+                var answerDocument = new UploadedAnswerDocument
+                {
+                    DateModified = DateTime.Now,
+                    FileName = file.FileName,
+                    TestId = test.Id,
+                    TestDocument = fileBytes,
+                };
 
-            await _repository.AddAsync(answerDocument, true);
+                await _repository.AddAsync(answerDocument, true);
+            }
+            else
+            {
+                var uploadedAnswerDocs = await _repository.GetFirstOrDefaultAsync<UploadedAnswerDocument>(x => x.TestId == testId);
+                //var uploadedAnswerDocs = await _repository.GetByIdAsync<UploadedAnswerDocument>(testId);
+                var answerDocument = new UploadedAnswerDocument()
+                {
+                    TestId = testId,
+                    FileName = file != null ? file.FileName : null,
+                    TestDocument = fileBytes,
+                    IsDeleted = false,
+                };
+                if(uploadedAnswerDocs != null)
+                    { 
+                     uploadedAnswerDocs.FileName = answerDocument.FileName;
+                     uploadedAnswerDocs.TestDocument = answerDocument.TestDocument; 
+                    }
+               
+                if (uploadedAnswerDocs?.TestDocument == null && file != null)
+                {
+                    await _repository.AddAsync(answerDocument, true);
+                }
+                if (uploadedAnswerDocs?.TestDocument != null && file != null)
+                {
+                    await _repository.UpdateAsync(uploadedAnswerDocs, true);
+               
+                }
+            }
 
             return true;
         }
@@ -1155,6 +1358,6 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             return result;
         }
 
-       
+        
     }
 }

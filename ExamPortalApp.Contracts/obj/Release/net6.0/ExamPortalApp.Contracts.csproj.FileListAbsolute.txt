@@ -10,3 +10,15 @@ C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPort
 C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Contracts\obj\Release\net6.0\refint\ExamPortalApp.Contracts.dll
 C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Contracts\obj\Release\net6.0\ExamPortalApp.Contracts.pdb
 C:\Users\examp\source\repos\ExamPortalCloud.API(v3)\ExamPortalCloud.API\ExamPortalApp.Contracts\obj\Release\net6.0\ref\ExamPortalApp.Contracts.dll
+C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.Contracts\bin\Release\net6.0\ExamPortalApp.Contracts.deps.json
+C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.Contracts\bin\Release\net6.0\ExamPortalApp.Contracts.dll
+C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.Contracts\bin\Release\net6.0\ExamPortalApp.Contracts.pdb
+C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.Contracts\obj\Release\net6.0\ExamPortalApp.Contracts.csproj.AssemblyReference.cache
+C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.Contracts\obj\Release\net6.0\ExamPortalApp.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.Contracts\obj\Release\net6.0\ExamPortalApp.Contracts.AssemblyInfoInputs.cache
+C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.Contracts\obj\Release\net6.0\ExamPortalApp.Contracts.AssemblyInfo.cs
+C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.Contracts\obj\Release\net6.0\ExamPortalApp.Contracts.csproj.CoreCompileInputs.cache
+C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.Contracts\obj\Release\net6.0\ExamPortalApp.Contracts.dll
+C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.Contracts\obj\Release\net6.0\refint\ExamPortalApp.Contracts.dll
+C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.Contracts\obj\Release\net6.0\ExamPortalApp.Contracts.pdb
+C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.Contracts\obj\Release\net6.0\ref\ExamPortalApp.Contracts.dll

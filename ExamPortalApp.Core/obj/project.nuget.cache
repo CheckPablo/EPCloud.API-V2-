@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3rGy47bb5+MkrNKmvoXPcxH3ueuQUc43NJeA20PheMom2kfHQZFT2CaTpxzJGZrGz4U39eBxfnL5sJ7+/+KRjA==",
+  "dgSpecHash": "qXoy0QFUu1rgNQsxa5uOUPwWtu378y4GGr7J/kcvhQfTS1PqcmdutR6wFErwoxxwtQSkCvR/LeMjEamALfEAMg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Core\\ExamPortalApp.Core.csproj",
+  "projectFilePath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Core\\ExamPortalApp.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\examp\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\examp\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

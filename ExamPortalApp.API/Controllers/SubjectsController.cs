@@ -46,6 +46,7 @@ namespace ExamPortalApp.Api.Controllers
             try
             {
                 await _subjectRepository.UpdateAsync(subject);
+                //await _subjectRepository.AddLinkToAllAsync(subject);
                 // await _gradeRepository.UpdateGradesAsync(grade);
 
                 return NoContent();
@@ -55,6 +56,23 @@ namespace ExamPortalApp.Api.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpPost("link-subjectupdate-allstudents")]
+        public async Task<ActionResult<SubjectDto>> UpdateLinkSubjectAllStudents(Subject subject)
+        {
+            try
+            {
+                //the line below can be removed once we can reset id to 0 from UI for a new insert 
+                //subject.Id = 0;
+                var response = await _subjectRepository.UpdateLinkToAllAsync(subject);
+                var result = _mapper.Map<SubjectDto>(response);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
 
 
         [HttpDelete("{id}")]

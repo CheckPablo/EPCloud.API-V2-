@@ -33,8 +33,45 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             }
             return await _repository.AddAsync(entity, true);
         }
+        public async Task<Subject> UpdateLinkToAllAsync(Subject entity)
+        {
+            await UpdateAsync(entity); 
+            /*var parameters = new Dictionary<string, object>();
 
-        public async Task<Subject> AddLinkToAllAsync(Subject entity)
+            if (entity.ModifiedBy == null)
+            {
+                entity.ModifiedBy = _user.Id;
+            }
+
+            parameters.Add(StoredProcedures.Params.SubjectId, entity.Id);
+            parameters.Add(StoredProcedures.Params.SectorId, entity.SectorId);
+            parameters.Add(StoredProcedures.Params.Code, entity.Code);
+            parameters.Add(StoredProcedures.Params.Description, entity.Description);
+            parameters.Add(StoredProcedures.Params.ModifiedBy, _user.Id);
+
+            var result = await _repository.ExecuteStoredProcAsync<UserCenter>(StoredProcedures.SubjectMaintenance_InsUpd, parameters);*/
+
+            var studentsToLink = await _repository.GetWhereAsync<Student>(x => x.GradeId == entity.SectorId);
+
+            var subjectLastEntry = await _repository.GetWhereAsync<Subject>(x => x.SectorId == entity.SectorId && x.Code == entity.Code);
+            foreach (var student in studentsToLink)
+            {
+                var studentCount = await _repository.GetWhereAsync<StudentSubject>(x => x.StudentId == student.Id && x.SubjectId == subjectLastEntry.First().Id);
+                if (studentCount.Count() == 0)
+                {
+                    var studentSub = new StudentSubject()
+                    {
+                        StudentId = student.Id,
+                        SubjectId = subjectLastEntry.First().Id,
+                        OldSubjectId = student.Id,
+                    };
+                    await _repository.AddAsync(studentSub, true);
+                }
+            }
+            return (entity);
+        }
+        
+            public async Task<Subject> AddLinkToAllAsync(Subject entity)
         {
 
             var subjectExists = await _repository.AnyAsync<Subject>(x => x.SectorId == entity.SectorId && x.Code == entity.Code);
@@ -43,23 +80,41 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
                 throw new Exception(ErrorMessages.SubjectEntryChecks.SubjectExists);
             }
 
-
+            //var studentsToLink = await _repository.AnyAsync<Subject>(x => x.SectorId == entity.SectorId && x.Code == entity.Code);
+            //var studentsToLink = _repository.Where(x => x.Subject != null).Select(x => x.Subject);
             var parameters = new Dictionary<string, object>();
 
             if(entity.ModifiedBy == null)
             {
                 entity.ModifiedBy = _user.Id; 
             }
+
             parameters.Add(StoredProcedures.Params.SubjectId, entity.Id);
             parameters.Add(StoredProcedures.Params.SectorId, entity.SectorId);
             parameters.Add(StoredProcedures.Params.Code, entity.Code);
             parameters.Add(StoredProcedures.Params.Description, entity.Description);
             parameters.Add(StoredProcedures.Params.ModifiedBy, _user.Id);
-            //var result = _repository.ExecuteStoredProcAsync<UserCenter>(StoredProcedures.UserApprovalState, parameters);
-           // return result.Result;
-           await _repository.ExecuteStoredProcAsync<UserCenter>(StoredProcedures.SubjectMaintenance_InsUpd, parameters);
 
-            return(entity);
+            var result = await _repository.ExecuteStoredProcAsync<UserCenter>(StoredProcedures.SubjectMaintenance_InsUpd, parameters);
+
+            var studentsToLink = await _repository.GetWhereAsync<Student>(x => x.GradeId == entity.SectorId);
+
+            var subjectLastEntry = await _repository.GetWhereAsync<Subject>(x => x.SectorId == entity.SectorId && x.Code == entity.Code);
+            foreach (var student in studentsToLink )
+            {
+                var studentCount = await _repository.GetWhereAsync<StudentSubject>(x => x.StudentId == student.Id && x.SubjectId == subjectLastEntry.First().Id);
+                if(studentCount.Count() == 0 )
+                {
+                    var studentSub = new StudentSubject()
+                    {
+                        StudentId = student.Id,
+                        SubjectId = subjectLastEntry.First().Id,
+                        OldSubjectId = student.Id,
+                    };
+                    await _repository.AddAsync(studentSub, true);
+                }
+            }
+            return (entity);
                 //await _repository.AddAsync(entity, true);
         }
 
@@ -90,7 +145,6 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
                                  //SubjectGrade = "check",
                              }).ToListAsync();         
             return request.OrderBy(x => x.SubjectGrade).ThenBy(x => x.Description);
-            //return request.Distinct().OrderBy(x => x.SubjectGrade).ThenBy(x => x.Description);
 
         }
 
@@ -119,7 +173,6 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             if (subjects == null) return new List<Subject>();
 
             return subjects.OrderBy(x => x!.Description)!;
-            //return subjects.Distinct().OrderBy(x => x.Description)!;//check if this needs to be distinct first
         }
 
         public async Task<Subject> UpdateAsync(Subject entity)

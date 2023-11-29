@@ -53,6 +53,22 @@ namespace ExamPortalApp.Api.Controllers
             }
         }
 
+        [HttpPost("GetInvalidKeyPresses")]
+        public async Task<IActionResult> GetInvalidKeyPresses(int testId, int studentId)
+        {
+            try
+            {
+                var keyPressTrackings = await _liveMonitoring.GetInvalidKeyPresses(testId, studentId);
+                var result = _mapper.Map<IEnumerable<KeyPressTracking>>(keyPressTrackings);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
         [HttpPost("GetLiveMonitoringStudentAnswerProgress")]
         public async Task<IActionResult> GetLiveMonitoringStudentAnswerProgress(int testId, int studentId)
         {

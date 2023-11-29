@@ -61,9 +61,21 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             return entity;
         }
 
+        public async Task<IEnumerable<UserDocumentAnswer>> GetUserAnswerDocumentAsync(int studentId, int testId) // there are one or many testId in this tabe so USE STUDENTID
+        {
+            return await _repository.GetWhereAsync<UserDocumentAnswer>(x => x.StudentId == studentId && x.TestId == testId);
+        }
+
         public async Task<IEnumerable<StudentTestAnswers>> SaveAnswersInterval(StudentTestAnswerModel studentTestAnswersModel)
        {
-
+            if(studentTestAnswersModel.AnswerText == null)
+            {
+                studentTestAnswersModel.AnswerText = ""; 
+            }
+            if (studentTestAnswersModel.AnswerText.Length == 0)
+            {
+                studentTestAnswersModel.AnswerText = "";
+            }
             var parameters = new Dictionary<string, object>();
 
             parameters.Add(StoredProcedures.Params.StudentId, studentTestAnswersModel.StudentId);
@@ -96,6 +108,19 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
 
 
             var result = _repository.ExecuteStoredProcAsync<StudentTestAnswers>(StoredProcedures.GetStudentTestDetails, parameters);
+            return result;
+        }
+
+
+        public async Task<IEnumerable<StudentTestAnswers>> FinishTest(StudentTestAnswers studentTestAnswersModel)
+        {
+            
+            var parameters = new Dictionary<string, object>();
+
+            parameters.Add(StoredProcedures.Params.TestID, studentTestAnswersModel.TestID);
+            parameters.Add(StoredProcedures.Params.StudentId, studentTestAnswersModel.StudentId);
+
+            var result = await _repository.ExecuteStoredProcAsync<StudentTestAnswers>(StoredProcedures.CompleteTest, parameters);
             return result;
         }
     }

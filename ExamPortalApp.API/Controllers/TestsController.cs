@@ -12,6 +12,7 @@ using Syncfusion;
 using Syncfusion.DocIO;
 using Syncfusion.DocIORenderer;
 using Syncfusion.EJ2.DocumentEditor;
+using System;
 using static SkiaSharp.HarfBuzz.SKShaper;
 using FormatType = Syncfusion.EJ2.DocumentEditor.FormatType;
 using WDocument = Syncfusion.DocIO.DLS.WordDocument;
@@ -173,9 +174,9 @@ namespace ExamPortalApp.Api.Controllers
             try
             {
                 var bytes = await _testRepository.GetAnswerFileAsync(testId);
-
-                if (bytes.Length > 0)
-                {
+              
+                if(bytes.Length > 0)
+                    {
                     using (var stream = new MemoryStream(bytes))
                     {
                         stream.Position = 0;
@@ -197,6 +198,60 @@ namespace ExamPortalApp.Api.Controllers
             catch (Exception ex)
             {
                 return ex.Message;
+            }
+        }
+        /*[HttpGet("{studentId}/{testId}/get-studentanswer-file")]
+        public async Task<string> GetStudentAnswerFile(int studentId, int testId)
+        {
+            try
+            {
+                var answerSheetBytes = await _testRepository.GetUserAnswerFileAsync(studentId, testId);
+                if (answerSheetBytes.Length > 0)
+                {
+                    using (var stream = new MemoryStream(answerSheetBytes))
+                    {
+                        stream.Position = 0;
+
+                        //Hooks MetafileImageParsed event.
+                        WordDocument.MetafileImageParsed += OnMetafileImageParsed;
+                        WordDocument document = WordDocument.Load(stream, GetFormatType(".docx"));
+                        //Unhooks MetafileImageParsed event.
+                        WordDocument.MetafileImageParsed -= OnMetafileImageParsed;
+
+                        string json = Newtonsoft.Json.JsonConvert.SerializeObject(document);
+                        document.Dispose();
+                        return json;
+                    }
+                }
+             
+                else return Newtonsoft.Json.JsonConvert.SerializeObject("");
+
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }*/
+
+        [HttpGet("search-students-answers")]
+        public async Task<ActionResult<Resulting>> SearchStudentsAnswerAsync(int gradeId, int subjectId, int testId, int region)
+        {
+            try
+            {
+                StudentAnswerSearcher searcher  = new StudentAnswerSearcher();
+                searcher.RegionId = 0;
+                searcher.GradeId = gradeId;
+                searcher.SubjectId = subjectId;
+                searcher.TestId = testId;
+                //var students = await _testRepository.SearchStudentAnswerAsync(searcher);
+                var students = await _testRepository.SearchStudentAnswerAsync(searcher.GradeId, searcher.SubjectId ?? 0, searcher.TestId ?? 0 , searcher.RegionId ?? 0);
+                var result = _mapper.Map<IEnumerable<Resulting>>(students);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
 
@@ -321,37 +376,136 @@ namespace ExamPortalApp.Api.Controllers
             }
         }
 
-        [HttpGet("{testId}/get-converted-answerDoc")]
-        public async Task<ActionResult<string>> GetAnswerDocPdfStream(int id)
+        
+       
+       
+
+        /*private async FileStreamResult File(Task<byte[]> task, string v1, string v2)
+         {
+             var docs = await GetUserAnswerDocumentAsync(studentId, testId);
+             var doc = docs?.FirstOrDefault();
+
+             if (doc?.TestDocument is null) //throw new Exception("No test document found");
+             {
+                 try
+                 {
+                     byte[] bytes;
+                     bytes = new byte[0];
+                     return bytes;
+                 }
+                 catch (Exception ex)
+                 { }
+             }
+             return doc.TestDocument; throw new NotImplementedException();
+         }*/
+
+        private FileStreamResult SaveDocument(WDocument document, string format, string fileName)
         {
-            bool checkDocExists = await _testRepository.CheckFileConvertedAsync(id);
-            if (checkDocExists == true)
+            Stream stream = new MemoryStream();
+            string contentType = "";
+            if (format == ".pdf")
             {
-                var (test, file) = await _testRepository.GetTestWithAnswerDocAsync(id);
-                byte[] bytes = Convert.FromBase64String(file);
-                var outputStream = new MemoryStream();
-                Syncfusion.Pdf.PdfDocument pdfDocument = new Syncfusion.Pdf.PdfDocument();
-                using (Stream stream = new MemoryStream(bytes))
-                {
-                    Syncfusion.DocIO.DLS.WordDocument doc = new Syncfusion.DocIO.DLS.WordDocument(stream, "docx");
-                    DocIORenderer render = new DocIORenderer();
-                    //Converts Word document into PDF document	
-                    pdfDocument = render.ConvertToPDF(doc);
-                    doc.Close();
-                    pdfDocument.Save(outputStream);
-                    outputStream.Position = 0;
-                    byte[] byteArray = outputStream.ToArray();
-                    pdfDocument.Close();
-                    outputStream.Close();
-                    string base64String = Convert.ToBase64String(byteArray);
-                    return Content("data:application/pdf;base64," + base64String);
-                }
+                contentType = "application/pdf";
             }
             else
             {
-                return Newtonsoft.Json.JsonConvert.SerializeObject("");
+                WFormatType type = GetWFormatType(format);
+                switch (type)
+                {
+                    case WFormatType.Rtf:
+                        contentType = "application/rtf";
+                        break;
+                    case WFormatType.WordML:
+                        contentType = "application/xml";
+                        break;
+                    case WFormatType.Html:
+                        contentType = "application/html";
+                        break;
+                    case WFormatType.Dotx:
+                        contentType = "application/vnd.openxmlformats-officedocument.wordprocessingml.template";
+                        break;
+                    case WFormatType.Docx:
+                        contentType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+                        break;
+                    case WFormatType.Doc:
+                        contentType = "application/msword";
+                        break;
+                    case WFormatType.Dot:
+                        contentType = "application/msword";
+                        break;
+                }
+                document.Save(stream, type);
+            }
+            document.Close();
+            stream.Position = 0;
+            return new FileStreamResult(stream, contentType)
+            {
+                FileDownloadName = fileName
+            };
+        }
+
+        internal static WFormatType GetWFormatType(string format)
+        {
+            if (string.IsNullOrEmpty(format))
+                throw new NotSupportedException("EJ2 DocumentEditor does not support this file format.");
+            switch (format.ToLower())
+            {
+                case ".dotx":
+                    return WFormatType.Dotx;
+                case ".docx":
+                    return WFormatType.Docx;
+                case ".docm":
+                    return WFormatType.Docm;
+                case ".dotm":
+                    return WFormatType.Dotm;
+                case ".dot":
+                    return WFormatType.Dot;
+                case ".doc":
+                    return WFormatType.Doc;
+                case ".rtf":
+                    return WFormatType.Rtf;
+                case ".html":
+                    return WFormatType.Html;
+                case ".txt":
+                    return WFormatType.Txt;
+                case ".xml":
+                    return WFormatType.WordML;
+                case ".odt":
+                    return WFormatType.Odt;
+                default:
+                    throw new NotSupportedException("EJ2 DocumentEditor does not support this file format.");
             }
         }
+
+        /* [HttpGet]
+         public async Task<FileStreamResult> DownloadFileFromDataBase(string id)
+         {
+             //var _fileUpload = _db.FileUpload.SingleOrDefault(aa => aa.fileid == id);         // _fileUpload.FileContent type is byte
+             var answerSheetBytes = await _testRepository.GetUserAnswerFileAsync(6, 7);
+             var c = Convert.ToBase64String(answerSheetBytes);
+             byte[] bytes = Convert.FromBase64String(c);
+             var outputStream = new MemoryStream();
+             Syncfusion.Pdf.PdfDocument pdfDocument = new Syncfusion.Pdf.PdfDocument();
+             MemoryStream ms = new MemoryStream(answerSheetBytes);
+             using (Stream stream = new MemoryStream(bytes))
+             {
+                 Syncfusion.DocIO.DLS.WordDocument doc = new Syncfusion.DocIO.DLS.WordDocument(stream, "docx");
+                 DocIORenderer render = new DocIORenderer();
+                 //Converts Word document into PDF document	
+                 pdfDocument = render.ConvertToPDF(doc);
+                 doc.Close();
+                 pdfDocument.Save(outputStream);
+                 outputStream.Position = 0;
+                 byte[] byteArray = outputStream.ToArray();
+                 pdfDocument.Close();
+                 outputStream.Close();
+                 string base64String = Convert.ToBase64String(byteArray);
+                 //return Content("data:application/pdf;base64," + base64String);
+
+             }
+
+             return new FileStreamResult(ms, "application/pdf");
+         }*/
 
         [HttpGet("{testId}/get-converted-TestDoc")]
         public async Task<ActionResult<string>> GetTestDocPdfStream(int id)
@@ -447,7 +601,67 @@ namespace ExamPortalApp.Api.Controllers
             }
         }
 
-     
+        [HttpGet("get-converted-answerdoc/{testId}/{studentId}")]
+        public async Task<ActionResult<UserDocumentAnswer>> DownloadFileFromDataBaseNew(int testId, int studentId)
+        {
+            try
+            {
+                //testId = 4385; 
+                var (test, file) = await _testRepository.GetStudentFinalAnswerFileAsync(testId, studentId);
+                var testDto = _mapper.Map<UserDocumentAnswer>(test);
+
+                return Ok(new
+                {
+                    test = testDto,
+                    file
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        /*[HttpGet("get-converted-answerdocbulk/{testId}/{studentIds}")]*/
+
+        [HttpPost("get-answerdocbulk")]
+        public async Task<ActionResult> DownloadStudentAnswersBulk(StudentBulkAnswerLinker linker)
+        {
+            try
+            {
+                var filesList = await _testRepository.studentAnswersBulkDownload(linker.TestId ?? 0,linker.StudentIds);
+
+                return Ok(filesList);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
+
+        /*public async Task<bool> ExportTestUploadAnswersBulk(int[] documentIds)
+        {
+            //DeleteSubjectStudentLinks(studentId);
+            var parameters = new Dictionary<string, object>();
+            foreach (var subjectId in documentIds)
+            {
+                parameters.Clear();
+                parameters.Add(StoredProcedures.Params.StudentId, studentId);
+                parameters.Add(StoredProcedures.Params.SubjectId, subjectId);
+
+                linkResult = await _repository.ExecuteStoredProcAsync<StudentSubject>(StoredProcedures.LinkStudentSubjects, parameters);
+            }
+            if (linkResult is not null)
+            {
+                return true;
+            }
+            return false;
+        }*/
+
+
+
         [HttpGet("get-word-file/{id}")]
         public async Task<string> ImportFileURL(int id)
         {
@@ -626,6 +840,29 @@ namespace ExamPortalApp.Api.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPost("convert-offlinestring")]
+        public async Task<ActionResult> ImportOffline(OfflineConversion payload)
+        {
+            try
+            {
+                Byte[] data = Convert.FromBase64String(payload.file.Split(',')[1]); 
+                MemoryStream stream = new MemoryStream();
+                stream.Write(data, 0, data.Length);
+                Syncfusion.EJ2.DocumentEditor.FormatType type = Syncfusion.EJ2.DocumentEditor.FormatType.Docx;
+                stream.Position = 0;
+                Syncfusion.EJ2.DocumentEditor.WordDocument document = Syncfusion.EJ2.DocumentEditor.WordDocument.Load(stream, Syncfusion.EJ2.DocumentEditor.FormatType.Docx);
+                string json = Newtonsoft.Json.JsonConvert.SerializeObject(document);
+                document.Dispose();
+                return Ok(json);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+                
+            } 
+            
+          }
 
         [HttpPost("search-tests")]
         public async Task<ActionResult> SearchTestsAsync([FromQuery] TestSearcher searcher)

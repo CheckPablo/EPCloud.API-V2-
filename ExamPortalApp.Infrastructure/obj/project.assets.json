@@ -1146,6 +1146,19 @@
           }
         }
       },
+      "Syncfusion.EJ2.SpellChecker.AspNet.Core/23.2.5": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Syncfusion.EJ2.SpellChecker.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Syncfusion.EJ2.SpellChecker.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Syncfusion.Licensing/21.2.9": {
         "type": "package",
         "compile": {
@@ -4196,6 +4209,28 @@
         "lib/netstandard2.0/Syncfusion.DocIORenderer.Portable.xml",
         "syncfusion.dociorenderer.net.core.21.2.9.nupkg.sha512",
         "syncfusion.dociorenderer.net.core.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
+    "Syncfusion.EJ2.SpellChecker.AspNet.Core/23.2.5": {
+      "sha512": "ppnxcSgJsNQO4rvc9vehsFMUOZcwui/OVO6YILqHLKLP0HSYi26FXOR62quyybE44lP9RUgnXOU5hliIWRWK8g==",
+      "type": "package",
+      "path": "syncfusion.ej2.spellchecker.aspnet.core/23.2.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/net6.0/Syncfusion.EJ2.SpellChecker.dll",
+        "lib/net6.0/Syncfusion.EJ2.SpellChecker.xml",
+        "lib/net7.0/Syncfusion.EJ2.SpellChecker.dll",
+        "lib/net7.0/Syncfusion.EJ2.SpellChecker.xml",
+        "lib/net8.0/Syncfusion.EJ2.SpellChecker.dll",
+        "lib/net8.0/Syncfusion.EJ2.SpellChecker.xml",
+        "lib/netstandard2.0/Syncfusion.EJ2.SpellChecker.dll",
+        "lib/netstandard2.0/Syncfusion.EJ2.SpellChecker.xml",
+        "syncfusion.ej2.spellchecker.aspnet.core.23.2.5.nupkg.sha512",
+        "syncfusion.ej2.spellchecker.aspnet.core.nuspec",
         "syncfusion_logo.png"
       ]
     },
@@ -7912,6 +7947,7 @@
       "Newtonsoft.Json >= 13.0.3",
       "Syncfusion.DocIO.Net.Core >= 21.2.9",
       "Syncfusion.DocIORenderer.Net.Core >= 21.2.9",
+      "Syncfusion.EJ2.SpellChecker.AspNet.Core >= 23.2.5",
       "Syncfusion.Pdf.Net.Core >= 21.2.9"
     ]
   },
@@ -7921,11 +7957,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Infrastructure\\ExamPortalApp.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Infrastructure\\ExamPortalApp.Infrastructure.csproj",
       "projectName": "ExamPortalApp.Infrastructure",
-      "projectPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Infrastructure\\ExamPortalApp.Infrastructure.csproj",
+      "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Infrastructure\\ExamPortalApp.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\examp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\examp\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -7942,11 +7978,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {
-              "projectPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj"
+            "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {
+              "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj"
             },
-            "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj": {
-              "projectPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj"
+            "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj": {
+              "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj"
             }
           }
         }
@@ -7992,6 +8028,10 @@
           "Syncfusion.DocIORenderer.Net.Core": {
             "target": "Package",
             "version": "[21.2.9, )"
+          },
+          "Syncfusion.EJ2.SpellChecker.AspNet.Core": {
+            "target": "Package",
+            "version": "[23.2.5, )"
           },
           "Syncfusion.Pdf.Net.Core": {
             "target": "Package",

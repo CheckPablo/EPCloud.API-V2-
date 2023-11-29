@@ -323,11 +323,6 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
         if (searcher?.SubjectId is not null) query = query.Where(s => s.StudentSubjects.Any(ss => ss.SubjectId == searcher.SubjectId));
         if (!string.IsNullOrWhiteSpace(searcher?.Name)) query = query.Where(s => s.Name != null && s.Name.Contains(searcher.Name.ToLower().Trim()));
 
-        /*if (searcher?.CenterId is not null) query = query.Where(x => x.CenterId == searcher.CenterId);
-        if (searcher?.GradeId is not null) query = query.Where(x => x.GradeId == searcher.GradeId);
-        if (searcher?.SubjectId is not null) query = query.Where(s => s.StudentSubjects.Any(ss => ss.SubjectId == searcher.SubjectId));
-        if (!string.IsNullOrWhiteSpace(searcher?.Name)) query = query.Where(s => s.Name != null && s.Name.Contains(searcher.Name.ToLower().Trim()));*/
-
             var data = await query.ToListAsync();
 
             var result = data.Select(x => new Student
@@ -354,31 +349,7 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             return GetOrdered(result);
         }
 
-
-       /* public async Task<IEnumerable<Student>> SearchAsync(StudentSearcher? searcher)
-        {
-            /*var query = _repository.GetQueryable<Student>()
-                .Include(s => s.Grade)
-                //.Include(s => s.StudentSubjects)
-                    .ThenInclude(ss => ss.Subject)
-                .Where(x => true);*/
-
-            /*var query = _repository.GetQueryable<Student>()
-           .Include(s => s.Grade)
-               //.Include(s => s.StudentSubjects)
-               //.Include(ss => ss.Subject)
-           .Where(x => true);
-
-            if (searcher?.CenterId is not null) query = query.Where(x => x.CenterId == searcher.CenterId);
-            if (searcher?.GradeId is not null) query = query.Where(x => x.GradeId == searcher.GradeId);
-           // if (searcher?.SubjectId is not null) query = query.Where(s => s.StudentSubjects.Any(ss => ss.SubjectId == searcher.SubjectId));
-            if (!string.IsNullOrWhiteSpace(searcher?.Name)) query = query.Where(s => s.Name != null && s.Name.Contains(searcher.Name.ToLower().Trim()));
-
-            var result = await query.ToListAsync();
-
-            return GetOrdered(result);
-        }*/
-
+        
         public bool SendLoginCredentials(int[] studentIds)
         {
             if (_user is null) throw new Exception(ErrorMessages.Auth.Unauthorised);

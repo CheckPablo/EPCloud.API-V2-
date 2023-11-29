@@ -271,7 +271,7 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories.Generic
 
                 _dbContext.Entry(entry).State = EntityState.Detached;
                 _dbContext.Entry(entity).State = EntityState.Modified;
-
+                if (!save) await CompleteAsync();
                 if (save) await CompleteAsync();
             }
 

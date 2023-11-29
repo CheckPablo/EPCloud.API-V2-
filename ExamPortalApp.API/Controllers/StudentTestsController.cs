@@ -6,6 +6,7 @@ using ExamPortalApp.Contracts.Data.Repositories;
 using ExamPortalApp.Infrastructure.Data.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 
 namespace ExamPortalApp.Api.Controllers
 {
@@ -51,6 +52,23 @@ namespace ExamPortalApp.Api.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPost("finish-test")]
+        public async Task<ActionResult<StudentTestAnswers>> FinishTest(StudentTestAnswers studentTestAnswers)
+        {
+            try
+            {
+                var result = await _studentTestRepository.FinishTest(studentTestAnswers);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+      
 
         [HttpDelete("{id}")]
         public override async Task<ActionResult<StudentTestDTO>> Delete(int id)
@@ -99,7 +117,47 @@ namespace ExamPortalApp.Api.Controllers
             }
         }
 
-        [HttpGet("get-students-testdetails")]
+       /* [HttpPost]
+        public async JsonResult GetWordDocument(int fileId)
+        {
+            byte[] bytes;
+            string fileName, contentType;
+            var docs = await _studentTestRepository.GetUserAnswerDocumentAsync(studentId, testId);
+
+            var doc = docs?.FirstOrDefault();
+
+            if (doc?.TestDocument is null) //throw new Exception("No test document found");
+            {
+                try
+                {
+                    byte[] bytes;
+                    bytes = new byte[0];
+                    return bytes;
+                }
+                catch (Exception ex)
+                { }
+            }
+            return Json(new { FileName = docs.fileName ?? "", ContentType = contentType, Data = bytes });
+        }*/
+
+       /* var docs = await GetUserAnswerDocumentAsync(studentId, testId);
+        var doc = docs?.FirstOrDefault();
+
+            if (doc?.TestDocument is null) //throw new Exception("No test document found");
+            {
+                try
+                {
+                    byte[] bytes;
+        bytes = new byte[0];
+                    return bytes;
+                }
+                catch (Exception ex)
+                { }
+            }
+            return doc.TestDocument;*/
+
+
+[HttpGet("get-students-testdetails")]
         public async Task<ActionResult<StudentTestAnswers>> GetStudentTestDetails(int testId, int studentId)
         {
             try

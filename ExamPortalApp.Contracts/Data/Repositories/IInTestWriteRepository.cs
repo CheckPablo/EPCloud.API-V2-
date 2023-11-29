@@ -6,7 +6,11 @@ namespace ExamPortalApp.Contracts.Data.Repositories
 {
     public interface IInTestWriteRepository : IRepositoryBase<StudentTest>
     {
-        Task ConvertWindowsTTS(WindowsSpeechModel winspeech);
-        Task<bool> UploadStudentAnswerDocumentAsync(int testId, int studentId, IFormFile? file);
+        //Task ConvertWindowsTTS(WindowsSpeechModel winspeech);
+        Task<bool> UploadStudentAnswerDocumentAsync(int testId, int studentId, bool accomodation, bool offline, bool fullScreenCLosed, bool kePress, bool leftExamArea, 
+            string timeRemaining, string answerText, string fileName, IFormFile? file);
+        Task<IEnumerable<KeyPressTracking>> SaveIrregularKeyPress(InvalidKeyPressEntries invalidKeyPressEntries);
+        Task<IEnumerable<StudentTestAnswers>> SaveAnswersInterval(StudentTestAnswerModel studentTestAnswers);
+
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "o7xOMcNhQ+7oBzJM2HXDlH6vcRr/7j9TyI4mHcyvYuD4d4ik+s8fbtaw5DR64fSw4nggRUOFkaIANFBs6y6hWw==",
+  "dgSpecHash": "6SKPJQflxhZDOtmFTNY4jJhw6y3LHULcEpxoxiJKhisKF/cwu727XThERsCoaMRM3bqCbgl0DwfgCL6XCO5GKQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj",
+  "projectFilePath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\examp\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\examp\\.nuget\\packages\\microsoft.extensions.primitives\\2.2.0\\microsoft.extensions.primitives.2.2.0.nupkg.sha512",

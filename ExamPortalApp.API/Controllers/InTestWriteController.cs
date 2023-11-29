@@ -134,12 +134,9 @@ namespace ExamPortalApp.Api.Controllers
 
         [DisableRequestSizeLimit]
         [Consumes("multipart/form-data")]
-        /*[HttpPost("{testId}/{studentId}upload-answer-document")]*/
         [HttpPost("upload-answer-document")]
-        /*[HttpPost]
-        public override async Task<ActionResult<TestDto>> Post(Test test)*/
-        //public async Task<ActionResult<bool>> UploadAnswerDocumentAsync(StudentTestSave studentTestSave)
-                public async Task<ActionResult<StudentTestSave>> UploadAnswerDocumentAsync()
+        public async Task<ActionResult<StudentTestSave>> UploadAnswerDocumentAsync()
+       //public async Task<ActionResult<StudentTestAnswers>> SaveAnswersInterval(StudentTestAnswerModel studentTestAnswers)
         {
            // System.Web.HttpPostedFile data = HttpContext.Current.Request.Files[0];
             try
@@ -150,9 +147,11 @@ namespace ExamPortalApp.Api.Controllers
 
                 if (form is not null)
                 {
-                    var file = (Request.Form.Files.Count() > 0) && (Request.Form.Files[0] is not null) ? Request.Form.Files[0] : null;
+                    //var file = (Request.Form.Files.Count() > 0) && (Request.Form.Files[0] is not null) ? Request.Form.Files[0] : null;
+                    var file = Request.Form.Files[0];
                     //var file = Request.Form.Files[0];
-                    var response = await _inTestWriteRepository.UploadStudentAnswerDocumentAsync(form.TestId,form.StudentId,file);
+                    var response = await _inTestWriteRepository.UploadStudentAnswerDocumentAsync(form.TestId,form.StudentId, form.Accomodation ?? false, 
+                        form.Offline ?? false, form.FullScreenClosed ?? false ,form.KeyPress ?? false, form.LeftExamArea ?? false, form.TimeRemaining, form.AnswerText, form.fileName, file);
                     //var result = _mapper.Map<TestDto>(response);
                     //return Ok(result);
                     return Ok();
@@ -168,6 +167,23 @@ namespace ExamPortalApp.Api.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+
+        [HttpPost("save-irregular-keypressevent")]
+        public async Task<ActionResult<KeyPressTracking>> SaveIrregularKeyPress(InvalidKeyPressEntries invalidKeyPressEntries)
+        {
+            try
+            {
+                var result = await _inTestWriteRepository.SaveIrregularKeyPress(invalidKeyPressEntries);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
 
 
         //[HttpGet("windowstts/{selectedVoice}/{selectedText}")]

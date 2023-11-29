@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.API\\ExamPortalApp.Api.csproj": {}
+    "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.API\\ExamPortalApp.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.API\\ExamPortalApp.Api.csproj": {
+    "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.API\\ExamPortalApp.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.API\\ExamPortalApp.Api.csproj",
+        "projectUniqueName": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.API\\ExamPortalApp.Api.csproj",
         "projectName": "ExamPortalApp.Api",
-        "projectPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.API\\ExamPortalApp.Api.csproj",
+        "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.API\\ExamPortalApp.Api.csproj",
         "packagesPath": "C:\\Users\\examp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.API\\obj\\",
+        "outputPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\examp\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,11 +28,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj": {
-                "projectPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj"
+              "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj": {
+                "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj"
               },
-              "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Extensions\\ExamPortalApp.Extensions.csproj": {
-                "projectPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Extensions\\ExamPortalApp.Extensions.csproj"
+              "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Extensions\\ExamPortalApp.Extensions.csproj": {
+                "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Extensions\\ExamPortalApp.Extensions.csproj"
               }
             }
           }
@@ -113,14 +113,14 @@
         }
       }
     },
-    "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {
+    "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj",
+        "projectUniqueName": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj",
         "projectName": "ExamPortalApp.Contracts",
-        "projectPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj",
+        "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj",
         "packagesPath": "C:\\Users\\examp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Contracts\\obj\\",
+        "outputPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\examp\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -178,14 +178,14 @@
         }
       }
     },
-    "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Core\\ExamPortalApp.Core.csproj": {
+    "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Core\\ExamPortalApp.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Core\\ExamPortalApp.Core.csproj",
+        "projectUniqueName": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Core\\ExamPortalApp.Core.csproj",
         "projectName": "ExamPortalApp.Core",
-        "projectPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Core\\ExamPortalApp.Core.csproj",
+        "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Core\\ExamPortalApp.Core.csproj",
         "packagesPath": "C:\\Users\\examp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Core\\obj\\",
+        "outputPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\examp\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -202,8 +202,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {
-                "projectPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj"
+              "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {
+                "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj"
               }
             }
           }
@@ -251,14 +251,14 @@
         }
       }
     },
-    "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Daemon\\ExamPortalApp.Daemon.csproj": {
+    "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Daemon\\ExamPortalApp.Daemon.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Daemon\\ExamPortalApp.Daemon.csproj",
+        "projectUniqueName": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Daemon\\ExamPortalApp.Daemon.csproj",
         "projectName": "ExamPortalApp.Daemon",
-        "projectPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Daemon\\ExamPortalApp.Daemon.csproj",
+        "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Daemon\\ExamPortalApp.Daemon.csproj",
         "packagesPath": "C:\\Users\\examp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Daemon\\obj\\",
+        "outputPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Daemon\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\examp\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -275,8 +275,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {
-                "projectPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj"
+              "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {
+                "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj"
               }
             }
           }
@@ -324,14 +324,14 @@
         }
       }
     },
-    "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj": {
+    "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj",
+        "projectUniqueName": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj",
         "projectName": "ExamPortalApp.Data",
-        "projectPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj",
+        "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj",
         "packagesPath": "C:\\Users\\examp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Data\\obj\\",
+        "outputPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\examp\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -348,8 +348,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {
-                "projectPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj"
+              "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {
+                "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj"
               }
             }
           }
@@ -413,14 +413,14 @@
         }
       }
     },
-    "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Extensions\\ExamPortalApp.Extensions.csproj": {
+    "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Extensions\\ExamPortalApp.Extensions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Extensions\\ExamPortalApp.Extensions.csproj",
+        "projectUniqueName": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Extensions\\ExamPortalApp.Extensions.csproj",
         "projectName": "ExamPortalApp.Extensions",
-        "projectPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Extensions\\ExamPortalApp.Extensions.csproj",
+        "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Extensions\\ExamPortalApp.Extensions.csproj",
         "packagesPath": "C:\\Users\\examp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Extensions\\obj\\",
+        "outputPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Extensions\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\examp\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -437,17 +437,17 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {
-                "projectPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj"
+              "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {
+                "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj"
               },
-              "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Core\\ExamPortalApp.Core.csproj": {
-                "projectPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Core\\ExamPortalApp.Core.csproj"
+              "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Core\\ExamPortalApp.Core.csproj": {
+                "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Core\\ExamPortalApp.Core.csproj"
               },
-              "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Daemon\\ExamPortalApp.Daemon.csproj": {
-                "projectPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Daemon\\ExamPortalApp.Daemon.csproj"
+              "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Daemon\\ExamPortalApp.Daemon.csproj": {
+                "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Daemon\\ExamPortalApp.Daemon.csproj"
               },
-              "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Infrastructure\\ExamPortalApp.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Infrastructure\\ExamPortalApp.Infrastructure.csproj"
+              "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Infrastructure\\ExamPortalApp.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Infrastructure\\ExamPortalApp.Infrastructure.csproj"
               }
             }
           }
@@ -495,14 +495,14 @@
         }
       }
     },
-    "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Infrastructure\\ExamPortalApp.Infrastructure.csproj": {
+    "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Infrastructure\\ExamPortalApp.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Infrastructure\\ExamPortalApp.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Infrastructure\\ExamPortalApp.Infrastructure.csproj",
         "projectName": "ExamPortalApp.Infrastructure",
-        "projectPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Infrastructure\\ExamPortalApp.Infrastructure.csproj",
+        "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Infrastructure\\ExamPortalApp.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\examp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\examp\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -519,11 +519,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {
-                "projectPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj"
+              "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {
+                "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj"
               },
-              "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj": {
-                "projectPath": "C:\\Users\\examp\\source\\repos\\ExamPortalCloud.API(v3)\\ExamPortalCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj"
+              "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj": {
+                "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj"
               }
             }
           }
@@ -569,6 +569,10 @@
             "Syncfusion.DocIORenderer.Net.Core": {
               "target": "Package",
               "version": "[21.2.9, )"
+            },
+            "Syncfusion.EJ2.SpellChecker.AspNet.Core": {
+              "target": "Package",
+              "version": "[23.2.5, )"
             },
             "Syncfusion.Pdf.Net.Core": {
               "target": "Package",
