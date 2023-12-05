@@ -43,6 +43,9 @@ using static SkiaSharp.HarfBuzz.SKShaper;
 using WDocument = Syncfusion.DocIO.DLS.WordDocument;
 using WFormatType = Syncfusion.DocIO.FormatType;
 using Syncfusion.Compression.Zip;
+using System.IO.Compression;
+using System.ComponentModel;
+using Microsoft.WindowsAzure.Storage.Blob;
 //using System.IO.Compression;
 
 namespace ExamPortalApp.Infrastructure.Data.Repositories
@@ -57,6 +60,12 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
         private Stream? streamTemp;
         private byte[] WordFileBytes;
         private UserDocumentAnswer userDoc;
+        private string startPath;
+        private string zipFolderName;
+        private string zipPath;
+        private Test testEntity;
+        private string root;
+        private CloudBlobClient _blobClient;
 
         //private string base64;
 
@@ -278,10 +287,10 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             return doc.TestDocument;
         }
 
-        /*public async Task<byte[]> GetUserAnswerFileAsync(int studentId,int testId)
+        public async Task<byte[]> GetUserAnswerFileAsync(int studentId, int testId)
         {
             var docs = await GetUserAnswerDocumentAsync(studentId, testId);
-             var doc = docs?.FirstOrDefault();
+            var doc = docs?.FirstOrDefault();
 
             if (doc?.TestDocument is null) //throw new Exception("No test document found");
             {
@@ -295,7 +304,7 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
                 { }
             }
             return doc.TestDocument;
-        */
+        }
 
       
 
@@ -335,9 +344,18 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
 
             //if (entity == null) throw new EntityNotFoundException<UserDocumentAnswer>(id);
 
-            return entity.FirstOrDefault(); 
+            return entity.FirstOrDefault();
 
         }
+
+        private async Task<IEnumerable<Grade>> GetTestGradeEntityAsync(int sectorId)
+        {
+            //var test = await GetAsync(testId);
+            var gradeEntity = await _repository.GetWhereAsync<Grade>(x => x.Id == sectorId);
+
+            return gradeEntity;
+        }
+
 
         private async Task<IEnumerable<Student>> GetEligibleStudentsAsync(int testId)
         {
@@ -592,17 +610,108 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             }
             return filesList;
         }
-        /*public async Task<(UserDocumentAnswer, string)> GetStudentFinalAnswerFileAsync(int testId, int studentId)
+
+        public async Task<string> studentAnswersBulkDownloadString(int testId, int[] studentIds)
         {
-            var test = await GetUserAnswerDocAsync(testId, studentId);
+            /*var test = await GetUserAnswerDocAsync(testId, studentId);
+            var testEntity = await GetAsync(testId);
+            var testGradeEntity = await GetTestGradeEntityAsync(testEntity.SectorId ?? 0);
             if (test is null) throw new InvalidOperationException();
+            string tempFolderName = Guid.NewGuid().ToString();
+            string root = @"C:\AnswersExport";
+            //string root = @"C:\AnswersExport" + testEntity.TestName.PadRight(5) + "-" + testGradeEntity.First().Code.PadRight(5);
+            //string root = @"C:\"+testEntity.TestName.PadRight(5)+"-"+ testGradeEntity.First().Code.PadRight(5);
+            //string subdir =@"C:\AnswersExport\" +testEntity.TestName.PadRight(5) + "-" + testGradeEntity.First().Code.PadRight(5); 
+            string subdir = @"C:\AnswersExport\" + tempFolderName;*/
 
-            var answerFileToDownLoad = await GetUserAnswerFileDownload(testId, studentId);
 
-            Console.WriteLine(answerFileToDownLoad.ToString());
-            return (test, answerFileToDownLoad.ToString());
-        */
+            var folder = KnownFolderFinder.GetFolderFromKnownFolderGUID(new Guid("374DE290-123F-4565-9164-39C4925E467B"));
+            string tempFolderName = Guid.NewGuid().ToString();
+            testEntity = await GetAsync(testId);
+             root = folder + @"\" + testEntity.TestName.PadRight(5);
+            //string root = folder + @"\" + "AnswersExport".PadRight(5);
+            string subdir = root + tempFolderName;
+            if (!Directory.Exists(root))
+            {
+                Directory.CreateDirectory(root);
+            }
+            if (!Directory.Exists(subdir))
+            {
+                Directory.CreateDirectory(subdir);
+            }
 
+            foreach (var studentId in studentIds)
+            {
+                if (testId > 0)
+                {
+                   // var testEntity = await GetAsync(testId);
+                    var test = await GetUserAnswerDocAsync(testId, studentId);
+                    //var testEntity = await GetAsync(testId);
+                    
+                    var testGradeEntity = await GetTestGradeEntityAsync(testEntity.SectorId ?? 0); 
+                    if (test is null) throw new InvalidOperationException();
+
+                    Syncfusion.Compression.Zip.ZipArchive zipArchive = new Syncfusion.Compression.Zip.ZipArchive();
+                    zipArchive.DefaultCompressionLevel = Syncfusion.Compression.CompressionLevel.Best;
+                 
+                    string path = root;
+                    string fileName = "test";
+
+                    var answerFileToDownLoad = await GetUserAnswerFileDownload(testId, studentId);
+                    var fileNameDetails = await GetStudentFileNameDetails(testId, studentId);
+                    var appendNo = GenerateRandomNo(); 
+                    var blob = test.TestDocument;
+                    using (Stream stream = new FileStream(subdir + "/" + testEntity.TestName.PadRight(5) + "-" + fileNameDetails.ExamNo.PadRight(5) + "-"+ fileNameDetails.Name + "-"+ fileNameDetails.Surname +"-"+ appendNo+ ".docx", FileMode.Create, FileAccess.Write))
+                    {
+                        stream.Write(blob, 0, blob.Length);
+                        FileAttributes attributes = File.GetAttributes(subdir);
+                        ZipArchiveItem item = new ZipArchiveItem(zipArchive, "SampleFile.cs", stream, true, (Syncfusion.Compression.FileAttributes)attributes);
+                        zipArchive.AddItem(item);
+
+                    }
+                    //ZipFile.CreateFromDirectory(subdir, "destination.zip", CompressionLevel.Optimal, false);
+                     startPath = subdir;
+
+                     zipFolderName = "ExportedAnswers.zip".PadLeft(5);
+
+                    //string zipPath = startPath + "bulkStudentAnswerDownload.zip";
+
+                     zipPath = startPath + zipFolderName;
+
+                    //ZipFile.CreateFromDirectory(startPath, zipPath, CompressionLevel.Optimal, false);
+                    //ZipFile.ExtractToDirectory(zipPath, extractPath);
+                    //turn root + "BulkAnswerDownload.zip";
+                }
+
+                else
+                {
+                    return @"C:\AnswersExport" + "BulkAnswerDownload.zip";
+                    //return ("");
+                }
+            }
+            ZipFile.CreateFromDirectory(startPath, zipPath, CompressionLevel.Optimal, false);
+            var dir = new DirectoryInfo(root);
+            var dirGuid = new DirectoryInfo(subdir);
+            //var zipDir = new DirectoryInfo(zipPath);
+            dir.Delete(true);
+            dirGuid.Delete(true);
+            //zipDir.Delete(true); 
+
+
+            return zipPath;
+            //return File(stream, "application/octet-stream", zipPath);
+            
+            //return @"C:\AnswersExport" + "BulkAnswerDownload.zip";
+            //return ("");
+        }
+
+        public int GenerateRandomNo()
+        {
+            int _min = 1000;
+            int _max = 9999;
+            Random _rdm = new Random();
+            return _rdm.Next(_min, _max);
+        }
 
         public async Task<string> GetUserAnswerFileDownload(int testId, int studentId)
         {
@@ -622,7 +731,13 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             return base64;
         }
 
-
+        public async Task<Student> GetStudentFileNameDetails(int testId, int studentId)
+        {
+            //studentId = 9476; 
+            //testId = 4385; 
+            var studentEntry = await _repository.GetFirstOrDefaultAsync<Student>(x => x.Id == studentId);
+            return studentEntry;
+        }
 
         public async Task<(Test, string)> GetTestQuestionWithFileAsync(int testId)
         {

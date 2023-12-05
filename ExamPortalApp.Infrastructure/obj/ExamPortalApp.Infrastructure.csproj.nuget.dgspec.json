@@ -240,6 +240,10 @@
             "Syncfusion.Pdf.Net.Core": {
               "target": "Package",
               "version": "[21.2.9, )"
+            },
+            "WindowsAzure.Storage": {
+              "target": "Package",
+              "version": "[9.3.3, )"
             }
           },
           "imports": [

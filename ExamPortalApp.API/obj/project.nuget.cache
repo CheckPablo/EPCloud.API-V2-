@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "HjCuVRNj3h2HPGIAvLSTHccsh9zBCf/IQI/zUuakw+2zVOiReurdESZI8PN44Slc9c/koGwgtu//L4uYMejh+A==",
+  "dgSpecHash": "LW+wE6EvwIZWvyvE3Cq6+xCrnrwKRrwpEvDB+lt8S6KU9Q/EU+Wdw2TxdzuCTAcb6WjxoLzbpg0IYTKu039UvQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.API\\ExamPortalApp.Api.csproj",
   "expectedPackageFiles": [
@@ -84,6 +84,8 @@
     "C:\\Users\\examp\\.nuget\\packages\\skiasharp.harfbuzz\\2.88.2\\skiasharp.harfbuzz.2.88.2.nupkg.sha512",
     "C:\\Users\\examp\\.nuget\\packages\\skiasharp.nativeassets.macos\\2.88.2\\skiasharp.nativeassets.macos.2.88.2.nupkg.sha512",
     "C:\\Users\\examp\\.nuget\\packages\\skiasharp.nativeassets.win32\\2.88.2\\skiasharp.nativeassets.win32.2.88.2.nupkg.sha512",
+    "C:\\Users\\examp\\.nuget\\packages\\speechlib.models\\1.6.0\\speechlib.models.1.6.0.nupkg.sha512",
+    "C:\\Users\\examp\\.nuget\\packages\\speechlib.synthesis\\1.6.0\\speechlib.synthesis.1.6.0.nupkg.sha512",
     "C:\\Users\\examp\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\examp\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "C:\\Users\\examp\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
@@ -168,7 +170,8 @@
     "C:\\Users\\examp\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\examp\\.nuget\\packages\\system.windows.extensions\\5.0.0\\system.windows.extensions.5.0.0.nupkg.sha512",
     "C:\\Users\\examp\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
-    "C:\\Users\\examp\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
+    "C:\\Users\\examp\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\examp\\.nuget\\packages\\windowsazure.storage\\9.3.3\\windowsazure.storage.9.3.3.nupkg.sha512"
   ],
   "logs": [
     {
@@ -187,6 +190,26 @@
       "warningLevel": 1,
       "message": "Package 'Microsoft.Office.Interop.Word 12.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
       "libraryId": "Microsoft.Office.Interop.Word",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'SpeechLib.Models 1.6.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "SpeechLib.Models",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'SpeechLib.Synthesis 1.6.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "SpeechLib.Synthesis",
       "targetGraphs": [
         "net6.0"
       ]

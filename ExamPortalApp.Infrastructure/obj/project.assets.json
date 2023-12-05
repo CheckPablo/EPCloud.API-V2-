@@ -2518,6 +2518,23 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
+      "WindowsAzure.Storage/9.3.3": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "10.0.2"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {
+            "related": ".pdb"
+          }
+        }
+      },
       "ExamPortalApp.Contracts/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -7924,6 +7941,30 @@
         "system.xml.xdocument.nuspec"
       ]
     },
+    "WindowsAzure.Storage/9.3.3": {
+      "sha512": "VUV8j6dzkU/7vDgk5k+ob5g7nnch2fNByr0p9aOxMGFGk+tAnTehrZ4qnClF04CVozP1GNN2zrnbsxCmr+iZBg==",
+      "type": "package",
+      "path": "windowsazure.storage/9.3.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Microsoft.WindowsAzure.Storage.dll",
+        "lib/net45/Microsoft.WindowsAzure.Storage.pdb",
+        "lib/net45/Microsoft.WindowsAzure.Storage.xml",
+        "lib/netstandard1.0/Microsoft.WindowsAzure.Storage.dll",
+        "lib/netstandard1.0/Microsoft.WindowsAzure.Storage.pdb",
+        "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll",
+        "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.pdb",
+        "lib/win8/Microsoft.WindowsAzure.Storage.dll",
+        "lib/win8/Microsoft.WindowsAzure.Storage.pdb",
+        "lib/wp8/Microsoft.WindowsAzure.Storage.dll",
+        "lib/wp8/Microsoft.WindowsAzure.Storage.pdb",
+        "lib/wpa/Microsoft.WindowsAzure.Storage.dll",
+        "lib/wpa/Microsoft.WindowsAzure.Storage.pdb",
+        "windowsazure.storage.9.3.3.nupkg.sha512",
+        "windowsazure.storage.nuspec"
+      ]
+    },
     "ExamPortalApp.Contracts/1.0.0": {
       "type": "project",
       "path": "../ExamPortalApp.Contracts/ExamPortalApp.Contracts.csproj",
@@ -7948,7 +7989,8 @@
       "Syncfusion.DocIO.Net.Core >= 21.2.9",
       "Syncfusion.DocIORenderer.Net.Core >= 21.2.9",
       "Syncfusion.EJ2.SpellChecker.AspNet.Core >= 23.2.5",
-      "Syncfusion.Pdf.Net.Core >= 21.2.9"
+      "Syncfusion.Pdf.Net.Core >= 21.2.9",
+      "WindowsAzure.Storage >= 9.3.3"
     ]
   },
   "packageFolders": {
@@ -8036,6 +8078,10 @@
           "Syncfusion.Pdf.Net.Core": {
             "target": "Package",
             "version": "[21.2.9, )"
+          },
+          "WindowsAzure.Storage": {
+            "target": "Package",
+            "version": "[9.3.3, )"
           }
         },
         "imports": [

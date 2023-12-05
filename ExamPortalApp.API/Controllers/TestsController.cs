@@ -17,6 +17,12 @@ using static SkiaSharp.HarfBuzz.SKShaper;
 using FormatType = Syncfusion.EJ2.DocumentEditor.FormatType;
 using WDocument = Syncfusion.DocIO.DLS.WordDocument;
 using WFormatType = Syncfusion.DocIO.FormatType;
+using System.Net;
+using System.Collections;
+using System.IO;
+using System.Net.Http.Headers;
+using System.IO.Compression;
+
 
 namespace ExamPortalApp.Api.Controllers
 {
@@ -26,10 +32,13 @@ namespace ExamPortalApp.Api.Controllers
     public class TestsController : CrudControllerBase<TestDto, Test>
     {
         private readonly ITestRepository _testRepository;
+        private readonly IHttpContextAccessor _contextAccessor;
+        public IWebHostEnvironment Environment { get; private set; }
 
-        public TestsController(ITestRepository testRepository, IMapper mapper) : base(mapper)
+        public TestsController(ITestRepository testRepository, IMapper mapper, IHttpContextAccessor contextAccessor) : base(mapper)
         {
             _testRepository = testRepository;
+            _contextAccessor = contextAccessor;
         }
 
         [DisableRequestSizeLimit]
@@ -200,7 +209,7 @@ namespace ExamPortalApp.Api.Controllers
                 return ex.Message;
             }
         }
-        /*[HttpGet("{studentId}/{testId}/get-studentanswer-file")]
+        [HttpGet("{studentId}/{testId}/get-studentanswer-file")]
         public async Task<string> GetStudentAnswerFile(int studentId, int testId)
         {
             try
@@ -231,7 +240,7 @@ namespace ExamPortalApp.Api.Controllers
             {
                 return ex.Message;
             }
-        }*/
+        }
 
         [HttpGet("search-students-answers")]
         public async Task<ActionResult<Resulting>> SearchStudentsAnswerAsync(int gradeId, int subjectId, int testId, int region)
@@ -375,10 +384,6 @@ namespace ExamPortalApp.Api.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
-        
-       
-       
 
         /*private async FileStreamResult File(Task<byte[]> task, string v1, string v2)
          {
@@ -621,7 +626,109 @@ namespace ExamPortalApp.Api.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        /*[AllowAnonymous]
+        [HttpPost("download-client-doc")]
+        public async Task<ActionResult<HttpResponseMessage>> DownloadDocumentToClient(FileLinker fileLinker)
+        {
+            //_contextAccessor.MapPa
+            ///var path = System.Web.HttpContext.Current.Server.MapPath(fileLinker.filePath);
+            ///string path = Path.Combine(this.Environment.WebRootPath, "Uploads");
+            string path = Path.Combine(this.Environment.WebRootPath, fileLinker.filePath);
+            HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
+            var stream = new FileStream(path, FileMode.Open);
+            result.Content = new StreamContent(stream);
+            result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
+            result.Content.Headers.ContentDisposition.FileName = Path.GetFileName(path);
+            result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+            result.Content.Headers.ContentLength = stream.Length;
+            //return result;
+            return File(result, "application/zip", "zipFileName");
+            //return File
+        }*/
 
+        /*[AllowAnonymous]
+        [HttpPost("download-client-doc")]
+        public async Task<ActionResult<HttpResponseMessage>> DownloadZipToClient(FileLinker fileLinker)
+        {
+            /*using (MemoryStream zipArchiveMemoryStream = new MemoryStream())
+            {
+                using (ZipArchive zipArchive = new ZipArchive(zipArchiveMemoryStream, ZipArchiveMode.Create, true))
+                {
+                    ZipArchiveEntry zipEntry = zipArchive.CreateEntry(zipFileName);
+                    using (Stream entryStream = zipEntry.Open())
+                    {
+                        using (MemoryStream tmpMemory = new MemoryStream(System.IO.File.ReadAllBytesfileL(filePath)))
+                        {
+                            tmpMemory.CopyTo(entryStream);
+                        };
+                    }
+                }
+
+                zipArchiveMemoryStream.Seek(0, SeekOrigin.Begin);
+                result = zipArchiveMemoryStream.ToArray();
+            }
+
+            return File(fileLinker., "application/zip", zipFileName);
+        }*/
+
+
+        [AllowAnonymous]
+        [HttpPost("download-client-doc")]
+        public async Task<ActionResult> DownloadDocumentToClient(FileLinker fileLinker)
+        {
+            try
+            {
+                //Byte[] data = Convert.FromBase64String(payload.file.Split(',')[1]);
+                FileContentResult t;
+                // FileContentResult file = new FileContentResult(fileLinker.Path); 
+                //= new File("F:\\ssd\\doc\\");
+                //var v = System.IO.File.ReadLines("dictionary.txt");
+                byte[] zipBytes = System.IO.File.ReadAllBytes(fileLinker.filePath);
+                //System.IO.File.WriteAllBytes(zipBytes);
+               // System.IO.File.WriteAllBytes("c:\\t.txt", zipBytes);
+                //string json = Newtonsoft.Json.JsonConvert.SerializeObject(zipBytes);
+                //zipBytes.Dispose();
+                return Ok(zipBytes);
+
+                //byte[] data = file.ReadAllBytes(fileLinker.FilePath);
+
+                return Ok(); 
+                
+                MemoryStream stream = new MemoryStream();
+
+                //return Ok(json);
+               
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+
+        /*[HttpPost("convert-offlinestring")]
+        public async Task<ActionResult> ImportOffline(OfflineConversion payload)
+        {
+            try
+            {
+                Byte[] data = Convert.FromBase64String(payload.file.Split(',')[1]);
+                MemoryStream stream = new MemoryStream();
+                stream.Write(data, 0, data.Length);
+                Syncfusion.EJ2.DocumentEditor.FormatType type = Syncfusion.EJ2.DocumentEditor.FormatType.Docx;
+                stream.Position = 0;
+                Syncfusion.EJ2.DocumentEditor.WordDocument document = Syncfusion.EJ2.DocumentEditor.WordDocument.Load(stream, Syncfusion.EJ2.DocumentEditor.FormatType.Docx);
+                string json = Newtonsoft.Json.JsonConvert.SerializeObject(document);
+                document.Dispose();
+                return Ok(json);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+
+            }
+
+        }*/
         /*[HttpGet("get-converted-answerdocbulk/{testId}/{studentIds}")]*/
 
         [HttpPost("get-answerdocbulk")]
@@ -639,7 +746,27 @@ namespace ExamPortalApp.Api.Controllers
             }
         }
 
+        [HttpPost("get-answerdocbulksave")]
+        public async Task<ActionResult> DownloadStudentAnswersBulkSave(StudentBulkAnswerLinker linker)
+        {
+            try
+            {
+                var bulkAnswers = await _testRepository.studentAnswersBulkDownloadString(linker.TestId ?? 0, linker.StudentIds);
+                //var bulkAnswersPath = bulkAnswers.Replace(@"\\", @"\");
+                var bulkAnswersPath = bulkAnswers.Replace("@\\\\", "@\\");
+                var bulkAnswersFinal = bulkAnswersPath.Replace("@\\",@"\");
 
+                var dir = new DirectoryInfo(bulkAnswersFinal);
+                dir.Delete(true);
+                string json = Newtonsoft.Json.JsonConvert.SerializeObject(bulkAnswersPath);
+                return Ok(json);
+                
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
         /*public async Task<bool> ExportTestUploadAnswersBulk(int[] documentIds)
         {

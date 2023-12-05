@@ -38,7 +38,7 @@ namespace ExamPortalApp.Contracts.Data.Repositories
         string ConvertWordDocToBase64Async(IFormFile file);
         //string ConvertOfflineString(string file);
         Task<byte[]> GetAnswerFileAsync(int testId);
-        //Task<byte[]> GetUserAnswerFileAsync(int testId, int studentId);
+        Task<byte[]> GetUserAnswerFileAsync(int testId, int studentId);
         //Task<byte[]> GetUserAnswerFile(int testId, int studentId);
         Task<bool> CheckFileConvertedAsync(int id);
         byte[] ConvertAnswerDocumentAsync(IFormFile file);
@@ -50,7 +50,7 @@ namespace ExamPortalApp.Contracts.Data.Repositories
         Task<IEnumerable<StudentTestDTO>> SetTestStartDateTime(int? testId, int? studentId);
         Task<IEnumerable<RandomOtpDto>> ValidateTestOTP(int? testId, int? centerId, int? otp);
         Task <List<string> >studentAnswersBulkDownload(int testId,int[] studentIds);
-        
+        Task<string> studentAnswersBulkDownloadString(int testId, int[] studentIds);
         //Task studentAnswersBulkDownload(int[] documentIds);
     }
 }

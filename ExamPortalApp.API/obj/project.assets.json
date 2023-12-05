@@ -1302,6 +1302,27 @@
           }
         }
       },
+      "SpeechLib.Models/1.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/_._": {}
+        },
+        "runtime": {
+          "lib/net40/SpeechLib.Models.dll": {}
+        }
+      },
+      "SpeechLib.Synthesis/1.6.0": {
+        "type": "package",
+        "dependencies": {
+          "SpeechLib.Models": "1.6.0"
+        },
+        "compile": {
+          "lib/net40/_._": {}
+        },
+        "runtime": {
+          "lib/net40/SpeechLib.Synthesis.dll": {}
+        }
+      },
       "Swashbuckle.AspNetCore/6.2.3": {
         "type": "package",
         "dependencies": {
@@ -2861,6 +2882,23 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
+      "WindowsAzure.Storage/9.3.3": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "10.0.2"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {
+            "related": ".pdb"
+          }
+        }
+      },
       "ExamPortalApp.Contracts/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -2958,7 +2996,8 @@
           "Syncfusion.DocIO.Net.Core": "21.2.9",
           "Syncfusion.DocIORenderer.Net.Core": "21.2.9",
           "Syncfusion.EJ2.SpellChecker.AspNet.Core": "23.2.5",
-          "Syncfusion.Pdf.Net.Core": "21.2.9"
+          "Syncfusion.Pdf.Net.Core": "21.2.9",
+          "WindowsAzure.Storage": "9.3.3"
         },
         "compile": {
           "bin/placeholder/ExamPortalApp.Infrastructure.dll": {}
@@ -4818,6 +4857,30 @@
         "runtimes/win-x86/native/libSkiaSharp.dll",
         "skiasharp.nativeassets.win32.2.88.2.nupkg.sha512",
         "skiasharp.nativeassets.win32.nuspec"
+      ]
+    },
+    "SpeechLib.Models/1.6.0": {
+      "sha512": "7KLZBSd2TolAD9iB+3Houwqs1GwMZgDz52f+y54jxianl2fMxaC9Ovo8TFBiGfAirRH60aSwBhjDX5gT1KukcQ==",
+      "type": "package",
+      "path": "speechlib.models/1.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/SpeechLib.Models.dll",
+        "speechlib.models.1.6.0.nupkg.sha512",
+        "speechlib.models.nuspec"
+      ]
+    },
+    "SpeechLib.Synthesis/1.6.0": {
+      "sha512": "nHhHR4rjQJbG77G7w1AbxJxZkicw38eNrRipi9xt+K1pCWp0cYOo9QRckMl8k+1yIBdx84SUbmFZ9bIEoEwXXw==",
+      "type": "package",
+      "path": "speechlib.synthesis/1.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/SpeechLib.Synthesis.dll",
+        "speechlib.synthesis.1.6.0.nupkg.sha512",
+        "speechlib.synthesis.nuspec"
       ]
     },
     "Swashbuckle.AspNetCore/6.2.3": {
@@ -8804,6 +8867,30 @@
         "system.xml.xdocument.nuspec"
       ]
     },
+    "WindowsAzure.Storage/9.3.3": {
+      "sha512": "VUV8j6dzkU/7vDgk5k+ob5g7nnch2fNByr0p9aOxMGFGk+tAnTehrZ4qnClF04CVozP1GNN2zrnbsxCmr+iZBg==",
+      "type": "package",
+      "path": "windowsazure.storage/9.3.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Microsoft.WindowsAzure.Storage.dll",
+        "lib/net45/Microsoft.WindowsAzure.Storage.pdb",
+        "lib/net45/Microsoft.WindowsAzure.Storage.xml",
+        "lib/netstandard1.0/Microsoft.WindowsAzure.Storage.dll",
+        "lib/netstandard1.0/Microsoft.WindowsAzure.Storage.pdb",
+        "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll",
+        "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.pdb",
+        "lib/win8/Microsoft.WindowsAzure.Storage.dll",
+        "lib/win8/Microsoft.WindowsAzure.Storage.pdb",
+        "lib/wp8/Microsoft.WindowsAzure.Storage.dll",
+        "lib/wp8/Microsoft.WindowsAzure.Storage.pdb",
+        "lib/wpa/Microsoft.WindowsAzure.Storage.dll",
+        "lib/wpa/Microsoft.WindowsAzure.Storage.pdb",
+        "windowsazure.storage.9.3.3.nupkg.sha512",
+        "windowsazure.storage.nuspec"
+      ]
+    },
     "ExamPortalApp.Contracts/1.0.0": {
       "type": "project",
       "path": "../ExamPortalApp.Contracts/ExamPortalApp.Contracts.csproj",
@@ -8843,6 +8930,8 @@
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.16",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.4",
       "Newtonsoft.Json >= 13.0.3",
+      "SpeechLib.Models >= 1.6.0",
+      "SpeechLib.Synthesis >= 1.6.0",
       "Swashbuckle.AspNetCore >= 6.2.3",
       "Syncfusion.Compression.Net.Core >= *",
       "Syncfusion.EJ2.SpellChecker.AspNet.Core >= *",
@@ -8915,6 +9004,18 @@
             "target": "Package",
             "version": "[13.0.3, )"
           },
+          "SpeechLib.Models": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[1.6.0, )"
+          },
+          "SpeechLib.Synthesis": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[1.6.0, )"
+          },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[6.2.3, )"
@@ -8980,6 +9081,26 @@
       "warningLevel": 1,
       "message": "Package 'Microsoft.Office.Interop.Word 12.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
       "libraryId": "Microsoft.Office.Interop.Word",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'SpeechLib.Models 1.6.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "SpeechLib.Models",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'SpeechLib.Synthesis 1.6.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "SpeechLib.Synthesis",
       "targetGraphs": [
         "net6.0"
       ]

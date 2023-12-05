@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "pQyfJ/jwpWdeIpDWWwBOZXc7jeLWuEC5AVvivFrIjUdttx7c4yDuMG6wwXBVX1gusqNgtKKh7lUH+0eJMs2qjA==",
+  "dgSpecHash": "mfQLpjloHS/D8N0TlkAsvcaGCqp35Z1+VGTHZ9DQPMnsJIdjmVWzAzk6/cyoQQpGdxin0LnEdPd5LqQrhWebRw==",
   "success": true,
   "projectFilePath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Extensions\\ExamPortalApp.Extensions.csproj",
   "expectedPackageFiles": [
@@ -154,7 +154,8 @@
     "C:\\Users\\examp\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\examp\\.nuget\\packages\\system.windows.extensions\\5.0.0\\system.windows.extensions.5.0.0.nupkg.sha512",
     "C:\\Users\\examp\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
-    "C:\\Users\\examp\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
+    "C:\\Users\\examp\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\examp\\.nuget\\packages\\windowsazure.storage\\9.3.3\\windowsazure.storage.9.3.3.nupkg.sha512"
   ],
   "logs": [
     {

@@ -14,6 +14,8 @@
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.16",
           "Microsoft.EntityFrameworkCore.Design": "7.0.4",
           "Newtonsoft.Json": "13.0.3",
+          "SpeechLib.Models": "1.6.0",
+          "SpeechLib.Synthesis": "1.6.0",
           "Swashbuckle.AspNetCore": "6.2.3",
           "Syncfusion.Compression.Net.Core": "23.2.6",
           "Syncfusion.EJ2.SpellChecker.AspNet.Core": "23.2.6",
@@ -823,6 +825,25 @@
             "rid": "win-x86",
             "assetType": "native",
             "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "SpeechLib.Models/1.6.0": {
+        "runtime": {
+          "lib/net40/SpeechLib.Models.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "SpeechLib.Synthesis/1.6.0": {
+        "dependencies": {
+          "SpeechLib.Models": "1.6.0"
+        },
+        "runtime": {
+          "lib/net40/SpeechLib.Synthesis.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
           }
         }
       },
@@ -1695,6 +1716,18 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
+      "WindowsAzure.Storage/9.3.3": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {
+            "assemblyVersion": "9.3.2.0",
+            "fileVersion": "9.3.2.0"
+          }
+        }
+      },
       "ExamPortalApp.Contracts/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Http.Features": "2.2.0",
@@ -1765,7 +1798,8 @@
           "Syncfusion.DocIO.Net.Core": "23.2.6",
           "Syncfusion.DocIORenderer.Net.Core": "21.2.9",
           "Syncfusion.EJ2.SpellChecker.AspNet.Core": "23.2.6",
-          "Syncfusion.Pdf.Net.Core": "21.2.9"
+          "Syncfusion.Pdf.Net.Core": "21.2.9",
+          "WindowsAzure.Storage": "9.3.3"
         },
         "runtime": {
           "ExamPortalApp.Infrastructure.dll": {}
@@ -2338,6 +2372,20 @@
       "sha512": "sha512-FgUHWpnfLcFiqAXuJEgcvUn5p7gHwkkfclWFU8LKfydUzwJyq+izWxL5OCVgbB8wYrX/TSx42uh8LwstEAURzw==",
       "path": "skiasharp.nativeassets.win32/2.88.2",
       "hashPath": "skiasharp.nativeassets.win32.2.88.2.nupkg.sha512"
+    },
+    "SpeechLib.Models/1.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7KLZBSd2TolAD9iB+3Houwqs1GwMZgDz52f+y54jxianl2fMxaC9Ovo8TFBiGfAirRH60aSwBhjDX5gT1KukcQ==",
+      "path": "speechlib.models/1.6.0",
+      "hashPath": "speechlib.models.1.6.0.nupkg.sha512"
+    },
+    "SpeechLib.Synthesis/1.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nHhHR4rjQJbG77G7w1AbxJxZkicw38eNrRipi9xt+K1pCWp0cYOo9QRckMl8k+1yIBdx84SUbmFZ9bIEoEwXXw==",
+      "path": "speechlib.synthesis/1.6.0",
+      "hashPath": "speechlib.synthesis.1.6.0.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore/6.2.3": {
       "type": "package",
@@ -2933,6 +2981,13 @@
       "sha512": "sha512-5zJ0XDxAIg8iy+t4aMnQAu0MqVbqyvfoUVl1yDV61xdo3Vth45oA2FoY4pPkxYAH5f8ixpmTqXeEIya95x0aCQ==",
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
+    },
+    "WindowsAzure.Storage/9.3.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VUV8j6dzkU/7vDgk5k+ob5g7nnch2fNByr0p9aOxMGFGk+tAnTehrZ4qnClF04CVozP1GNN2zrnbsxCmr+iZBg==",
+      "path": "windowsazure.storage/9.3.3",
+      "hashPath": "windowsazure.storage.9.3.3.nupkg.sha512"
     },
     "ExamPortalApp.Contracts/1.0.0": {
       "type": "project",
