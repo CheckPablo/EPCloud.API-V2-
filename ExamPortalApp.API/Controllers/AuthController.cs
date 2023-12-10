@@ -79,6 +79,7 @@ namespace ExamPortalApp.Api.Controllers
         {
             try
             {
+                loginModel.Password.Trim(); 
                 var user = await _auth.LoginStudentAsync(loginModel);
 
                 return Ok(user);

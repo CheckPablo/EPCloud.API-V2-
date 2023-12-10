@@ -244,6 +244,7 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
            
         public async Task<LoggedUser> LoginStudentAsync(string StudentExamNo, string password)
         {
+            //password.Trim(); 
             var studentUser = await _repository.GetFirstOrDefaultAsync<Student>(x => x.ExamNo == StudentExamNo);
             if (studentUser.EligibleForExternalLogin == true)
             {
@@ -331,7 +332,7 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
 
 
         public async Task<LoggedUser> LoginStudentAsync(StudentLoginModel loginModel) =>
-          await LoginStudentAsync(loginModel.StudentExamNo, loginModel.Password);
+          await LoginStudentAsync(loginModel.StudentExamNo.Trim(), loginModel.Password.Trim());
 
         //public async Task<LoggedUser> LoginAdminAsync(AdminLoginModel loginModel) =>
         // await LoginAdminAsync( loginModel.Username, loginModel.impersonatedCenterId); 

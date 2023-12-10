@@ -684,16 +684,19 @@ namespace ExamPortalApp.Api.Controllers
                 //= new File("F:\\ssd\\doc\\");
                 //var v = System.IO.File.ReadLines("dictionary.txt");
                 byte[] zipBytes = System.IO.File.ReadAllBytes(fileLinker.filePath);
+                foreach (byte s in zipBytes)
+                {
+                    // Printing the binary array value of 
+                    // the file contents 
+                    Console.WriteLine("");
+                }
                 //System.IO.File.WriteAllBytes(zipBytes);
-               // System.IO.File.WriteAllBytes("c:\\t.txt", zipBytes);
+                // System.IO.File.WriteAllBytes("c:\\t.txt", zipBytes);
                 //string json = Newtonsoft.Json.JsonConvert.SerializeObject(zipBytes);
                 //zipBytes.Dispose();
                 return Ok(zipBytes);
 
                 //byte[] data = file.ReadAllBytes(fileLinker.FilePath);
-
-                return Ok(); 
-                
                 MemoryStream stream = new MemoryStream();
 
                 //return Ok(json);
@@ -706,6 +709,39 @@ namespace ExamPortalApp.Api.Controllers
 
         }
 
+        [AllowAnonymous]
+        [HttpPost("zip-clean-dir")]
+        public async Task<ActionResult> CleanZipDirectory (FileLinker fileLinker)
+        {
+            try
+            {
+                //Byte[] data = Convert.FromBase64String(payload.file.Split(',')[1]);
+                FileContentResult t;
+                // FileContentResult file = new FileContentResult(fileLinker.Path); 
+                //= new File("F:\\ssd\\doc\\");
+                //var v = System.IO.File.ReadLines("dictionary.txt");
+                byte[] zipBytes = System.IO.File.ReadAllBytes(fileLinker.filePath);
+                //System.IO.File.WriteAllBytes(zipBytes);
+                // System.IO.File.WriteAllBytes("c:\\t.txt", zipBytes);
+                //string json = Newtonsoft.Json.JsonConvert.SerializeObject(zipBytes);
+                //zipBytes.Dispose();
+                return Ok(zipBytes);
+
+                //byte[] data = file.ReadAllBytes(fileLinker.FilePath);
+
+                return Ok();
+
+                MemoryStream stream = new MemoryStream();
+
+                //return Ok(json);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
 
         /*[HttpPost("convert-offlinestring")]
         public async Task<ActionResult> ImportOffline(OfflineConversion payload)
@@ -754,11 +790,11 @@ namespace ExamPortalApp.Api.Controllers
                 var bulkAnswers = await _testRepository.studentAnswersBulkDownloadString(linker.TestId ?? 0, linker.StudentIds);
                 //var bulkAnswersPath = bulkAnswers.Replace(@"\\", @"\");
                 var bulkAnswersPath = bulkAnswers.Replace("@\\\\", "@\\");
-                var bulkAnswersFinal = bulkAnswersPath.Replace("@\\",@"\");
+                var bulkAnswersFinal = bulkAnswersPath.Replace("\\",@"\");
 
                 var dir = new DirectoryInfo(bulkAnswersFinal);
-                dir.Delete(true);
-                string json = Newtonsoft.Json.JsonConvert.SerializeObject(bulkAnswersPath);
+                //dir.Delete(true);
+                string json = Newtonsoft.Json.JsonConvert.SerializeObject(bulkAnswersFinal);
                 return Ok(json);
                 
             }

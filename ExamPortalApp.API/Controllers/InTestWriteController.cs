@@ -23,9 +23,11 @@ namespace ExamPortalApp.Api.Controllers
         private readonly IInTestWriteRepository _inTestWriteRepository;
         private List<object> installedVoiceList = new List<object>();
          List<InstalledVoice> installedVoices = new List<InstalledVoice>();
-        public InTestWriteController(IInTestWriteRepository inTestWriteRepository, IMapper mapper) : base(mapper)
+        private readonly IHttpContextAccessor _contextAccessor;
+        public InTestWriteController(IInTestWriteRepository inTestWriteRepository, IMapper mapper, IHttpContextAccessor contextAccessor) : base(mapper)
         {
             _inTestWriteRepository = inTestWriteRepository;
+            _contextAccessor = contextAccessor;
         }
 
         [HttpDelete("{id}")]
@@ -185,6 +187,27 @@ namespace ExamPortalApp.Api.Controllers
             }
         }
 
+
+        [HttpPost("scandocument")]
+        public async Task<ActionResult<string>> ScanDocument(QrCodeModel qrcodeModel)
+        {
+            try
+            {
+                string testId = qrcodeModel.testId;
+                string studentId = qrcodeModel.studentId;
+                var QrCodeEntry =  testId + "" + studentId;
+               //var chh = _contextAccessor.HttpContext?.Request.BaseUrl();
+                var chh = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}";
+                //string baseUrl = string.Format("{ 0}://{1}{2}", Request.Scheme, Request.Host, Request.PathBase.Value.ToString());
+                var badseUrl = Request.GetTypedHeaders().Referer.ToString() ?? "";
+                return Ok(new { badseUrl }); 
+
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
 
 
         //[HttpGet("windowstts/{selectedVoice}/{selectedText}")]

@@ -673,7 +673,7 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
                      startPath = subdir;
 
                      zipFolderName = "ExportedAnswers.zip".PadLeft(5);
-
+                    
                     //string zipPath = startPath + "bulkStudentAnswerDownload.zip";
 
                      zipPath = startPath + zipFolderName;
@@ -692,7 +692,7 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             ZipFile.CreateFromDirectory(startPath, zipPath, CompressionLevel.Optimal, false);
             var dir = new DirectoryInfo(root);
             var dirGuid = new DirectoryInfo(subdir);
-            //var zipDir = new DirectoryInfo(zipPath);
+            var zipDir = new DirectoryInfo(zipPath);
             dir.Delete(true);
             dirGuid.Delete(true);
             //zipDir.Delete(true); 
