@@ -381,7 +381,6 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
 
         }
 
-
         public async Task<IEnumerable<RandomOtp>> GetOTP(TestOTPSearcher? searcher)
         {
             var query = _repository.GetQueryable<RandomOtp>();

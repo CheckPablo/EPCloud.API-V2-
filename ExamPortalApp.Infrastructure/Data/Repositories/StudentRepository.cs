@@ -13,6 +13,7 @@ using Microsoft.Extensions.Options;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Mail;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
@@ -109,6 +110,20 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
         public async Task<int> DeleteAsync(int id)
         {
             await _repository.DeleteAsync<Student>(id);
+            var studentTestsLink = await _repository.GetWhereAsync<StudentTest>(x => x.StudentId == id);
+            var studentSubjectsLink = await _repository.GetWhereAsync<StudentSubject>(x => x.StudentId == id);
+            //var sourceDocs = await _repository.GetWhereAsync<TestQuestion>(x => x.TestId == id);
+            if (studentTestsLink != null)
+            {
+                foreach(var stl in studentTestsLink)
+                await _repository.DeleteAsync<StudentTest>(stl.StudentId ?? 0); 
+            }
+
+            if (studentSubjectsLink != null)
+            {
+                foreach (var ssl in studentSubjectsLink)
+                    await _repository.DeleteAsync<StudentTest>(ssl.StudentId ?? 0);
+            }
 
             return await _repository.CompleteAsync();
         }
@@ -515,6 +530,18 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
 
         public async Task<Student> UpdateAsync(Student entity)
         {
+            var student = await _repository.GetByIdAsync<Student>(entity.Id);
+            var password = string.Empty;
+          
+            if (student is not null)
+            {
+                if (student.EncrytedPassword is not null)
+                    entity.EncrytedPassword = student.EncrytedPassword;
+                //entity.PlainPassword = PasswordHelper.Decrypt(student.EncrytedPassword, _examPortalSettings.EncryptionKey);
+            }
+
+
+       
             return await _repository.UpdateAsync(entity, true);
         }
         public async Task PasswordMigration()

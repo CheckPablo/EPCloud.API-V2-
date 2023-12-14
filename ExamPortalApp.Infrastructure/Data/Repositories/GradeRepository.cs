@@ -39,6 +39,7 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
 
         public async Task<int> DeleteAsync(int id)
         {
+            
             await _repository.DeleteAsync<Grade>(id);
 
             return await _repository.CompleteAsync();

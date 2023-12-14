@@ -210,6 +210,47 @@ namespace ExamPortalApp.Api.Controllers
         }
 
 
+
+       /*[DisableRequestSizeLimit]
+        [Consumes("multipart/form-data")]
+        [HttpPost("{testId}/upload-answer-document")]
+        public async Task<ActionResult> UploadScannedImagesAsync(List<IFormFile> files)
+        {
+            long size = files.Sum(f => f.Length);
+            var  folder ="";
+            //var fileName = prefix + ContentDispositionHeaderValue.Parse(file.ContentDisposition)?.FileName?.Trim('"');
+            var folderName = Path.Combine("Uploads", folder);
+            var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+
+            foreach (var formFile in files)
+            {
+                if (formFile.Length > 0)
+                {
+                    var filePath = Path.GetTempFileName();
+
+                    FileStream stream;
+
+                    string fullPath = Path.Combine(pathToSave, "fileName");
+                    string dbPath = Path.Combine(folderName, "fileName");
+
+                    using (stream = new FileStream(fullPath, FileMode.Create))
+                    {
+                        formFile.CopyTo(stream);
+                    }
+
+                    /*using (var stream = System.IO.File.Create(filePath))
+                    {
+                        await formFile.CopyToAsync(stream);
+                    }*/
+      /*     }
+       }
+
+       // Process uploaded files
+       // Don't rely on or trust the FileName property without validation.
+
+       return Ok(new { count = files.Count, size });
+   }*/
+
         //[HttpGet("windowstts/{selectedVoice}/{selectedText}")]
         // public async Task<ActionResult> WindowsTTS(string selectedVoice, string selectedText)
         [HttpPost("windowstts")]

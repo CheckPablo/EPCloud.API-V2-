@@ -149,6 +149,63 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
            await SaveAnswersInterval(trackingInfoToSave); 
             return true;
         }
+
+       /*public async Task<bool> UploadScannedImagesAsync(int testId, IFormFile file)
+        {
+            var test = await GetAsync(testId);
+            var fileExtension = Path.GetExtension(file.FileName);
+
+            if (!string.Equals(fileExtension, ".doc", StringComparison.OrdinalIgnoreCase) &&
+                !string.Equals(fileExtension, ".docx", StringComparison.OrdinalIgnoreCase))
+            {
+                throw new Exception("Only Word Documents Supported");
+            }
+
+            var fileBytes = file.ToByteArray();
+
+            if (testId == 0)
+            {
+                var answerDocument = new UploadedAnswerDocument
+                {
+                    DateModified = DateTime.Now,
+                    FileName = file.FileName,
+                    TestId = test.Id,
+                    TestDocument = fileBytes,
+                };
+
+                await _repository.AddAsync(answerDocument, true);
+            }
+            else
+            {
+                var uploadedAnswerDocs = await _repository.GetFirstOrDefaultAsync<UploadedAnswerDocument>(x => x.TestId == testId);
+                //var uploadedAnswerDocs = await _repository.GetByIdAsync<UploadedAnswerDocument>(testId);
+                var answerDocument = new UploadedAnswerDocument()
+                {
+                    TestId = testId,
+                    FileName = file != null ? file.FileName : null,
+                    TestDocument = fileBytes,
+                    IsDeleted = false,
+                };
+                if (uploadedAnswerDocs != null)
+                {
+                    uploadedAnswerDocs.FileName = answerDocument.FileName;
+                    uploadedAnswerDocs.TestDocument = answerDocument.TestDocument;
+                }
+
+                if (uploadedAnswerDocs?.TestDocument == null && file != null)
+                {
+                    await _repository.AddAsync(answerDocument, true);
+                }
+                if (uploadedAnswerDocs?.TestDocument != null && file != null)
+                {
+                    await _repository.UpdateAsync(uploadedAnswerDocs, true);
+
+                }
+            }
+
+            return true;
+        }*/
+
         public async Task<IEnumerable<StudentTestAnswers>> SaveAnswersInterval(StudentTestAnswerModel studentTestAnswersModel)
         {
              IEnumerable<StudentTestAnswers> result; 
