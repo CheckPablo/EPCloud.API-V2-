@@ -1,0 +1,7 @@
+./ExamPortalApp.API/obj/
+./ExamPortalApp.Contracts/obj/
+./ExamPortalApp.Core/obj/
+./ExamPortalApp.Daemon/obj/
+./ExamPortalApp.Data/obj/
+./ExamPortalApp.Infrastructure/obj/
+./ExamPortalApp.Extensions/obj/
