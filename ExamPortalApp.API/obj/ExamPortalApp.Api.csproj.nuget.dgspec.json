@@ -1,38 +1,42 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.API\\ExamPortalApp.Api.csproj": {}
+    "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.API\\ExamPortalApp.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.API\\ExamPortalApp.Api.csproj": {
+    "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.API\\ExamPortalApp.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.API\\ExamPortalApp.Api.csproj",
+        "projectUniqueName": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.API\\ExamPortalApp.Api.csproj",
         "projectName": "ExamPortalApp.Api",
-        "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.API\\ExamPortalApp.Api.csproj",
-        "packagesPath": "C:\\Users\\examp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.API\\obj\\",
+        "projectPath": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.API\\ExamPortalApp.Api.csproj",
+        "packagesPath": "C:\\Users\\Dell 5400 i7\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.API\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\examp\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Dell 5400 i7\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj": {
-                "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj"
+              "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj": {
+                "projectPath": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj"
               },
-              "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Extensions\\ExamPortalApp.Extensions.csproj": {
-                "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Extensions\\ExamPortalApp.Extensions.csproj"
+              "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Extensions\\ExamPortalApp.Extensions.csproj": {
+                "projectPath": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Extensions\\ExamPortalApp.Extensions.csproj"
               }
             }
           }
@@ -44,8 +48,8 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
@@ -64,18 +68,6 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
-            },
-            "SpeechLib.Models": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[1.6.0, )"
-            },
-            "SpeechLib.Synthesis": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[1.6.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -121,33 +113,37 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {
+    "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj",
+        "projectUniqueName": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj",
         "projectName": "ExamPortalApp.Contracts",
-        "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj",
-        "packagesPath": "C:\\Users\\examp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\obj\\",
+        "projectPath": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj",
+        "packagesPath": "C:\\Users\\Dell 5400 i7\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\examp\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Dell 5400 i7\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {}
           }
         },
@@ -158,12 +154,12 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
             "Microsoft.AspNetCore.Http.Features": {
               "target": "Package",
-              "version": "[2.2.0, )"
+              "version": "[5.0.17, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
@@ -186,36 +182,40 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Core\\ExamPortalApp.Core.csproj": {
+    "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Core\\ExamPortalApp.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Core\\ExamPortalApp.Core.csproj",
+        "projectUniqueName": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Core\\ExamPortalApp.Core.csproj",
         "projectName": "ExamPortalApp.Core",
-        "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Core\\ExamPortalApp.Core.csproj",
-        "packagesPath": "C:\\Users\\examp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Core\\obj\\",
+        "projectPath": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Core\\ExamPortalApp.Core.csproj",
+        "packagesPath": "C:\\Users\\Dell 5400 i7\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Core\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\examp\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Dell 5400 i7\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {
-                "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj"
+              "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {
+                "projectPath": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj"
               }
             }
           }
@@ -227,8 +227,8 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
@@ -259,36 +259,40 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Daemon\\ExamPortalApp.Daemon.csproj": {
+    "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Daemon\\ExamPortalApp.Daemon.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Daemon\\ExamPortalApp.Daemon.csproj",
+        "projectUniqueName": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Daemon\\ExamPortalApp.Daemon.csproj",
         "projectName": "ExamPortalApp.Daemon",
-        "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Daemon\\ExamPortalApp.Daemon.csproj",
-        "packagesPath": "C:\\Users\\examp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Daemon\\obj\\",
+        "projectPath": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Daemon\\ExamPortalApp.Daemon.csproj",
+        "packagesPath": "C:\\Users\\Dell 5400 i7\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Daemon\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\examp\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Dell 5400 i7\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {
-                "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj"
+              "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {
+                "projectPath": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj"
               }
             }
           }
@@ -300,8 +304,8 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
             "Microsoft.Extensions.Hosting.Abstractions": {
               "target": "Package",
@@ -332,36 +336,40 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj": {
+    "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj",
+        "projectUniqueName": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj",
         "projectName": "ExamPortalApp.Data",
-        "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj",
-        "packagesPath": "C:\\Users\\examp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Data\\obj\\",
+        "projectPath": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj",
+        "packagesPath": "C:\\Users\\Dell 5400 i7\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Data\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\examp\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Dell 5400 i7\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {
-                "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj"
+              "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {
+                "projectPath": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj"
               }
             }
           }
@@ -373,32 +381,32 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[7.0.4, )"
+              "version": "[8.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[7.0.4, )"
+              "version": "[8.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[7.0.4, )"
+              "version": "[8.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[7.0.4, )"
+              "version": "[8.0.0, )"
             },
             "Microsoft.Extensions.Configuration.Abstractions": {
               "target": "Package",
-              "version": "[7.0.0, )"
+              "version": "[8.0.0, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
@@ -421,45 +429,49 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Extensions\\ExamPortalApp.Extensions.csproj": {
+    "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Extensions\\ExamPortalApp.Extensions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Extensions\\ExamPortalApp.Extensions.csproj",
+        "projectUniqueName": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Extensions\\ExamPortalApp.Extensions.csproj",
         "projectName": "ExamPortalApp.Extensions",
-        "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Extensions\\ExamPortalApp.Extensions.csproj",
-        "packagesPath": "C:\\Users\\examp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Extensions\\obj\\",
+        "projectPath": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Extensions\\ExamPortalApp.Extensions.csproj",
+        "packagesPath": "C:\\Users\\Dell 5400 i7\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Extensions\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\examp\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Dell 5400 i7\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {
-                "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj"
+              "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {
+                "projectPath": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj"
               },
-              "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Core\\ExamPortalApp.Core.csproj": {
-                "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Core\\ExamPortalApp.Core.csproj"
+              "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Core\\ExamPortalApp.Core.csproj": {
+                "projectPath": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Core\\ExamPortalApp.Core.csproj"
               },
-              "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Daemon\\ExamPortalApp.Daemon.csproj": {
-                "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Daemon\\ExamPortalApp.Daemon.csproj"
+              "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Daemon\\ExamPortalApp.Daemon.csproj": {
+                "projectPath": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Daemon\\ExamPortalApp.Daemon.csproj"
               },
-              "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Infrastructure\\ExamPortalApp.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Infrastructure\\ExamPortalApp.Infrastructure.csproj"
+              "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Infrastructure\\ExamPortalApp.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Infrastructure\\ExamPortalApp.Infrastructure.csproj"
               }
             }
           }
@@ -471,8 +483,8 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
@@ -503,39 +515,43 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Infrastructure\\ExamPortalApp.Infrastructure.csproj": {
+    "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Infrastructure\\ExamPortalApp.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Infrastructure\\ExamPortalApp.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Infrastructure\\ExamPortalApp.Infrastructure.csproj",
         "projectName": "ExamPortalApp.Infrastructure",
-        "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Infrastructure\\ExamPortalApp.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\examp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Infrastructure\\ExamPortalApp.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Dell 5400 i7\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\examp\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Dell 5400 i7\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {
-                "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj"
+              "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {
+                "projectPath": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj"
               },
-              "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj": {
-                "projectPath": "C:\\Users\\examp\\source\\repos\\EPCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj"
+              "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj": {
+                "projectPath": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Data\\ExamPortalApp.Data.csproj"
               }
             }
           }
@@ -547,8 +563,8 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
             "Aspose.Words": {
               "target": "Package",
@@ -611,7 +627,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
