@@ -1,0 +1,16 @@
+C:\Users\Dell 5400 i7\source\repos\EPCloud.API\ExamPortalApp.Daemon\bin\Debug\net8.0\ExamPortalApp.Daemon.deps.json
+C:\Users\Dell 5400 i7\source\repos\EPCloud.API\ExamPortalApp.Daemon\bin\Debug\net8.0\ExamPortalApp.Daemon.dll
+C:\Users\Dell 5400 i7\source\repos\EPCloud.API\ExamPortalApp.Daemon\bin\Debug\net8.0\ExamPortalApp.Daemon.pdb
+C:\Users\Dell 5400 i7\source\repos\EPCloud.API\ExamPortalApp.Daemon\bin\Debug\net8.0\ExamPortalApp.Contracts.dll
+C:\Users\Dell 5400 i7\source\repos\EPCloud.API\ExamPortalApp.Daemon\bin\Debug\net8.0\ExamPortalApp.Contracts.pdb
+C:\Users\Dell 5400 i7\source\repos\EPCloud.API\ExamPortalApp.Daemon\obj\Debug\net8.0\ExamPortalApp.Daemon.csproj.AssemblyReference.cache
+C:\Users\Dell 5400 i7\source\repos\EPCloud.API\ExamPortalApp.Daemon\obj\Debug\net8.0\ExamPortalApp.Daemon.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dell 5400 i7\source\repos\EPCloud.API\ExamPortalApp.Daemon\obj\Debug\net8.0\ExamPortalApp.Daemon.AssemblyInfoInputs.cache
+C:\Users\Dell 5400 i7\source\repos\EPCloud.API\ExamPortalApp.Daemon\obj\Debug\net8.0\ExamPortalApp.Daemon.AssemblyInfo.cs
+C:\Users\Dell 5400 i7\source\repos\EPCloud.API\ExamPortalApp.Daemon\obj\Debug\net8.0\ExamPortalApp.Daemon.csproj.CoreCompileInputs.cache
+C:\Users\Dell 5400 i7\source\repos\EPCloud.API\ExamPortalApp.Daemon\obj\Debug\net8.0\ExamPortalApp.Daemon.sourcelink.json
+C:\Users\Dell 5400 i7\source\repos\EPCloud.API\ExamPortalApp.Daemon\obj\Debug\net8.0\ExamPortalApp.Daemon.csproj.CopyComplete
+C:\Users\Dell 5400 i7\source\repos\EPCloud.API\ExamPortalApp.Daemon\obj\Debug\net8.0\ExamPortalApp.Daemon.dll
+C:\Users\Dell 5400 i7\source\repos\EPCloud.API\ExamPortalApp.Daemon\obj\Debug\net8.0\refint\ExamPortalApp.Daemon.dll
+C:\Users\Dell 5400 i7\source\repos\EPCloud.API\ExamPortalApp.Daemon\obj\Debug\net8.0\ExamPortalApp.Daemon.pdb
+C:\Users\Dell 5400 i7\source\repos\EPCloud.API\ExamPortalApp.Daemon\obj\Debug\net8.0\ref\ExamPortalApp.Daemon.dll
