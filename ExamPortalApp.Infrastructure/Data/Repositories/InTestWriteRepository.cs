@@ -14,6 +14,7 @@ using Syncfusion.DocIO;
 using Syncfusion.DocIO.DLS;
 using System.IO;
 using System.Security.Cryptography;
+using static SkiaSharp.HarfBuzz.SKShaper;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace ExamPortalApp.Infrastructure.Data.Repositories
@@ -24,6 +25,7 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
         private readonly DecodedUser? _user;
         private string textToSave;
         private IEnumerable<StudentTestAnswers> resultToReturn;
+        private IEnumerable<ScannedImagesOTP> scannedImagesOTPResult;
 
         public InTestWriteRepository(IRepository repository)
         {
@@ -142,43 +144,6 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             return true;
         }
 
-      
-      /*public static async Task<List<Upload>> UploadScannedFiles(IFormFileCollection files)
-        {
-            long size = files.Sum(f => f.Length);
-            var folder = "";
-            var fileName = prefix + ContentDispositionHeaderValue.Parse(file.ContentDisposition)?.FileName?.Trim('"');
-            var folderName = Path.Combine("Uploads", folder);
-            var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
-
-            foreach (var formFile in files)
-            {
-                if (formFile.Length > 0)
-                {
-                    var filePath = Path.GetTempFileName();
-
-                    FileStream stream;
-
-                    string fullPath = Path.Combine(pathToSave, "fileName");
-                    string dbPath = Path.Combine(folderName, "fileName");
-
-                    using (stream = new FileStream(fullPath, FileMode.Create))
-                    {
-                        formFile.CopyTo(stream);
-                    }
-                }
-            }
-        }
-                    using (var stream = System.IO.File.Create(filePath))
-                    {
-                        await formFile.CopyToAsync(stream);
-                    }*/
-        /*     }
-         }
-
-        }
-
-
         /*public async Task<bool> UploadScannedImagesAsync(int testId, IFormFile file)
          {
              var test = await GetAsync(testId);
@@ -264,14 +229,13 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             //}
             return resultToReturn;
         }
-        public async Task<string> UploadScannedImagetoDB(string[] fileNames, string testId, string studentId)
+        public async Task<List<ScannedImageResult>> UploadScannedImagetoDB(string[] fileNames, string testId, string studentId)
         {
-
             Random random = new Random();
             var OTP = random.Next(10000, 99999);
             var expirydate = DateTime.Now.AddMinutes(10);
             var parameters = new Dictionary<string, object>();
-            IEnumerable<string> resultOTP = null;
+            List<ScannedImageResult> resultOTP = new List<ScannedImageResult>();
             if (fileNames.Length > 0)
             {
                 foreach (var imgFileName in fileNames)
@@ -281,22 +245,17 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
                     parameters.Add(StoredProcedures.Params.StudentId, studentId);
                     parameters.Add(StoredProcedures.Params.TestID, testId);
                     parameters.Add(StoredProcedures.Params.ExpiryDate, expirydate);
-                     resultOTP = await _repository.ExecuteStoredProcAsync<string>(StoredProcedures.UploadScannedImageDetails, parameters);
-                   
+                      resultOTP = (List<ScannedImageResult>)await _repository.ExecuteStoredProcAsync<ScannedImageResult>(StoredProcedures.UploadScannedImageDetails, parameters);
+
                 }
-                return resultOTP.ToString();
+                //resultOTP.Add("");
+                return resultOTP;
             }
             else
             {
-                return ""; 
+                return resultOTP; 
             }
-            //return "";
         }
-        /*System.Threading.Tasks.Task IInTestWriteRepository.UploadScannedImagetoDB(string[] fileNames, string v1, string v2)
-        {
-            throw new NotImplementedException();
-        }*/
-
 
         public async Task<IEnumerable<KeyPressTracking>> SaveIrregularKeyPress(InvalidKeyPressEntries invalidKeyPressEntries)
         {
@@ -324,9 +283,18 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             return await _repository.GetWhereAsync<UserDocumentAnswer>(x => x.StudentId == studentId && x.TestId == testId);
         }
 
-       
+        public async Task<List<string>> VerifyImagesOTP(ScannedImagesOTP scannedImagesOTP)
+        {
+            List<string> result = new List<string>();
+            var parameters = new Dictionary<string, object>();
 
-
+            parameters.Add(StoredProcedures.Params.StudentId, scannedImagesOTP.StudentId);
+            parameters.Add(StoredProcedures.Params.TestID, scannedImagesOTP.TestId);
+            parameters.Add(StoredProcedures.Params.Event, scannedImagesOTP.OTP);
+            result = (List<string>)await _repository.ExecuteStoredProcAsync<ScannedImagesOTP>(StoredProcedures.VerifyScannedImagesOTP, parameters);
+            result.Add("");
+            return (List<string>)scannedImagesOTPResult;
+        }
 
         /*Task<bool> IInTestWriteRepository.SaveIrregularKeyPress(InvalidKeyPressEntries invalidKeyPressEntries)
         {

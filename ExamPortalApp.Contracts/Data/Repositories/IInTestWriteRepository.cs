@@ -11,7 +11,8 @@ namespace ExamPortalApp.Contracts.Data.Repositories
             string timeRemaining, string answerText, string fileName, IFormFile? file);
         Task<IEnumerable<KeyPressTracking>> SaveIrregularKeyPress(InvalidKeyPressEntries invalidKeyPressEntries);
         Task<IEnumerable<StudentTestAnswers>> SaveAnswersInterval(StudentTestAnswerModel studentTestAnswers);
-        Task<string> UploadScannedImagetoDB(string[] fileNames, string v1, string v2);
+        Task<List<ScannedImageResult>> UploadScannedImagetoDB(string[] fileNames, string v1, string v2);
+        Task<List<string>> VerifyImagesOTP(ScannedImagesOTP scannedImagesOTP);
         //Task<Task<List<UploadedTest>>> UploadScannedFiles(IFormFileCollection files);
     }
 }
