@@ -40,6 +40,7 @@ namespace ExamPortalApp.Infrastructure.Constants
         internal static string SubjectMaintenance_InsUpd = "SubjectMaintenance_InsUpd";
         internal static string get_StudentAnswersList = "get_StudentAnswersList";
         internal static string CompleteTest = "CompleteTest";
+        internal static string UploadScannedImageDetails = "UploadScannedImageDetails"; 
 
         internal static class Params
         {
@@ -90,6 +91,7 @@ namespace ExamPortalApp.Infrastructure.Constants
             internal static string Event = "Event";
             internal static string Reason = "Reason";
             internal static string RegionId = "RegionId";
+            internal static string ExpiryDate = "ExpiryDate";
         }
 
         internal static class Responses

@@ -71,9 +71,7 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             bool offline, bool fullsScreenClosed, bool KeyPress, bool leftEamArea, string timeRemaining, string answerText, 
             string fileName,IFormFile file)
         {
-           // the document is saving correctly with its text and formating
-           // I want to extract text to put in the tracking table
-            //var test = await GetAsync(testId);
+           
             var fileExtension = Path.GetExtension(file.FileName);
 
             if (!string.Equals(fileExtension, ".doc", StringComparison.OrdinalIgnoreCase) &&
@@ -127,12 +125,6 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             var parameters = new Dictionary<string, object>();
 
 
-             /*parameters.Add(StoredProcedures.Params.TestID, testId);
-             parameters.Add(StoredProcedures.Params.StudentId, studentId);
-             parameters.Add(StoredProcedures.Params.FileName, file.FileName);
-             parameters.Add(StoredProcedures.Params.TestDocument, fileBytes);
-            // parameters.Add(StoredProcedures.Params.CenterID, _user.CenterId);
-             var result = _repository.ExecuteStoredProcAsync<UserCenter>(StoredProcedures.SaveStudentAnswer_TestUpload, parameters);*/
             await _repository.CompleteAsync();
             var trackingInfoToSave = new StudentTestAnswerModel(); 
             trackingInfoToSave.TestId = testId;
@@ -150,61 +142,98 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             return true;
         }
 
-       /*public async Task<bool> UploadScannedImagesAsync(int testId, IFormFile file)
+      
+      /*public static async Task<List<Upload>> UploadScannedFiles(IFormFileCollection files)
         {
-            var test = await GetAsync(testId);
-            var fileExtension = Path.GetExtension(file.FileName);
+            long size = files.Sum(f => f.Length);
+            var folder = "";
+            var fileName = prefix + ContentDispositionHeaderValue.Parse(file.ContentDisposition)?.FileName?.Trim('"');
+            var folderName = Path.Combine("Uploads", folder);
+            var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
 
-            if (!string.Equals(fileExtension, ".doc", StringComparison.OrdinalIgnoreCase) &&
-                !string.Equals(fileExtension, ".docx", StringComparison.OrdinalIgnoreCase))
+            foreach (var formFile in files)
             {
-                throw new Exception("Only Word Documents Supported");
-            }
-
-            var fileBytes = file.ToByteArray();
-
-            if (testId == 0)
-            {
-                var answerDocument = new UploadedAnswerDocument
+                if (formFile.Length > 0)
                 {
-                    DateModified = DateTime.Now,
-                    FileName = file.FileName,
-                    TestId = test.Id,
-                    TestDocument = fileBytes,
-                };
+                    var filePath = Path.GetTempFileName();
 
-                await _repository.AddAsync(answerDocument, true);
-            }
-            else
-            {
-                var uploadedAnswerDocs = await _repository.GetFirstOrDefaultAsync<UploadedAnswerDocument>(x => x.TestId == testId);
-                //var uploadedAnswerDocs = await _repository.GetByIdAsync<UploadedAnswerDocument>(testId);
-                var answerDocument = new UploadedAnswerDocument()
-                {
-                    TestId = testId,
-                    FileName = file != null ? file.FileName : null,
-                    TestDocument = fileBytes,
-                    IsDeleted = false,
-                };
-                if (uploadedAnswerDocs != null)
-                {
-                    uploadedAnswerDocs.FileName = answerDocument.FileName;
-                    uploadedAnswerDocs.TestDocument = answerDocument.TestDocument;
-                }
+                    FileStream stream;
 
-                if (uploadedAnswerDocs?.TestDocument == null && file != null)
-                {
-                    await _repository.AddAsync(answerDocument, true);
-                }
-                if (uploadedAnswerDocs?.TestDocument != null && file != null)
-                {
-                    await _repository.UpdateAsync(uploadedAnswerDocs, true);
+                    string fullPath = Path.Combine(pathToSave, "fileName");
+                    string dbPath = Path.Combine(folderName, "fileName");
 
+                    using (stream = new FileStream(fullPath, FileMode.Create))
+                    {
+                        formFile.CopyTo(stream);
+                    }
                 }
             }
+        }
+                    using (var stream = System.IO.File.Create(filePath))
+                    {
+                        await formFile.CopyToAsync(stream);
+                    }*/
+        /*     }
+         }
 
-            return true;
-        }*/
+        }
+
+
+        /*public async Task<bool> UploadScannedImagesAsync(int testId, IFormFile file)
+         {
+             var test = await GetAsync(testId);
+             var fileExtension = Path.GetExtension(file.FileName);
+
+             if (!string.Equals(fileExtension, ".doc", StringComparison.OrdinalIgnoreCase) &&
+                 !string.Equals(fileExtension, ".docx", StringComparison.OrdinalIgnoreCase))
+             {
+                 throw new Exception("Only Word Documents Supported");
+             }
+
+             var fileBytes = file.ToByteArray();
+
+             if (testId == 0)
+             {
+                 var answerDocument = new UploadedAnswerDocument
+                 {
+                     DateModified = DateTime.Now,
+                     FileName = file.FileName,
+                     TestId = test.Id,
+                     TestDocument = fileBytes,
+                 };
+
+                 await _repository.AddAsync(answerDocument, true);
+             }
+             else
+             {
+                 var uploadedAnswerDocs = await _repository.GetFirstOrDefaultAsync<UploadedAnswerDocument>(x => x.TestId == testId);
+                 //var uploadedAnswerDocs = await _repository.GetByIdAsync<UploadedAnswerDocument>(testId);
+                 var answerDocument = new UploadedAnswerDocument()
+                 {
+                     TestId = testId,
+                     FileName = file != null ? file.FileName : null,
+                     TestDocument = fileBytes,
+                     IsDeleted = false,
+                 };
+                 if (uploadedAnswerDocs != null)
+                 {
+                     uploadedAnswerDocs.FileName = answerDocument.FileName;
+                     uploadedAnswerDocs.TestDocument = answerDocument.TestDocument;
+                 }
+
+                 if (uploadedAnswerDocs?.TestDocument == null && file != null)
+                 {
+                     await _repository.AddAsync(answerDocument, true);
+                 }
+                 if (uploadedAnswerDocs?.TestDocument != null && file != null)
+                 {
+                     await _repository.UpdateAsync(uploadedAnswerDocs, true);
+
+                 }
+             }
+
+             return true;
+         }*/
 
         public async Task<IEnumerable<StudentTestAnswers>> SaveAnswersInterval(StudentTestAnswerModel studentTestAnswersModel)
         {
@@ -235,6 +264,39 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             //}
             return resultToReturn;
         }
+        public async Task<string> UploadScannedImagetoDB(string[] fileNames, string testId, string studentId)
+        {
+
+            Random random = new Random();
+            var OTP = random.Next(10000, 99999);
+            var expirydate = DateTime.Now.AddMinutes(10);
+            var parameters = new Dictionary<string, object>();
+            IEnumerable<string> resultOTP = null;
+            if (fileNames.Length > 0)
+            {
+                foreach (var imgFileName in fileNames)
+                {
+                    parameters.Add(StoredProcedures.Params.FileName, imgFileName);
+                    parameters.Add(StoredProcedures.Params.OTP, OTP);
+                    parameters.Add(StoredProcedures.Params.StudentId, studentId);
+                    parameters.Add(StoredProcedures.Params.TestID, testId);
+                    parameters.Add(StoredProcedures.Params.ExpiryDate, expirydate);
+                     resultOTP = await _repository.ExecuteStoredProcAsync<string>(StoredProcedures.UploadScannedImageDetails, parameters);
+                   
+                }
+                return resultOTP.ToString();
+            }
+            else
+            {
+                return ""; 
+            }
+            //return "";
+        }
+        /*System.Threading.Tasks.Task IInTestWriteRepository.UploadScannedImagetoDB(string[] fileNames, string v1, string v2)
+        {
+            throw new NotImplementedException();
+        }*/
+
 
         public async Task<IEnumerable<KeyPressTracking>> SaveIrregularKeyPress(InvalidKeyPressEntries invalidKeyPressEntries)
         {
@@ -262,9 +324,10 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             return await _repository.GetWhereAsync<UserDocumentAnswer>(x => x.StudentId == studentId && x.TestId == testId);
         }
 
-        
+       
 
-    
+
+
         /*Task<bool> IInTestWriteRepository.SaveIrregularKeyPress(InvalidKeyPressEntries invalidKeyPressEntries)
         {
             throw new NotImplementedException();
