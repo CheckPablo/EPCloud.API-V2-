@@ -12,6 +12,12 @@ using ExamPortalApp.Infrastructure.Data.Repositories;
 using Newtonsoft.Json;
 using static SkiaSharp.HarfBuzz.SKShaper;
 using SpeechLib;
+using ExamPortalApp.Infrastructure.Extensions;
+using System.IO;
+using System.Linq.Expressions;
+using ExamPortalApp.Infrastructure.Helpers;
+using Syncfusion.Compression.Zip;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ExamPortalApp.Api.Controllers
 {
@@ -23,6 +29,9 @@ namespace ExamPortalApp.Api.Controllers
         private readonly IInTestWriteRepository _inTestWriteRepository;
         private List<object> installedVoiceList = new List<object>();
          List<InstalledVoice> installedVoices = new List<InstalledVoice>();
+        private string[] fileNames;
+
+        //private IFormFileCollection scannedFiles;
         private readonly IHttpContextAccessor _contextAccessor;
         public InTestWriteController(IInTestWriteRepository inTestWriteRepository, IMapper mapper, IHttpContextAccessor contextAccessor) : base(mapper)
         {
@@ -210,6 +219,107 @@ namespace ExamPortalApp.Api.Controllers
         }
 
 
+        [AllowAnonymous]
+        [DisableRequestSizeLimit]
+        [Consumes("multipart/form-data")]
+        [HttpPost("add-scannedimages")]
+
+        public async Task<ActionResult> UploadFiles(List<IFormFile> files)
+        {
+            long size = files.Sum(f => f.Length);
+            var scannedFiles = Request.Form.Files;
+            foreach (var formFile in scannedFiles)
+            {
+                if (formFile.Length > 0)
+                {
+                   
+                        var folder = KnownFolderFinder.GetFolderFromKnownFolderGUID(new Guid("374DE290-123F-4565-9164-39C4925E467B"));
+                        string tempFolderName = Guid.NewGuid().ToString();
+                        //testEntity = await GetAsync(testId);
+                        string root = folder + @"\" + tempFolderName.PadRight(5);
+                        if (!Directory.Exists(root))
+                        {
+                            Directory.CreateDirectory(root);
+                        }
+                        
+                        var filePath = Path.GetTempFileName();
+                        string pathToSave = root;
+                        //var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+                        foreach (var file in scannedFiles)
+                        {
+                            //uploadResult = await file.CreateUpload(folderName, pathToSave);
+
+                            using (var stream = new FileStream(pathToSave + ".jpeg", FileMode.Create, FileAccess.Write))
+                            {
+                                await file.CopyToAsync(stream);
+                            }
+
+                         fileNames = file.FileName.Split('.');
+                      }
+
+                    await _inTestWriteRepository.UploadScannedImagetoDB(fileNames,"","");
+
+                    return Ok(new { count = files.Count, size });
+                }
+
+                // Process uploaded files
+                // Don't rely on or trust the FileName property without validation.
+            }
+            return Ok(new { count = files.Count, size });
+        }
+        /*public async Task<ActionResult<bool>> UploadFiles()
+
+        {
+            var folder = "TestFolder";
+            var folderName = Path.Combine("Uploads", folder);
+            if (!(Directory.Exists(folderName)))
+            {
+                Directory.CreateDirectory(folderName);
+            }
+            try
+            {
+                string filename = "";
+                filename = Guid.NewGuid().ToString() + ".jpeg";
+                //return File(image, "image/jpeg");
+                //_contextAccessor.HttpContext.Response.ContentType = "image/jpeg";
+                //context.Response.ContentType = "text/plain";
+                //_contextAccessor.HttpContext.Response.WriteAsync(filename); 
+                //var scannedFiles = files;
+                //var scannedFiles = Request.Form.Files;
+                //var fileName = prefix + ContentDispositionHeaderValue.Parse(file.ContentDisposition)?.FileName?.Trim('"');
+                folderName = Path.Combine("Uploads", folder);
+                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+                foreach (var file in scannedFiles)
+                {
+                    //uploadResult = await file.CreateUpload(folderName, pathToSave);
+
+                    using (var stream = new FileStream(pathToSave, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+                } 
+            }
+            catch(Exception ex){
+                ex.Message.ToString(); ; 
+            }
+          //return (List<Upload>)scannedFiles;
+          return true;
+        }*/
+
+       /*[HttpPost("[action]/{id}")]
+       [DisableRequestSizeLimit]
+       public async Task<ActionResult<List<Upload>>> UploadFiles([FromRoute] int id )
+       {
+           var files = Request.Form.Files;
+           //files = new IFormCollection();
+
+           if (files.Count < 1)
+           {
+               throw new Exception("No files provided for upload");
+           }
+           return await UploadExtensions.WriteFile(files, "", "")); 
+;            //return  await _inTestWriteRepository.UploadScannedFiles(files); //, config.DirectoryBasePath, config.UrlBasePath, id);
+       }*/
 
        /*[DisableRequestSizeLimit]
         [Consumes("multipart/form-data")]
@@ -242,14 +352,14 @@ namespace ExamPortalApp.Api.Controllers
                     {
                         await formFile.CopyToAsync(stream);
                     }*/
-      /*     }
-       }
+        /*     }
+         }
 
-       // Process uploaded files
-       // Don't rely on or trust the FileName property without validation.
+         // Process uploaded files
+         // Don't rely on or trust the FileName property without validation.
 
-       return Ok(new { count = files.Count, size });
-   }*/
+         return Ok(new { count = files.Count, size });
+     }*/
 
         //[HttpGet("windowstts/{selectedVoice}/{selectedText}")]
         // public async Task<ActionResult> WindowsTTS(string selectedVoice, string selectedText)
