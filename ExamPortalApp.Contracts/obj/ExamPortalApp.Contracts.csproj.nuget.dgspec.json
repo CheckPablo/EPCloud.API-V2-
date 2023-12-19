@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {}
+    "/Users/melvinmore/Workspace/EPCloud.API/ExamPortalApp.Contracts/ExamPortalApp.Contracts.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj": {
+    "/Users/melvinmore/Workspace/EPCloud.API/ExamPortalApp.Contracts/ExamPortalApp.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj",
+        "projectUniqueName": "/Users/melvinmore/Workspace/EPCloud.API/ExamPortalApp.Contracts/ExamPortalApp.Contracts.csproj",
         "projectName": "ExamPortalApp.Contracts",
-        "projectPath": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\ExamPortalApp.Contracts.csproj",
-        "packagesPath": "C:\\Users\\Dell 5400 i7\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dell 5400 i7\\source\\repos\\EPCloud.API\\ExamPortalApp.Contracts\\obj\\",
+        "projectPath": "/Users/melvinmore/Workspace/EPCloud.API/ExamPortalApp.Contracts/ExamPortalApp.Contracts.csproj",
+        "packagesPath": "/Users/melvinmore/.nuget/packages/",
+        "outputPath": "/Users/melvinmore/Workspace/EPCloud.API/ExamPortalApp.Contracts/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Dell 5400 i7\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "/Users/melvinmore/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -69,7 +63,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
