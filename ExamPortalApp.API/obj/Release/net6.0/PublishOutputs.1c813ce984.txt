@@ -73,6 +73,7 @@ C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.API\obj\Release\net6.0\Pub
 C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.API\obj\Release\net6.0\PubTmp\Out\System.Text.Encodings.Web.dll
 C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.API\obj\Release\net6.0\PubTmp\Out\System.Text.Json.dll
 C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.API\obj\Release\net6.0\PubTmp\Out\System.Windows.Extensions.dll
+C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.API\obj\Release\net6.0\PubTmp\Out\Microsoft.WindowsAzure.Storage.dll
 C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.API\obj\Release\net6.0\PubTmp\Out\runtimes\osx\native\libHarfBuzzSharp.dylib
 C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.API\obj\Release\net6.0\PubTmp\Out\runtimes\win-arm64\native\libHarfBuzzSharp.dll
 C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.API\obj\Release\net6.0\PubTmp\Out\runtimes\win-x64\native\libHarfBuzzSharp.dll

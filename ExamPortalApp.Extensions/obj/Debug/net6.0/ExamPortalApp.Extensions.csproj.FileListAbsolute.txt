@@ -44,3 +44,4 @@ C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.Extensions\obj\Debug\net6.
 C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.Extensions\obj\Debug\net6.0\refint\ExamPortalApp.Extensions.dll
 C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.Extensions\obj\Debug\net6.0\ExamPortalApp.Extensions.pdb
 C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.Extensions\obj\Debug\net6.0\ref\ExamPortalApp.Extensions.dll
+C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.Extensions\obj\Debug\net6.0\ExamPortalApp.Extensions.sourcelink.json

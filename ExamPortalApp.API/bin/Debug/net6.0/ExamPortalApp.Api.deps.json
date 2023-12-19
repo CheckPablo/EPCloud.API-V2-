@@ -17,10 +17,10 @@
           "SpeechLib.Models": "1.6.0",
           "SpeechLib.Synthesis": "1.6.0",
           "Swashbuckle.AspNetCore": "6.2.3",
-          "Syncfusion.Compression.Net.Core": "23.2.6",
-          "Syncfusion.EJ2.SpellChecker.AspNet.Core": "23.2.6",
-          "Syncfusion.EJ2.WordEditor.AspNet.Core": "23.2.6",
-          "Syncfusion.OfficeChart.Net.Core": "23.2.6",
+          "Syncfusion.Compression.Net.Core": "24.1.41",
+          "Syncfusion.EJ2.SpellChecker.AspNet.Core": "24.1.41",
+          "Syncfusion.EJ2.WordEditor.AspNet.Core": "24.1.41",
+          "Syncfusion.OfficeChart.Net.Core": "24.1.41",
           "System.Speech": "7.0.0"
         },
         "runtime": {
@@ -885,34 +885,34 @@
           }
         }
       },
-      "Syncfusion.Compression.Net.Core/23.2.6": {
+      "Syncfusion.Compression.Net.Core/24.1.41": {
         "runtime": {
           "lib/net6.0/Syncfusion.Compression.Portable.dll": {
-            "assemblyVersion": "23.2.6.0",
-            "fileVersion": "23.2.6.0"
+            "assemblyVersion": "24.1.41.0",
+            "fileVersion": "24.1.41.0"
           }
         }
       },
-      "Syncfusion.DocIO.Net.Core/23.2.6": {
+      "Syncfusion.DocIO.Net.Core/24.1.41": {
         "dependencies": {
-          "Syncfusion.Compression.Net.Core": "23.2.6",
-          "Syncfusion.Licensing": "23.2.6",
-          "Syncfusion.OfficeChart.Net.Core": "23.2.6",
+          "Syncfusion.Compression.Net.Core": "24.1.41",
+          "Syncfusion.Licensing": "24.1.41",
+          "Syncfusion.OfficeChart.Net.Core": "24.1.41",
           "System.Text.Encoding.CodePages": "5.0.0"
         },
         "runtime": {
           "lib/net6.0/Syncfusion.DocIO.Portable.dll": {
-            "assemblyVersion": "23.2.6.0",
-            "fileVersion": "23.2.6.0"
+            "assemblyVersion": "24.1.41.0",
+            "fileVersion": "24.1.41.0"
           }
         }
       },
       "Syncfusion.DocIORenderer.Net.Core/21.2.9": {
         "dependencies": {
           "SkiaSharp.HarfBuzz": "2.88.2",
-          "Syncfusion.Compression.Net.Core": "23.2.6",
-          "Syncfusion.DocIO.Net.Core": "23.2.6",
-          "Syncfusion.OfficeChart.Net.Core": "23.2.6",
+          "Syncfusion.Compression.Net.Core": "24.1.41",
+          "Syncfusion.DocIO.Net.Core": "24.1.41",
+          "Syncfusion.OfficeChart.Net.Core": "24.1.41",
           "Syncfusion.Pdf.Net.Core": "21.2.9",
           "Syncfusion.SkiaSharpHelper.Net.Core": "21.2.9"
         },
@@ -923,51 +923,51 @@
           }
         }
       },
-      "Syncfusion.EJ2.SpellChecker.AspNet.Core/23.2.6": {
+      "Syncfusion.EJ2.SpellChecker.AspNet.Core/24.1.41": {
         "runtime": {
           "lib/net6.0/Syncfusion.EJ2.SpellChecker.dll": {
-            "assemblyVersion": "23.2.6.0",
-            "fileVersion": "23.2.6.0"
+            "assemblyVersion": "24.1.41.0",
+            "fileVersion": "24.1.41.0"
           }
         }
       },
-      "Syncfusion.EJ2.WordEditor.AspNet.Core/23.2.6": {
+      "Syncfusion.EJ2.WordEditor.AspNet.Core/24.1.41": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
-          "Syncfusion.Compression.Net.Core": "23.2.6",
-          "Syncfusion.DocIO.Net.Core": "23.2.6",
-          "Syncfusion.OfficeChart.Net.Core": "23.2.6"
+          "Syncfusion.Compression.Net.Core": "24.1.41",
+          "Syncfusion.DocIO.Net.Core": "24.1.41",
+          "Syncfusion.OfficeChart.Net.Core": "24.1.41"
         },
         "runtime": {
           "lib/net6.0/Syncfusion.EJ2.DocumentEditor.dll": {
-            "assemblyVersion": "23.2.6.0",
-            "fileVersion": "23.2.6.0"
+            "assemblyVersion": "24.1.41.0",
+            "fileVersion": "24.1.41.0"
           }
         }
       },
-      "Syncfusion.Licensing/23.2.6": {
+      "Syncfusion.Licensing/24.1.41": {
         "runtime": {
           "lib/net6.0/Syncfusion.Licensing.dll": {
-            "assemblyVersion": "23.2.6.0",
-            "fileVersion": "23.2.6.0"
+            "assemblyVersion": "24.1.41.0",
+            "fileVersion": "24.1.41.0"
           }
         }
       },
-      "Syncfusion.OfficeChart.Net.Core/23.2.6": {
+      "Syncfusion.OfficeChart.Net.Core/24.1.41": {
         "dependencies": {
-          "Syncfusion.Compression.Net.Core": "23.2.6"
+          "Syncfusion.Compression.Net.Core": "24.1.41"
         },
         "runtime": {
           "lib/net6.0/Syncfusion.OfficeChart.Portable.dll": {
-            "assemblyVersion": "23.2.6.0",
-            "fileVersion": "23.2.6.0"
+            "assemblyVersion": "24.1.41.0",
+            "fileVersion": "24.1.41.0"
           }
         }
       },
       "Syncfusion.Pdf.Net.Core/21.2.9": {
         "dependencies": {
-          "Syncfusion.Compression.Net.Core": "23.2.6",
-          "Syncfusion.Licensing": "23.2.6",
+          "Syncfusion.Compression.Net.Core": "24.1.41",
+          "Syncfusion.Licensing": "24.1.41",
           "System.Text.Encoding.CodePages": "5.0.0"
         },
         "runtime": {
@@ -980,7 +980,7 @@
       "Syncfusion.SkiaSharpHelper.Net.Core/21.2.9": {
         "dependencies": {
           "SkiaSharp.HarfBuzz": "2.88.2",
-          "Syncfusion.Compression.Net.Core": "23.2.6"
+          "Syncfusion.Compression.Net.Core": "24.1.41"
         },
         "runtime": {
           "lib/net6.0/Syncfusion.SkiaSharpHelper.Portable.dll": {
@@ -1795,9 +1795,9 @@
           "Microsoft.Extensions.Configuration.Binder": "7.0.4",
           "Microsoft.Office.Interop.Word": "12.0.0",
           "Newtonsoft.Json": "13.0.3",
-          "Syncfusion.DocIO.Net.Core": "23.2.6",
+          "Syncfusion.DocIO.Net.Core": "24.1.41",
           "Syncfusion.DocIORenderer.Net.Core": "21.2.9",
-          "Syncfusion.EJ2.SpellChecker.AspNet.Core": "23.2.6",
+          "Syncfusion.EJ2.SpellChecker.AspNet.Core": "24.1.41",
           "Syncfusion.Pdf.Net.Core": "21.2.9",
           "WindowsAzure.Storage": "9.3.3"
         },
@@ -2415,19 +2415,19 @@
       "path": "swashbuckle.aspnetcore.swaggerui/6.2.3",
       "hashPath": "swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
     },
-    "Syncfusion.Compression.Net.Core/23.2.6": {
+    "Syncfusion.Compression.Net.Core/24.1.41": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-mZlcymEjltdBiqd1UuUeOpB8908pJ91KWh7zUC0FJLKEBbLhNWieLdKfcRvDsMIQ4TJpT8JZv42zEtxdVbJF8A==",
-      "path": "syncfusion.compression.net.core/23.2.6",
-      "hashPath": "syncfusion.compression.net.core.23.2.6.nupkg.sha512"
+      "sha512": "sha512-GG4rBdkapn/MKYcYzFuvrwSLg4uZHhox6XkMrvMDGLysl2hGOnx3g9PUrhW6PZRkZUxvc4K93sohddsEGAxnqw==",
+      "path": "syncfusion.compression.net.core/24.1.41",
+      "hashPath": "syncfusion.compression.net.core.24.1.41.nupkg.sha512"
     },
-    "Syncfusion.DocIO.Net.Core/23.2.6": {
+    "Syncfusion.DocIO.Net.Core/24.1.41": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-enJjdX+LUUC2zDZ9pWAX1NV+DoBk72TB++LW1Z9iZnWbJsPV2N0nkQJ/5qwJZbHAtEwzFjkKJRjfISgWdx+f5Q==",
-      "path": "syncfusion.docio.net.core/23.2.6",
-      "hashPath": "syncfusion.docio.net.core.23.2.6.nupkg.sha512"
+      "sha512": "sha512-4SajBHDUJSRNheOZ+euUDZwJbZAMWVkYhCFiEyXl7076w+QPIHWznZgFH1pPFSsJOVFRTYsskPLgaXCueGrrmw==",
+      "path": "syncfusion.docio.net.core/24.1.41",
+      "hashPath": "syncfusion.docio.net.core.24.1.41.nupkg.sha512"
     },
     "Syncfusion.DocIORenderer.Net.Core/21.2.9": {
       "type": "package",
@@ -2436,33 +2436,33 @@
       "path": "syncfusion.dociorenderer.net.core/21.2.9",
       "hashPath": "syncfusion.dociorenderer.net.core.21.2.9.nupkg.sha512"
     },
-    "Syncfusion.EJ2.SpellChecker.AspNet.Core/23.2.6": {
+    "Syncfusion.EJ2.SpellChecker.AspNet.Core/24.1.41": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-6seGW4HgAe5Hydut57evNpWMebZJTGnQVlAJ6GbqSpx25tQ5LpQqq9Ir90jozOkK2cHRZ8SeIZClze3l+mojIA==",
-      "path": "syncfusion.ej2.spellchecker.aspnet.core/23.2.6",
-      "hashPath": "syncfusion.ej2.spellchecker.aspnet.core.23.2.6.nupkg.sha512"
+      "sha512": "sha512-2U+s93b2FvWAwADpL2WdW38UxzKMUzpl1+ljZOdSUyWlqZ6WeKe0mNi4GytsOkHa/7BtrYcPZiL0bj2pCNVHlw==",
+      "path": "syncfusion.ej2.spellchecker.aspnet.core/24.1.41",
+      "hashPath": "syncfusion.ej2.spellchecker.aspnet.core.24.1.41.nupkg.sha512"
     },
-    "Syncfusion.EJ2.WordEditor.AspNet.Core/23.2.6": {
+    "Syncfusion.EJ2.WordEditor.AspNet.Core/24.1.41": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ZcK/kqm4aWUBK1ATG+kSjafZH7EqfuxbghDm9IvomIyCnUXg11jrqLhAa+rPY/WuqNBamxq4IFQp50TmG0UK1A==",
-      "path": "syncfusion.ej2.wordeditor.aspnet.core/23.2.6",
-      "hashPath": "syncfusion.ej2.wordeditor.aspnet.core.23.2.6.nupkg.sha512"
+      "sha512": "sha512-QwW+3HJZOh0gA/C4pgEe7y2bilwIRRa0lhH9z4T+ZKa/FQuZuy9yHGS26QPVFEq613w35/uULAtu/vCKHUFSyQ==",
+      "path": "syncfusion.ej2.wordeditor.aspnet.core/24.1.41",
+      "hashPath": "syncfusion.ej2.wordeditor.aspnet.core.24.1.41.nupkg.sha512"
     },
-    "Syncfusion.Licensing/23.2.6": {
+    "Syncfusion.Licensing/24.1.41": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-G8KxV95T/lo10SC4YyA8UQb0mqmXgTsBMRNsQMrtNsyCBHHhCvabkzkGdB0lEaGFqMclnZ3igpBkRlUz7wHHvQ==",
-      "path": "syncfusion.licensing/23.2.6",
-      "hashPath": "syncfusion.licensing.23.2.6.nupkg.sha512"
+      "sha512": "sha512-/8l+5x11RGlQhn3lv6S4AuwOM3i1kbt8Eul5gZ45rHbcEWM6Pt1so71j71w3sE+blkPSDJ2nhdiXQQLBFTKi3g==",
+      "path": "syncfusion.licensing/24.1.41",
+      "hashPath": "syncfusion.licensing.24.1.41.nupkg.sha512"
     },
-    "Syncfusion.OfficeChart.Net.Core/23.2.6": {
+    "Syncfusion.OfficeChart.Net.Core/24.1.41": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-oArL5b7UYnrwQJA9kdO+ixS43XS4yZLtK846/wOUfefY+1+RjI89+UTx8GzOC7AswXh0s3Hgn2/fM7bueaVBTQ==",
-      "path": "syncfusion.officechart.net.core/23.2.6",
-      "hashPath": "syncfusion.officechart.net.core.23.2.6.nupkg.sha512"
+      "sha512": "sha512-4dVMj63nt5Ujrw9soer6EvJHgmN5uimI/HCsfJTQrG/rVB8FuqHyL11UNszB8XecCLZneQLMvPpRbVlLsa4ivg==",
+      "path": "syncfusion.officechart.net.core/24.1.41",
+      "hashPath": "syncfusion.officechart.net.core.24.1.41.nupkg.sha512"
     },
     "Syncfusion.Pdf.Net.Core/21.2.9": {
       "type": "package",

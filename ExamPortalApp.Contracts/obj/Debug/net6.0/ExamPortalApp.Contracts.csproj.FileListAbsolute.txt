@@ -22,3 +22,4 @@ C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.Contracts\obj\Debug\net6.0
 C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.Contracts\obj\Debug\net6.0\refint\ExamPortalApp.Contracts.dll
 C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.Contracts\obj\Debug\net6.0\ExamPortalApp.Contracts.pdb
 C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.Contracts\obj\Debug\net6.0\ref\ExamPortalApp.Contracts.dll
+C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.Contracts\obj\Debug\net6.0\ExamPortalApp.Contracts.sourcelink.json

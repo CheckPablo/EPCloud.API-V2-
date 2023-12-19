@@ -28,3 +28,4 @@ C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.Core\obj\Debug\net6.0\Exam
 C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.Core\obj\Debug\net6.0\refint\ExamPortalApp.Core.dll
 C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.Core\obj\Debug\net6.0\ExamPortalApp.Core.pdb
 C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.Core\obj\Debug\net6.0\ref\ExamPortalApp.Core.dll
+C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.Core\obj\Debug\net6.0\ExamPortalApp.Core.sourcelink.json

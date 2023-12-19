@@ -269,9 +269,9 @@ C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.API\obj\Debug\net6.0\refin
 C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.API\obj\Debug\net6.0\ExamPortalApp.Api.pdb
 C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.API\obj\Debug\net6.0\ExamPortalApp.Api.genruntimeconfig.cache
 C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.API\obj\Debug\net6.0\ref\ExamPortalApp.Api.dll
-C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.API\obj\Debug\net6.0\ExamPortalApp.Api.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.API\bin\Debug\net6.0\Microsoft.WindowsAzure.Storage.dll
 C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.API\bin\Debug\net6.0\SpeechLib.Models.dll
 C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.API\bin\Debug\net6.0\SpeechLib.Synthesis.dll
 C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.API\obj\Debug\net6.0\Interop.SpeechLib.dll
 C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.API\obj\Debug\net6.0\ExamPortalApp.Api.csproj.ResolveComReference.cache
+C:\Users\examp\source\repos\EPCloud.API\ExamPortalApp.API\obj\Debug\net6.0\ExamPortalApp.Api.sourcelink.json
