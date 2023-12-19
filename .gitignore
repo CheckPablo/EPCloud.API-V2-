@@ -5,3 +5,11 @@
 ./ExamPortalApp.Data/obj/
 ./ExamPortalApp.Infrastructure/obj/
 ./ExamPortalApp.Extensions/obj/
+
+./ExamPortalApp.API/bin/
+./ExamPortalApp.Contracts/bin/
+./ExamPortalApp.Core/bin/
+./ExamPortalApp.Daemon/bin/
+./ExamPortalApp.Data/bin/
+./ExamPortalApp.Infrastructure/bin/
+./ExamPortalApp.Extensions/bin/
