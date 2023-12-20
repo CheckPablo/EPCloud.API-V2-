@@ -11,6 +11,7 @@ using ExamPortalApp.Contracts.Data.Dtos.Params;
 using ExamPortalApp.Infrastructure.Data.Repositories;
 using Newtonsoft.Json;
 using static SkiaSharp.HarfBuzz.SKShaper;
+using ExamPortalApp.Infrastructure.Helpers;
 //using SpeechLib;
 
 namespace ExamPortalApp.Api.Controllers
@@ -232,14 +233,19 @@ namespace ExamPortalApp.Api.Controllers
         [HttpPost("add-scannedimages")]
         public async Task<ActionResult> UploadFiles(List<IFormFile> files)
         {
+            var testId = "";
+            var studentId = "";
             var data = (Request.Form["data"]).ToString();
+            if(data.Length > 0 )
+            { 
             //{ "testId":4383,"studentId":131231}
-            char[] delimiterChars = { ' ', ',', '.', ':', '\t','}' };
+            char[] delimiterChars = { ' ', ',', '.', ':', '\t', '}' };
             string[] studentTestData = data.Split(delimiterChars);
-            var testId = studentTestData[1];
-            var studentId = studentTestData[3];
-            //testId = testId.ToString().Split(":");
-            var form = JsonConvert.DeserializeObject<Test>(data);
+            testId = studentTestData[1];
+            studentId = studentTestData[3];
+           }
+            /*testId = testId.ToString().Split(":");
+            var form = JsonConvert.DeserializeObject<Test>(data);*/
             long size = files.Sum(f => f.Length);
             var scannedFiles = Request.Form.Files;
             foreach (var formFile in scannedFiles)
