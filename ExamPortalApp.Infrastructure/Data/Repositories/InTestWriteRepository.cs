@@ -14,6 +14,7 @@ using Syncfusion.DocIO;
 using Syncfusion.DocIO.DLS;
 using System.IO;
 using System.Security.Cryptography;
+using static SkiaSharp.HarfBuzz.SKShaper;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace ExamPortalApp.Infrastructure.Data.Repositories
@@ -24,6 +25,7 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
         private readonly DecodedUser? _user;
         private string textToSave;
         private IEnumerable<StudentTestAnswers> resultToReturn;
+        private IEnumerable<ScannedImagesOTP> scannedImagesOTPResult;
 
         public InTestWriteRepository(IRepository repository)
         {
@@ -71,9 +73,7 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             bool offline, bool fullsScreenClosed, bool KeyPress, bool leftEamArea, string timeRemaining, string answerText, 
             string fileName,IFormFile file)
         {
-           // the document is saving correctly with its text and formating
-           // I want to extract text to put in the tracking table
-            //var test = await GetAsync(testId);
+           
             var fileExtension = Path.GetExtension(file.FileName);
 
             if (!string.Equals(fileExtension, ".doc", StringComparison.OrdinalIgnoreCase) &&
@@ -127,12 +127,6 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             var parameters = new Dictionary<string, object>();
 
 
-             /*parameters.Add(StoredProcedures.Params.TestID, testId);
-             parameters.Add(StoredProcedures.Params.StudentId, studentId);
-             parameters.Add(StoredProcedures.Params.FileName, file.FileName);
-             parameters.Add(StoredProcedures.Params.TestDocument, fileBytes);
-            // parameters.Add(StoredProcedures.Params.CenterID, _user.CenterId);
-             var result = _repository.ExecuteStoredProcAsync<UserCenter>(StoredProcedures.SaveStudentAnswer_TestUpload, parameters);*/
             await _repository.CompleteAsync();
             var trackingInfoToSave = new StudentTestAnswerModel(); 
             trackingInfoToSave.TestId = testId;
@@ -149,6 +143,63 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
            await SaveAnswersInterval(trackingInfoToSave); 
             return true;
         }
+
+        /*public async Task<bool> UploadScannedImagesAsync(int testId, IFormFile file)
+         {
+             var test = await GetAsync(testId);
+             var fileExtension = Path.GetExtension(file.FileName);
+
+             if (!string.Equals(fileExtension, ".doc", StringComparison.OrdinalIgnoreCase) &&
+                 !string.Equals(fileExtension, ".docx", StringComparison.OrdinalIgnoreCase))
+             {
+                 throw new Exception("Only Word Documents Supported");
+             }
+
+             var fileBytes = file.ToByteArray();
+
+             if (testId == 0)
+             {
+                 var answerDocument = new UploadedAnswerDocument
+                 {
+                     DateModified = DateTime.Now,
+                     FileName = file.FileName,
+                     TestId = test.Id,
+                     TestDocument = fileBytes,
+                 };
+
+                 await _repository.AddAsync(answerDocument, true);
+             }
+             else
+             {
+                 var uploadedAnswerDocs = await _repository.GetFirstOrDefaultAsync<UploadedAnswerDocument>(x => x.TestId == testId);
+                 //var uploadedAnswerDocs = await _repository.GetByIdAsync<UploadedAnswerDocument>(testId);
+                 var answerDocument = new UploadedAnswerDocument()
+                 {
+                     TestId = testId,
+                     FileName = file != null ? file.FileName : null,
+                     TestDocument = fileBytes,
+                     IsDeleted = false,
+                 };
+                 if (uploadedAnswerDocs != null)
+                 {
+                     uploadedAnswerDocs.FileName = answerDocument.FileName;
+                     uploadedAnswerDocs.TestDocument = answerDocument.TestDocument;
+                 }
+
+                 if (uploadedAnswerDocs?.TestDocument == null && file != null)
+                 {
+                     await _repository.AddAsync(answerDocument, true);
+                 }
+                 if (uploadedAnswerDocs?.TestDocument != null && file != null)
+                 {
+                     await _repository.UpdateAsync(uploadedAnswerDocs, true);
+
+                 }
+             }
+
+             return true;
+         }*/
+
         public async Task<IEnumerable<StudentTestAnswers>> SaveAnswersInterval(StudentTestAnswerModel studentTestAnswersModel)
         {
              IEnumerable<StudentTestAnswers> result; 
@@ -178,6 +229,33 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             //}
             return resultToReturn;
         }
+        public async Task<List<ScannedImageResult>> UploadScannedImagetoDB(string[] fileNames, string testId, string studentId)
+        {
+            Random random = new Random();
+            var OTP = random.Next(10000, 99999);
+            var expirydate = DateTime.Now.AddMinutes(10);
+            var parameters = new Dictionary<string, object>();
+            List<ScannedImageResult> resultOTP = new List<ScannedImageResult>();
+            if (fileNames.Length > 0)
+            {
+                foreach (var imgFileName in fileNames)
+                {
+                    parameters.Add(StoredProcedures.Params.FileName, imgFileName);
+                    parameters.Add(StoredProcedures.Params.OTP, OTP);
+                    parameters.Add(StoredProcedures.Params.StudentId, studentId);
+                    parameters.Add(StoredProcedures.Params.TestID, testId);
+                    parameters.Add(StoredProcedures.Params.ExpiryDate, expirydate);
+                      resultOTP = (List<ScannedImageResult>)await _repository.ExecuteStoredProcAsync<ScannedImageResult>(StoredProcedures.UploadScannedImageDetails, parameters);
+
+                }
+                //resultOTP.Add("");
+                return resultOTP;
+            }
+            else
+            {
+                return resultOTP; 
+            }
+        }
 
         public async Task<IEnumerable<KeyPressTracking>> SaveIrregularKeyPress(InvalidKeyPressEntries invalidKeyPressEntries)
         {
@@ -205,9 +283,19 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             return await _repository.GetWhereAsync<UserDocumentAnswer>(x => x.StudentId == studentId && x.TestId == testId);
         }
 
-        
+        public async Task<List<string>> VerifyImagesOTP(ScannedImagesOTP scannedImagesOTP)
+        {
+            List<string> result = new List<string>();
+            var parameters = new Dictionary<string, object>();
 
-    
+            parameters.Add(StoredProcedures.Params.StudentId, scannedImagesOTP.StudentId);
+            parameters.Add(StoredProcedures.Params.TestID, scannedImagesOTP.TestId);
+            parameters.Add(StoredProcedures.Params.Event, scannedImagesOTP.OTP);
+            result = (List<string>)await _repository.ExecuteStoredProcAsync<ScannedImagesOTP>(StoredProcedures.VerifyScannedImagesOTP, parameters);
+            result.Add("");
+            return (List<string>)scannedImagesOTPResult;
+        }
+
         /*Task<bool> IInTestWriteRepository.SaveIrregularKeyPress(InvalidKeyPressEntries invalidKeyPressEntries)
         {
             throw new NotImplementedException();

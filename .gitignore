@@ -12,3 +12,4 @@ ExamPortalApp.Daemon/bin/
 ExamPortalApp.Data/bin/
 ExamPortalApp.Infrastructure/bin/
 ExamPortalApp.Extensions/bin/
+.DS_Store

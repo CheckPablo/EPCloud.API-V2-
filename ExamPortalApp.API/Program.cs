@@ -4,9 +4,14 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
+using System.Net.Sockets;
+using System.Net;
 using System.Text;
- 
+using Microsoft.AspNetCore.Cors.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
+//string localIP = LocalIPAddress();
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 builder.Services.AddOptions<ExamPortalSettings>().BindConfiguration("ExamPortalSettings");
 builder.Services.AddDbContext<ExamPortalDatabaseContext>(options =>
@@ -40,16 +45,20 @@ builder.Services.AddControllers();
     options.SerializerSettings.ContractResolver = new DefaultContractResolver();
 
 });*/
-/*builder.Services.AddCors(options =>
+builder.Services.AddCors(options =>
 {
-    //options.AddPolicy("Policy1",
-    //    policy =>
-    //    {
-    //        policy.WithOrigins("http://154.0.166.61",
-    //                            "http://154.0.166.61")
-    //                            .AllowAnyHeader()
-    //                            .AllowAnyMethod();
-    //    });
+
+    options.AddPolicy(name:"Policy1",
+       builder =>
+        {
+           /*policy.WithOrigins("http://127.0.0.1:5066/",
+                              "http://127.0.0.1:5066/")
+                                .AllowAnyHeader()
+                               .AllowAnyMethod();*/
+            builder.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost")
+                .AllowAnyHeader().AllowAnyMethod();
+
+        });
 
     //options.AddPolicy("AnotherPolicy",
     //    policy =>
@@ -68,7 +77,17 @@ builder.Services.AddControllers();
           .AllowAnyHeader()
           .Build()
        );
-});*/
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+      builder => builder
+         .SetIsOriginAllowedToAllowWildcardSubdomains()
+         .WithOrigins("http://192.168.151.215:4200/", "http://*.")
+         .AllowAnyMethod()
+         .AllowCredentials()
+         .AllowAnyHeader()
+         .Build()
+      );
+
+});
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -76,7 +95,8 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddMemoryCache(); 
 
 var app = builder.Build();
-
+//app.Urls.Add("http://" + localIP + ":5072");
+//app.Urls.Add("https://" + localIP + ":7072");
 //if (app.Environment.IsDevelopment())
 //{
 //    app.UseSwagger();
@@ -100,12 +120,15 @@ catch (Exception ex)
 }
 #endregion
 app.UseHttpsRedirection();
+
+
+/*app.UseCors(MyAllowSpecificOrigins);*/
 app.UseCors();
-/*app.Use((corsContext, next) =>
-{
-    corsContext.Response.Headers["Access-Control-Allow-Origin"] = "*";
-    return next.Invoke();
-});*/
+//app.Use((corsContext, next) =>
+//{
+//corsContext.Response.Headers["Access-Control-Allow-Origin"] = "*";
+//return next.Invoke();
+//});
 app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 app.UseAuthentication();
@@ -113,3 +136,20 @@ app.UseAuthorization();
 app.MapControllers();
 //app.UseSession();
 app.Run();
+
+/*static string LocalIPAddress()
+{
+    using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0))
+    {
+        socket.Connect("192.168.0.160",7066);
+        IPEndPoint? endPoint = socket.LocalEndPoint as IPEndPoint;
+        if (endPoint != null)
+        {
+            return endPoint.Address.ToString();
+        }
+        else
+        {
+            return "127.0.0.1";
+        }
+    }
+}*/

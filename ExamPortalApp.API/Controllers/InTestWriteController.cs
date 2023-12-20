@@ -23,6 +23,9 @@ namespace ExamPortalApp.Api.Controllers
         private readonly IInTestWriteRepository _inTestWriteRepository;
         private List<object> installedVoiceList = new List<object>();
          List<InstalledVoice> installedVoices = new List<InstalledVoice>();
+        private string[] fileNames;
+
+        //private IFormFileCollection scannedFiles;
         private readonly IHttpContextAccessor _contextAccessor;
         public InTestWriteController(IInTestWriteRepository inTestWriteRepository, IMapper mapper, IHttpContextAccessor contextAccessor) : base(mapper)
         {
@@ -139,7 +142,6 @@ namespace ExamPortalApp.Api.Controllers
         [Consumes("multipart/form-data")]
         [HttpPost("upload-answer-document")]
         public async Task<ActionResult<StudentTestSave>> UploadAnswerDocumentAsync()
-       //public async Task<ActionResult<StudentTestAnswers>> SaveAnswersInterval(StudentTestAnswerModel studentTestAnswers)
         {
            // System.Web.HttpPostedFile data = HttpContext.Current.Request.Files[0];
             try
@@ -147,7 +149,6 @@ namespace ExamPortalApp.Api.Controllers
               var data = (Request.Form["data"]).ToString();
                 var form = JsonConvert.DeserializeObject<StudentTestSave>(data);
                 //if (Request.Form.Files.Count() > 0)
-
                 if (form is not null)
                 {
                     //var file = (Request.Form.Files.Count() > 0) && (Request.Form.Files[0] is not null) ? Request.Form.Files[0] : null;
@@ -155,8 +156,8 @@ namespace ExamPortalApp.Api.Controllers
                     //var file = Request.Form.Files[0];
                     var response = await _inTestWriteRepository.UploadStudentAnswerDocumentAsync(form.TestId,form.StudentId, form.Accomodation ?? false, 
                         form.Offline ?? false, form.FullScreenClosed ?? false ,form.KeyPress ?? false, form.LeftExamArea ?? false, form.TimeRemaining, form.AnswerText, form.fileName, file);
-                    //var result = _mapper.Map<TestDto>(response);
-                    //return Ok(result);
+                    /*var result = _mapper.Map<TestDto>(response);
+                      return Ok(result);*/
                     return Ok();
                 }
             
@@ -188,6 +189,22 @@ namespace ExamPortalApp.Api.Controllers
         }
 
 
+        [HttpPost("verify-scanned-imagesotp")]
+        public async Task<ActionResult<List<String>>> VerifyScannedImagesOTP(ScannedImagesOTP scannedImagesOTP)
+        {
+            try
+            {
+                var result = await _inTestWriteRepository.VerifyImagesOTP(scannedImagesOTP);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
         [HttpPost("scandocument")]
         public async Task<ActionResult<string>> ScanDocument(QrCodeModel qrcodeModel)
         {
@@ -209,7 +226,63 @@ namespace ExamPortalApp.Api.Controllers
             }
         }
 
+        [AllowAnonymous]
+        [DisableRequestSizeLimit]
+        [Consumes("multipart/form-data")]
+        [HttpPost("add-scannedimages")]
+        public async Task<ActionResult> UploadFiles(List<IFormFile> files)
+        {
+            var data = (Request.Form["data"]).ToString();
+            //{ "testId":4383,"studentId":131231}
+            char[] delimiterChars = { ' ', ',', '.', ':', '\t','}' };
+            string[] studentTestData = data.Split(delimiterChars);
+            var testId = studentTestData[1];
+            var studentId = studentTestData[3];
+            //testId = testId.ToString().Split(":");
+            var form = JsonConvert.DeserializeObject<Test>(data);
+            long size = files.Sum(f => f.Length);
+            var scannedFiles = Request.Form.Files;
+            foreach (var formFile in scannedFiles)
+            {
+                if (formFile.Length > 0)
+                {
+                   
+                        var folder = KnownFolderFinder.GetFolderFromKnownFolderGUID(new Guid("374DE290-123F-4565-9164-39C4925E467B"));
+                        string tempFolderName = Guid.NewGuid().ToString();
+                        //testEntity = await GetAsync(testId);
+                        string root = folder + @"\" + tempFolderName.PadRight(5);
+                        if (!Directory.Exists(root))
+                        {
+                            Directory.CreateDirectory(root);
+                        }
+                        
+                        var filePath = Path.GetTempFileName();
+                        string pathToSave = root;
+                        //var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+                        foreach (var file in scannedFiles)
+                        {
+                            //uploadResult = await file.CreateUpload(folderName, pathToSave);
 
+                            using (var stream = new FileStream(pathToSave + ".jpeg", FileMode.Create, FileAccess.Write))
+                            {
+                                await file.CopyToAsync(stream);
+                            }
+
+                         fileNames = file.FileName.Split("");
+                        //fileNames = fileNames[0].ToString().Split("") + fileNames[0].ToString().Split("");
+
+                      }
+
+                   var scanResultOTP = await _inTestWriteRepository.UploadScannedImagetoDB(fileNames,testId,studentId);
+
+                    return Ok(new { count = files.Count, size,otp = scanResultOTP[0].OTP });
+                }
+                // Process uploaded files
+                // Don't rely on or trust the FileName property without validation.
+            }
+            return Ok(new { count = files.Count, size });
+        }
+      
         //[HttpGet("windowstts/{selectedVoice}/{selectedText}")]
         // public async Task<ActionResult> WindowsTTS(string selectedVoice, string selectedText)
         [HttpPost("windowstts")]

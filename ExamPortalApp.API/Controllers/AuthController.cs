@@ -8,11 +8,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.JsonWebTokens;
 using System.IdentityModel.Tokens.Jwt;
 using ExamPortalApp.Infrastructure.Constants;
+using Microsoft.AspNetCore.Cors;
 
 namespace ExamPortalApp.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    /*[EnableCors( "http://127.0.0.1:5066")] */
     public class AuthController : ControllerBase
     {
         private readonly IAuthRepository _auth;
