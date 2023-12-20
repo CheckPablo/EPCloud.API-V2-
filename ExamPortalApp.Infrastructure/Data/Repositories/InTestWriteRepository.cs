@@ -229,14 +229,14 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             //}
             return resultToReturn;
         }
-        public async Task<List<ScannedImageResult>> UploadScannedImagetoDB(string[] fileNames, string testId, string studentId)
+        public async Task<List<ScannedImageResult>> UploadScannedImagetoDB(string?[] fileNames, string testId, string studentId)
         {
             Random random = new Random();
             var OTP = random.Next(10000, 99999);
             var expirydate = DateTime.Now.AddMinutes(10);
             var parameters = new Dictionary<string, object>();
             List<ScannedImageResult> resultOTP = new List<ScannedImageResult>();
-            if (fileNames.Length > 0)
+            if (fileNames?.Length > 0)
             {
                 foreach (var imgFileName in fileNames)
                 {

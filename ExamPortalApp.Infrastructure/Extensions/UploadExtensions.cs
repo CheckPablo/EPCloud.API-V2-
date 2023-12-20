@@ -33,7 +33,7 @@ namespace ExamPortalApp.Infrastructure.Extensions
             return upload;
         }*/
 
-       public static async Task<Upload> WriteFile(IFormFileCollection files, string path, string url)
+       public static async Task<Upload> WriteFile(IFormFileCollection files, string path, string? url = null)
         { 
             var folder = "TestFolder";
             var folderName = Path.Combine("Uploads", folder);
