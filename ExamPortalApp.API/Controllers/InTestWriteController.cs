@@ -11,13 +11,7 @@ using ExamPortalApp.Contracts.Data.Dtos.Params;
 using ExamPortalApp.Infrastructure.Data.Repositories;
 using Newtonsoft.Json;
 using static SkiaSharp.HarfBuzz.SKShaper;
-using SpeechLib;
-using ExamPortalApp.Infrastructure.Extensions;
-using System.IO;
-using System.Linq.Expressions;
-using ExamPortalApp.Infrastructure.Helpers;
-using Syncfusion.Compression.Zip;
-using static System.Net.Mime.MediaTypeNames;
+//using SpeechLib;
 
 namespace ExamPortalApp.Api.Controllers
 {
@@ -294,7 +288,7 @@ namespace ExamPortalApp.Api.Controllers
         [HttpPost("windowstts")]
         public async Task<ActionResult> WindowsTTS(WindowsSpeechModel? winspeech)
         {
-            SpVoice voice = new SpVoice();
+            //SpVoice voice = new SpVoice();
            
             try
             {
