@@ -21,3 +21,7 @@ ExamPortalApp.Extensions/bin/
 .vs/ExamPortalApp.API/v17/.suo
 .vs/ProjectEvaluation/examportalapp.api.metadata.v7.bin
 .vs/ProjectEvaluation/examportalapp.api.projects.v7.bin
+ExamPortalApp.API/Uploads/*
+ExamPortalApp.API/Uploads/Answers/*
+ExamPortalApp.API/Uploads/Tests/*
+.DS_Store

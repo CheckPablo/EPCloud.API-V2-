@@ -12,6 +12,7 @@ using ExamPortalApp.Infrastructure.Data.Repositories;
 using Newtonsoft.Json;
 using static SkiaSharp.HarfBuzz.SKShaper;
 using ExamPortalApp.Infrastructure.Helpers;
+using ExamPortalApp.Infrastructure.Extensions;
 //using SpeechLib;
 
 namespace ExamPortalApp.Api.Controllers
@@ -23,7 +24,7 @@ namespace ExamPortalApp.Api.Controllers
     {
         private readonly IInTestWriteRepository _inTestWriteRepository;
         private List<object> installedVoiceList = new List<object>();
-         List<InstalledVoice> installedVoices = new List<InstalledVoice>();
+        List<InstalledVoice> installedVoices = new List<InstalledVoice>();
         private string[] fileNames;
 
         //private IFormFileCollection scannedFiles;
@@ -71,19 +72,19 @@ namespace ExamPortalApp.Api.Controllers
             // Initialize a new instance of the SpeechSynthesizer.  
             using (SpeechSynthesizer synth = new SpeechSynthesizer())
             {
-               // var windowsVoices = synth.GetInstalledVoices().ToList();
+                // var windowsVoices = synth.GetInstalledVoices().ToList();
                 foreach (InstalledVoice voice in synth.GetInstalledVoices())
                 {
-                   VoiceInfo? info = voice?.VoiceInfo ;
+                    VoiceInfo? info = voice?.VoiceInfo;
                     //synth.SelectVoice(voice.VoiceInfo.Name);
-                    var voiceEntry = new { Name = info.Name, lang = info.Culture.Name,  }; 
+                    var voiceEntry = new { Name = info.Name, lang = info.Culture.Name, };
                     installedVoiceList.Add(voiceEntry);
-                    installedVoices.Add(voice); 
+                    installedVoices.Add(voice);
                 }
                 //string[] str = installedVoiceList.ToArray();
                 //var windowsVoices = installedVoiceList;
-                return installedVoiceList; 
-               //Console.WriteLine(installedVoiceList); 
+                return installedVoiceList;
+                //Console.WriteLine(installedVoiceList); 
             }
 
         }
@@ -144,10 +145,10 @@ namespace ExamPortalApp.Api.Controllers
         [HttpPost("upload-answer-document")]
         public async Task<ActionResult<StudentTestSave>> UploadAnswerDocumentAsync()
         {
-           // System.Web.HttpPostedFile data = HttpContext.Current.Request.Files[0];
+            // System.Web.HttpPostedFile data = HttpContext.Current.Request.Files[0];
             try
             {
-              var data = (Request.Form["data"]).ToString();
+                var data = (Request.Form["data"]).ToString();
                 var form = JsonConvert.DeserializeObject<StudentTestSave>(data);
                 //if (Request.Form.Files.Count() > 0)
                 if (form is not null)
@@ -155,13 +156,13 @@ namespace ExamPortalApp.Api.Controllers
                     //var file = (Request.Form.Files.Count() > 0) && (Request.Form.Files[0] is not null) ? Request.Form.Files[0] : null;
                     var file = Request.Form.Files[0];
                     //var file = Request.Form.Files[0];
-                    var response = await _inTestWriteRepository.UploadStudentAnswerDocumentAsync(form.TestId,form.StudentId, form.Accomodation ?? false, 
-                        form.Offline ?? false, form.FullScreenClosed ?? false ,form.KeyPress ?? false, form.LeftExamArea ?? false, form.TimeRemaining, form.AnswerText, form.fileName, file);
+                    var response = await _inTestWriteRepository.UploadStudentAnswerDocumentAsync(form.TestId, form.StudentId, form.Accomodation ?? false,
+                        form.Offline ?? false, form.FullScreenClosed ?? false, form.KeyPress ?? false, form.LeftExamArea ?? false, form.TimeRemaining, form.AnswerText, form.fileName, file);
                     /*var result = _mapper.Map<TestDto>(response);
                       return Ok(result);*/
                     return Ok();
                 }
-            
+
                 else
                 {
                     return BadRequest("Data or file not provided");
@@ -213,12 +214,12 @@ namespace ExamPortalApp.Api.Controllers
             {
                 string testId = qrcodeModel.testId;
                 string studentId = qrcodeModel.studentId;
-                var QrCodeEntry =  testId + "" + studentId;
-               //var chh = _contextAccessor.HttpContext?.Request.BaseUrl();
+                var QrCodeEntry = testId + "" + studentId;
+                //var chh = _contextAccessor.HttpContext?.Request.BaseUrl();
                 var chh = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}";
                 //string baseUrl = string.Format("{ 0}://{1}{2}", Request.Scheme, Request.Host, Request.PathBase.Value.ToString());
                 var badseUrl = Request.GetTypedHeaders().Referer.ToString() ?? "";
-                return Ok(new { badseUrl }); 
+                return Ok(new { badseUrl });
 
             }
             catch (Exception ex)
@@ -233,73 +234,52 @@ namespace ExamPortalApp.Api.Controllers
         [HttpPost("add-scannedimages")]
         public async Task<ActionResult> UploadFiles(List<IFormFile> files)
         {
-            var testId = "";
-            var studentId = "";
-            var data = (Request.Form["data"]).ToString();
-            if(data.Length > 0 )
-            { 
-            //{ "testId":4383,"studentId":131231}
-            char[] delimiterChars = { ' ', ',', '.', ':', '\t', '}' };
-            string[] studentTestData = data.Split(delimiterChars);
-            testId = studentTestData[1];
-            studentId = studentTestData[3];
-           }
-            /*testId = testId.ToString().Split(":");
-            var form = JsonConvert.DeserializeObject<Test>(data);*/
-            long size = files.Sum(f => f.Length);
-            var scannedFiles = Request.Form.Files;
-            foreach (var formFile in scannedFiles)
+            try
             {
-                if (formFile.Length > 0)
+                var testId = "";
+                var studentId = "";
+                var data = (Request.Form["data"]).ToString();
+                if (data.Length > 0)
                 {
-                   
-                        var folder = KnownFolderFinder.GetFolderFromKnownFolderGUID(new Guid("374DE290-123F-4565-9164-39C4925E467B"));
-                        string tempFolderName = Guid.NewGuid().ToString();
-                        //testEntity = await GetAsync(testId);
-                        string root = folder + @"\" + tempFolderName.PadRight(5);
-                        if (!Directory.Exists(root))
-                        {
-                            Directory.CreateDirectory(root);
-                        }
-                        
-                        var filePath = Path.GetTempFileName();
-                        string pathToSave = root;
-                        //var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
-                        foreach (var file in scannedFiles)
-                        {
-                            //uploadResult = await file.CreateUpload(folderName, pathToSave);
-
-                            using (var stream = new FileStream(pathToSave + ".jpeg", FileMode.Create, FileAccess.Write))
-                            {
-                                await file.CopyToAsync(stream);
-                            }
-
-                         fileNames = file.FileName.Split("");
-                        //fileNames = fileNames[0].ToString().Split("") + fileNames[0].ToString().Split("");
-
-                      }
-
-                   var scanResultOTP = await _inTestWriteRepository.UploadScannedImagetoDB(fileNames,testId,studentId);
-
-                    return Ok(new { count = files.Count, size,otp = scanResultOTP[0].OTP });
+                    //{ "testId":4383,"studentId":131231}
+                    char[] delimiterChars = { ' ', ',', '.', ':', '\t', '}' };
+                    string[] studentTestData = data.Split(delimiterChars);
+                    testId = studentTestData[1];
+                    studentId = studentTestData[3];
                 }
-                // Process uploaded files
-                // Don't rely on or trust the FileName property without validation.
+                /*testId = testId.ToString().Split(":");
+                var form = JsonConvert.DeserializeObject<Test>(data);*/
+                long size = files.Sum(f => f.Length);
+                var scannedFiles = Request.Form.Files;
+                if(scannedFiles.Count == 0)
+                {
+                    return BadRequest("No files uploaded");
+                }
+
+                fileNames = scannedFiles.Select(x => x.FileName).ToArray();
+                await UploadExtensions.WriteFile(scannedFiles, testId);
+
+                var scanResultOTP = await _inTestWriteRepository.UploadScannedImagetoDB(fileNames, testId, studentId);
+
+                return Ok(new { count = files.Count, size, otp = scanResultOTP[0].OTP });
             }
-            return Ok(new { count = files.Count, size });
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
-      
+
         //[HttpGet("windowstts/{selectedVoice}/{selectedText}")]
         // public async Task<ActionResult> WindowsTTS(string selectedVoice, string selectedText)
         [HttpPost("windowstts")]
         public async Task<ActionResult> WindowsTTS(WindowsSpeechModel? winspeech)
         {
             //SpVoice voice = new SpVoice();
-           
+
             try
             {
                 //SpVoice voice = new SpVoice();
-                using (SpeechSynthesizer synth = new SpeechSynthesizer{Volume = 50, Rate = 0})
+                using (SpeechSynthesizer synth = new SpeechSynthesizer { Volume = 50, Rate = 0 })
                 {
 
                     synth.SelectVoice(winspeech?.selectedVoice);
@@ -322,7 +302,7 @@ namespace ExamPortalApp.Api.Controllers
             }
         }
 
-    
+
 
         [HttpPut("{id}")]
         public override Task<ActionResult<StudentTestDTO>> Put(int id, StudentTest entity)
