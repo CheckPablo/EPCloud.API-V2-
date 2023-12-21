@@ -25,7 +25,7 @@ namespace ExamPortalApp.Api.Controllers
         private readonly IInTestWriteRepository _inTestWriteRepository;
         private List<object> installedVoiceList = new List<object>();
         List<InstalledVoice> installedVoices = new List<InstalledVoice>();
-        List<InstalledVoice> installedVoices = new List<InstalledVoice>();
+
         private string[] fileNames;
 
         //private IFormFileCollection scannedFiles;
@@ -78,18 +78,16 @@ namespace ExamPortalApp.Api.Controllers
                 foreach (InstalledVoice voice in synth.GetInstalledVoices())
                 {
                     VoiceInfo? info = voice?.VoiceInfo;
-                    VoiceInfo? info = voice?.VoiceInfo;
+                  
                     //synth.SelectVoice(voice.VoiceInfo.Name);
                     var voiceEntry = new { Name = info.Name, lang = info.Culture.Name, };
-                    var voiceEntry = new { Name = info.Name, lang = info.Culture.Name, };
+                    
                     installedVoiceList.Add(voiceEntry);
                     installedVoices.Add(voice);
-                    installedVoices.Add(voice);
+                    
                 }
                 //string[] str = installedVoiceList.ToArray();
                 //var windowsVoices = installedVoiceList;
-                return installedVoiceList;
-                //Console.WriteLine(installedVoiceList); 
                 return installedVoiceList;
                 //Console.WriteLine(installedVoiceList); 
             }
@@ -156,7 +154,6 @@ namespace ExamPortalApp.Api.Controllers
             // System.Web.HttpPostedFile data = HttpContext.Current.Request.Files[0];
             try
             {
-                var data = (Request.Form["data"]).ToString();
                 var data = (Request.Form["data"]).ToString();
                 var form = JsonConvert.DeserializeObject<StudentTestSave>(data);
                 //if (Request.Form.Files.Count() > 0)
@@ -226,12 +223,10 @@ namespace ExamPortalApp.Api.Controllers
                 string studentId = qrcodeModel.studentId;
                 var QrCodeEntry = testId + "" + studentId;
                 //var chh = _contextAccessor.HttpContext?.Request.BaseUrl();
-                var QrCodeEntry = testId + "" + studentId;
-                //var chh = _contextAccessor.HttpContext?.Request.BaseUrl();
                 var chh = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}";
                 //string baseUrl = string.Format("{ 0}://{1}{2}", Request.Scheme, Request.Host, Request.PathBase.Value.ToString());
                 var badseUrl = Request.GetTypedHeaders().Referer.ToString() ?? "";
-                return Ok(new { badseUrl });
+
                 return Ok(new { badseUrl });
 
             }
