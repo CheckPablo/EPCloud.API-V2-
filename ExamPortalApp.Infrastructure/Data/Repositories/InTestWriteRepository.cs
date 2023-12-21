@@ -52,7 +52,7 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
 
         public async Task<IEnumerable<StudentTest>> GetAllAsync()
         {
-            return await _repository.GetAllAsync<StudentTest>();   
+            return await _repository.GetAllAsync<StudentTest>();
         }
 
         public async Task<StudentTest> GetAsync(int id)
@@ -69,11 +69,11 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             return await _repository.UpdateAsync(entity, true);
         }
 
-        public async Task<bool> UploadStudentAnswerDocumentAsync(int testId,int studentId, bool accomodation, 
-            bool offline, bool fullsScreenClosed, bool KeyPress, bool leftEamArea, string timeRemaining, string answerText, 
-            string fileName,IFormFile file)
+        public async Task<bool> UploadStudentAnswerDocumentAsync(int testId, int studentId, bool accomodation,
+            bool offline, bool fullsScreenClosed, bool KeyPress, bool leftEamArea, string timeRemaining, string answerText,
+            string fileName, IFormFile file)
         {
-           
+
             var fileExtension = Path.GetExtension(file.FileName);
 
             if (!string.Equals(fileExtension, ".doc", StringComparison.OrdinalIgnoreCase) &&
@@ -90,28 +90,28 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             {
                 WordDocument document = new WordDocument();
                 document.Open(stream, FormatType.Docx);
-                 textToSave = document.GetText(); 
-                 Console.WriteLine(textToSave);
+                textToSave = document.GetText();
+                Console.WriteLine(textToSave);
                 textToSave = textToSave.Replace("Created with a trial version of Syncfusion Word library or registered the wrong key in your application. Go to \"www.syncfusion.com/account/claim-license-key\" to obtain the valid key.", "");
             }
-          
+
 
             var answerDocument = await _repository.GetFirstOrDefaultAsync<UserDocumentAnswer>(x => x.TestId == testId && x.StudentId == studentId);
             //if (testId == 0)
 
-              var answerDocumentData = new UserDocumentAnswer()
-                {
-                    //DateModified = DateTime.Now,
-                   
-                    FileName = file.FileName,
-                    TestId = testId,
-                    StudentId = studentId,
-                    TestDocument = fileBytes,
-                };
+            var answerDocumentData = new UserDocumentAnswer()
+            {
+                //DateModified = DateTime.Now,
+
+                FileName = file.FileName,
+                TestId = testId,
+                StudentId = studentId,
+                TestDocument = fileBytes,
+            };
 
             if (answerDocument != null)
             {
-                
+
                 answerDocumentData.Id = answerDocument.Id;
                 await _repository.UpdateAsync(answerDocumentData, true);
             }
@@ -128,10 +128,10 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
 
 
             await _repository.CompleteAsync();
-            var trackingInfoToSave = new StudentTestAnswerModel(); 
+            var trackingInfoToSave = new StudentTestAnswerModel();
             trackingInfoToSave.TestId = testId;
             trackingInfoToSave.StudentId = studentId;
-            trackingInfoToSave.Accomodation = accomodation; 
+            trackingInfoToSave.Accomodation = accomodation;
             trackingInfoToSave.Offline = offline;
             trackingInfoToSave.FullScreenClosed = accomodation;
             trackingInfoToSave.KeyPress = accomodation;
@@ -140,7 +140,7 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             trackingInfoToSave.AnswerText = textToSave;
             trackingInfoToSave.FileName = file.FileName;
             // answerText ?: string | null;
-           await SaveAnswersInterval(trackingInfoToSave); 
+            await SaveAnswersInterval(trackingInfoToSave);
             return true;
         }
 
@@ -202,7 +202,7 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
 
         public async Task<IEnumerable<StudentTestAnswers>> SaveAnswersInterval(StudentTestAnswerModel studentTestAnswersModel)
         {
-             IEnumerable<StudentTestAnswers> result; 
+            IEnumerable<StudentTestAnswers> result;
             if (studentTestAnswersModel.AnswerText == null)
             {
                 studentTestAnswersModel.AnswerText = "";
@@ -225,7 +225,7 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             parameters.Add(StoredProcedures.Params.Accomodation, studentTestAnswersModel.Accomodation);
 
             result = await _repository.ExecuteStoredProcAsync<StudentTestAnswers>(StoredProcedures.StudentTestAnswersIntervalSave, parameters);
-            resultToReturn = result; 
+            resultToReturn = result;
             //}
             return resultToReturn;
         }
@@ -245,7 +245,7 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
                     parameters.Add(StoredProcedures.Params.StudentId, studentId);
                     parameters.Add(StoredProcedures.Params.TestID, testId);
                     parameters.Add(StoredProcedures.Params.ExpiryDate, expirydate);
-                      resultOTP = (List<ScannedImageResult>)await _repository.ExecuteStoredProcAsync<ScannedImageResult>(StoredProcedures.UploadScannedImageDetails, parameters);
+                    resultOTP = (List<ScannedImageResult>)await _repository.ExecuteStoredProcAsync<ScannedImageResult>(StoredProcedures.UploadScannedImageDetails, parameters);
 
                 }
                 //resultOTP.Add("");
@@ -253,7 +253,7 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             }
             else
             {
-                return resultOTP; 
+                return resultOTP;
             }
         }
 
@@ -266,7 +266,7 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             parameters.Add(StoredProcedures.Params.TestID, invalidKeyPressEntries.TestId);
             parameters.Add(StoredProcedures.Params.Event, invalidKeyPressEntries.Event);
             parameters.Add(StoredProcedures.Params.Reason, invalidKeyPressEntries.Reason);
-       
+
             var result = await _repository.ExecuteStoredProcAsync<KeyPressTracking>(StoredProcedures.KeyPressTracking_ins, parameters);
             return result;
         }
@@ -283,17 +283,17 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             return await _repository.GetWhereAsync<UserDocumentAnswer>(x => x.StudentId == studentId && x.TestId == testId);
         }
 
-        public async Task<List<string>> VerifyImagesOTP(ScannedImagesOTP scannedImagesOTP)
+        public async Task<List<ScannedImagesOTP>> VerifyImagesOTP(ScannedImagesOTP scannedImagesOTP)
         {
             List<string> result = new List<string>();
             var parameters = new Dictionary<string, object>();
 
             parameters.Add(StoredProcedures.Params.StudentId, scannedImagesOTP.StudentId);
             parameters.Add(StoredProcedures.Params.TestID, scannedImagesOTP.TestId);
-            parameters.Add(StoredProcedures.Params.Event, scannedImagesOTP.OTP);
+            parameters.Add(StoredProcedures.Params.OTP, scannedImagesOTP.OTP);
             result = (List<string>)await _repository.ExecuteStoredProcAsync<ScannedImagesOTP>(StoredProcedures.VerifyScannedImagesOTP, parameters);
             result.Add("");
-            return (List<string>)scannedImagesOTPResult;
+            return (List<ScannedImagesOTP>)scannedImagesOTPResult;
         }
 
         /*Task<bool> IInTestWriteRepository.SaveIrregularKeyPress(InvalidKeyPressEntries invalidKeyPressEntries)
