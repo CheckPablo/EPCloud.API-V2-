@@ -13,14 +13,7 @@ ExamPortalApp.Data/bin/
 ExamPortalApp.Infrastructure/bin/
 ExamPortalApp.Extensions/bin/
 .DS_Store
-.vs/VSWorkspaceState.json
-.vs/EPCloud(NetCore8).API/v17/.wsuo
-.vs/ExamPortalApp.API/DesignTimeBuild/.dtbcache.v2
-.vs/ExamPortalApp.API/FileContentIndex/fda237de-082b-4a62-9aa1-2278a237d06f.vsidx
-.vs/ExamPortalApp.API/v17/.futdcache.v2
-.vs/ExamPortalApp.API/v17/.suo
-.vs/ProjectEvaluation/examportalapp.api.metadata.v7.bin
-.vs/ProjectEvaluation/examportalapp.api.projects.v7.bin
+.vs/*
 ExamPortalApp.API/Uploads/*
 ExamPortalApp.API/Uploads/Answers/*
 ExamPortalApp.API/Uploads/Tests/*
