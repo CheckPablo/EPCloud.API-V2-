@@ -4,17 +4,10 @@ using ExamPortalApp.Contracts.Data.Entities;
 using ExamPortalApp.Contracts.Data.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Speech.Synthesis;
-using System.Speech.AudioFormat;
 using ExamPortalApp.Contracts.Data.Dtos.Params;
-using ExamPortalApp.Infrastructure.Data.Repositories;
 using Newtonsoft.Json;
-using static SkiaSharp.HarfBuzz.SKShaper;
-using ExamPortalApp.Infrastructure.Helpers;
 using ExamPortalApp.Infrastructure.Extensions;
-using System.IO;
-using System.Collections;
 //using SpeechLib;
 
 namespace ExamPortalApp.Api.Controllers
@@ -27,7 +20,6 @@ namespace ExamPortalApp.Api.Controllers
         private readonly IInTestWriteRepository _inTestWriteRepository;
         private List<object> installedVoiceList = new List<object>();
         List<InstalledVoice> installedVoices = new List<InstalledVoice>();
-
         private string[] fileNames;
 
         //private IFormFileCollection scannedFiles;
@@ -76,17 +68,13 @@ namespace ExamPortalApp.Api.Controllers
             using (SpeechSynthesizer synth = new SpeechSynthesizer())
             {
                 // var windowsVoices = synth.GetInstalledVoices().ToList();
-                // var windowsVoices = synth.GetInstalledVoices().ToList();
                 foreach (InstalledVoice voice in synth.GetInstalledVoices())
                 {
                     VoiceInfo? info = voice?.VoiceInfo;
-                  
                     //synth.SelectVoice(voice.VoiceInfo.Name);
                     var voiceEntry = new { Name = info.Name, lang = info.Culture.Name, };
-                    
                     installedVoiceList.Add(voiceEntry);
                     installedVoices.Add(voice);
-                    
                 }
                 //string[] str = installedVoiceList.ToArray();
                 //var windowsVoices = installedVoiceList;
@@ -153,7 +141,6 @@ namespace ExamPortalApp.Api.Controllers
         public async Task<ActionResult<StudentTestSave>> UploadAnswerDocumentAsync()
         {
             // System.Web.HttpPostedFile data = HttpContext.Current.Request.Files[0];
-            // System.Web.HttpPostedFile data = HttpContext.Current.Request.Files[0];
             try
             {
                 var data = (Request.Form["data"]).ToString();
@@ -170,7 +157,6 @@ namespace ExamPortalApp.Api.Controllers
                       return Ok(result);*/
                     return Ok();
                 }
-
 
                 else
                 {
@@ -201,16 +187,12 @@ namespace ExamPortalApp.Api.Controllers
 
 
         [HttpPost("verify-scanned-imagesotp")]
-         public async Task<ActionResult<IEnumerable<string>>>VerifyScannedImagesOTP(ScannedImagesOTP scannedImagesOTP)
-         {
-             try
-             {
+        public async Task<ActionResult<List<String>>> VerifyScannedImagesOTP(ScannedImagesOTP scannedImagesOTP)
+        {
+            try
+            {
                 var result = await _inTestWriteRepository.VerifyImagesOTP(scannedImagesOTP);
-                //var result = await _inTestWriteRepository.VerifyImagesOTP(scannedImagesOTP.OTP, scannedImagesOTP.TestId, scannedImagesOTP.StudentId);
-                // scannedImagesOTP.URL = "https://localhost:7066/";
-                //+ "/uploads/TempScannedImage/";
-                //List<object> results = new();
-                //results.Add(new { Images = result});
+
                 return Ok(result);
              }
              catch (Exception ex)
@@ -255,7 +237,6 @@ namespace ExamPortalApp.Api.Controllers
                 var chh = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}";
                 //string baseUrl = string.Format("{ 0}://{1}{2}", Request.Scheme, Request.Host, Request.PathBase.Value.ToString());
                 var badseUrl = Request.GetTypedHeaders().Referer.ToString() ?? "";
-
                 return Ok(new { badseUrl });
 
             }
@@ -298,7 +279,7 @@ namespace ExamPortalApp.Api.Controllers
 
                 var scanResultOTP = await _inTestWriteRepository.UploadScannedImagetoDB(fileNames, testId, studentId);
 
-                return Ok(new { count = files.Count, size, otp = scanResultOTP[0].OTP });
+                return Ok(new { count = files.Count, size, otp = scanResultOTP });
             }
             catch (Exception ex)
             {
@@ -338,7 +319,6 @@ namespace ExamPortalApp.Api.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
 
 
 
