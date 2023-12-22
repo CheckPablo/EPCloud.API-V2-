@@ -211,18 +211,20 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             {
                 studentTestAnswersModel.AnswerText = "";
             }
-            var parameters = new Dictionary<string, object>();
-            //for (int x = 0; x < 1; x++) { 
-            parameters.Add(StoredProcedures.Params.StudentId, studentTestAnswersModel.StudentId);
-            parameters.Add(StoredProcedures.Params.TestID, studentTestAnswersModel.TestId);
-            parameters.Add(StoredProcedures.Params.TimeRemaining, studentTestAnswersModel.TimeRemaining);
-            parameters.Add(StoredProcedures.Params.KeyPress, studentTestAnswersModel.KeyPress);
-            parameters.Add(StoredProcedures.Params.LeftExamArea, studentTestAnswersModel.LeftExamArea);
-            parameters.Add(StoredProcedures.Params.Offline, studentTestAnswersModel.Offline);
-            parameters.Add(StoredProcedures.Params.FullScreenClosed, studentTestAnswersModel.FullScreenClosed);
-            parameters.Add(StoredProcedures.Params.FileName, studentTestAnswersModel.FileName);
-            parameters.Add(StoredProcedures.Params.AnswerText, studentTestAnswersModel.AnswerText);
-            parameters.Add(StoredProcedures.Params.Accomodation, studentTestAnswersModel.Accomodation);
+            var parameters = new Dictionary<string, object>
+            {
+                //for (int x = 0; x < 1; x++) { 
+                { StoredProcedures.Params.StudentId, studentTestAnswersModel.StudentId },
+                { StoredProcedures.Params.TestID, studentTestAnswersModel.TestId },
+                { StoredProcedures.Params.TimeRemaining, studentTestAnswersModel.TimeRemaining },
+                { StoredProcedures.Params.KeyPress, studentTestAnswersModel.KeyPress },
+                { StoredProcedures.Params.LeftExamArea, studentTestAnswersModel.LeftExamArea },
+                { StoredProcedures.Params.Offline, studentTestAnswersModel.Offline },
+                { StoredProcedures.Params.FullScreenClosed, studentTestAnswersModel.FullScreenClosed },
+                { StoredProcedures.Params.FileName, studentTestAnswersModel.FileName },
+                { StoredProcedures.Params.AnswerText, studentTestAnswersModel.AnswerText },
+                { StoredProcedures.Params.Accomodation, studentTestAnswersModel.Accomodation }
+            };
 
             result = await _repository.ExecuteStoredProcAsync<StudentTestAnswers>(StoredProcedures.StudentTestAnswersIntervalSave, parameters);
             resultToReturn = result; 
@@ -235,17 +237,18 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             Random random = new();
             var OTP = random.Next(10000, 99999);
             var expirydate = DateTime.Now.AddMinutes(10);
-            var parameters = new Dictionary<string, object>();
             
             foreach (var fileName in fileNames)
             {
-                parameters.Add(StoredProcedures.Params.FileName, fileName);
-                parameters.Add(StoredProcedures.Params.OTP, OTP);
-                parameters.Add(StoredProcedures.Params.StudentId, studentId);
-                parameters.Add(StoredProcedures.Params.TestID, testId);
-                parameters.Add(StoredProcedures.Params.ExpiryDate, expirydate);
+                var parameters = new Dictionary<string, object>
+                {
+                    { StoredProcedures.Params.FileName, fileName },
+                    { StoredProcedures.Params.OTP, OTP },
+                    { StoredProcedures.Params.StudentId, studentId },
+                    { StoredProcedures.Params.TestID, testId },
+                    { StoredProcedures.Params.ExpiryDate, expirydate }
+                };  
                 _ = await _repository.ExecuteStoredProcAsync<ScannedImageResult>(StoredProcedures.UploadScannedImageDetails, parameters);
-                parameters.Clear();
             }
             return OTP;
         }
