@@ -42,7 +42,7 @@ namespace ExamPortalApp.Infrastructure.Extensions
                 Directory.CreateDirectory(folderName);
             }
            
-            //var fileName = prefix + ContentDispositionHeaderValue.Parse(file.ContentDisposition)?.FileName?.Trim('"');
+            //var fileName = prefix + ContentDispositionHeaderValue.Parse(file.ContentDisposition)?.FileName?.Trim('"') ;
             folderName = Path.Combine("Uploads", folder);
             var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
             foreach (var file in files)
