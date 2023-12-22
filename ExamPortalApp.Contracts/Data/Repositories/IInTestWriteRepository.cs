@@ -12,7 +12,7 @@ namespace ExamPortalApp.Contracts.Data.Repositories
         Task<IEnumerable<KeyPressTracking>> SaveIrregularKeyPress(InvalidKeyPressEntries invalidKeyPressEntries);
         Task<IEnumerable<StudentTestAnswers>> SaveAnswersInterval(StudentTestAnswerModel studentTestAnswers);
         Task<List<ScannedImageResult>> UploadScannedImagetoDB(string[] fileNames, string v1, string v2);
-        Task<List<ScannedImagesOTP>> VerifyImagesOTP(ScannedImagesOTP scannedImagesOTP);
+        Task<IEnumerable<ScannedImageOTPResult>> VerifyImagesOTP(ScannedImagesOTP scannedImagesOTP);
         //Task<Task<List<UploadedTest>>> UploadScannedFiles(IFormFileCollection files);
     }
 }
