@@ -283,18 +283,34 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             return await _repository.GetWhereAsync<UserDocumentAnswer>(x => x.StudentId == studentId && x.TestId == testId);
         }
 
-        public async Task<List<ScannedImagesOTP>> VerifyImagesOTP(ScannedImagesOTP scannedImagesOTP)
+        public async Task<IEnumerable<ScannedImageOTPResult>> VerifyImagesOTP(ScannedImagesOTP scannedImagesOTP)
         {
-            List<string> result = new List<string>();
+            //List<string> result = new List<string>();
+             
             var parameters = new Dictionary<string, object>();
 
             parameters.Add(StoredProcedures.Params.StudentId, scannedImagesOTP.StudentId);
             parameters.Add(StoredProcedures.Params.TestID, scannedImagesOTP.TestId);
             parameters.Add(StoredProcedures.Params.OTP, scannedImagesOTP.OTP);
-            result = (List<string>)await _repository.ExecuteStoredProcAsync<ScannedImagesOTP>(StoredProcedures.VerifyScannedImagesOTP, parameters);
-            result.Add("");
-            return (List<ScannedImagesOTP>)scannedImagesOTPResult;
+            var result = await _repository.ExecuteStoredProcAsync<ScannedImageOTPResult>(StoredProcedures.VerifyScannedImagesOTP, parameters);
+            //result.Append("")
+            //return (List<ScannedImagesOTP>)scannedImagesOTPResult;
+            return result;
         }
+
+         /*Task<IEnumerable<ScannedImageOTPResult>> IInTestWriteRepository.VerifyImagesOTP(ScannedImagesOTP scannedImagesOTP)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<string>> VerifyImagesOTP(ScannedImageOTPResult scannedImagesOTP)
+         {
+             throw new NotImplementedException();
+         }
+         public Task<List<string>> VerifyImagesOTP(List<string> scannedImagesOTP)
+ {
+    throw new NotImplementedException();
+ }*/
 
         /*Task<bool> IInTestWriteRepository.SaveIrregularKeyPress(InvalidKeyPressEntries invalidKeyPressEntries)
         {

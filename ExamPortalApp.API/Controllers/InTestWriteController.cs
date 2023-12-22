@@ -13,6 +13,8 @@ using Newtonsoft.Json;
 using static SkiaSharp.HarfBuzz.SKShaper;
 using ExamPortalApp.Infrastructure.Helpers;
 using ExamPortalApp.Infrastructure.Extensions;
+using System.IO;
+using System.Collections;
 //using SpeechLib;
 
 namespace ExamPortalApp.Api.Controllers
@@ -199,19 +201,46 @@ namespace ExamPortalApp.Api.Controllers
 
 
         [HttpPost("verify-scanned-imagesotp")]
-        public async Task<ActionResult<List<ScannedImagesOTP>>> VerifyScannedImagesOTP(ScannedImagesOTP scannedImagesOTP)
-        {
-            try
-            {
-                var result = (List<ScannedImagesOTP>)await _inTestWriteRepository.VerifyImagesOTP(scannedImagesOTP);
-
+         public async Task<ActionResult<IEnumerable<string>>>VerifyScannedImagesOTP(ScannedImagesOTP scannedImagesOTP)
+         {
+             try
+             {
+                var result = await _inTestWriteRepository.VerifyImagesOTP(scannedImagesOTP);
+                //var result = await _inTestWriteRepository.VerifyImagesOTP(scannedImagesOTP.OTP, scannedImagesOTP.TestId, scannedImagesOTP.StudentId);
+                // scannedImagesOTP.URL = "https://localhost:7066/";
+                //+ "/uploads/TempScannedImage/";
+                //List<object> results = new();
+                //results.Add(new { Images = result});
                 return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+             }
+             catch (Exception ex)
+             {
+                 return BadRequest(ex.Message);
+             }
+         }
+
+        /*[HttpPost("verify-scanned-imagesotp")]
+       public async Task<ActionResult> VerifyScannedImagesOTP(ScannedImagesOTP scannedImagesOTP)
+       {
+           //var path = $@"d:\smth\upload\{id}.jpeg";
+           var result = (List<string>)await _inTestWriteRepository.VerifyImagesOTP(scannedImagesOTP);
+           foreach(var c in result)
+           {
+               scannedImagesOTP.URL = ""; 
+           }
+           //byte[] bytes = System.IO.File.ReadAllBytes(result);
+           return  PhysicalFile(scannedImagesOTP.URL, "image/jpeg");
+       }
+      [HttpGet]
+       public ActionResult Get(string id)
+       {
+                  //byte[] bytes = System.IO.File.ReadAllBytes(scannedImagesOTP.URL);
+                //string base64String = Convert.ToBase64String(bytes);
+                //return Content("data:application/image;jpeg," + base64String);
+           var path = $@"d:\smth\upload\{id}.jpeg";
+           byte[] bytes = System.IO.File.ReadAllBytes(path);
+           return File(bytes, "image/jpeg");
+       }*/
 
 
         [HttpPost("scandocument")]

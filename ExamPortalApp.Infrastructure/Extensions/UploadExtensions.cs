@@ -37,9 +37,9 @@ namespace ExamPortalApp.Infrastructure.Extensions
         { 
             var folder = "TestFolder";
             var folderName = Path.Combine("Uploads", folder);
-            if (!(Directory.Exists(path)))
+            if (!(Directory.Exists(folderName)))
             {
-                Directory.CreateDirectory(path);
+                Directory.CreateDirectory(folderName);
             }
            
             //var fileName = prefix + ContentDispositionHeaderValue.Parse(file.ContentDisposition)?.FileName?.Trim('"');
