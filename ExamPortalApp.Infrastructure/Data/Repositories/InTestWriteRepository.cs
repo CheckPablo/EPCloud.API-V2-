@@ -275,19 +275,33 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             return await _repository.GetWhereAsync<UserDocumentAnswer>(x => x.StudentId == studentId && x.TestId == testId);
         }
 
-        public async Task<List<string>> VerifyImagesOTP(ScannedImagesOTP scannedImagesOTP)
+        public async Task<IEnumerable<ScannedImageOTPResult>> VerifyImagesOTP(ScannedImagesOTP scannedImagesOTP)
         {
-            List<string> result = new List<string>();
+            //List<string> result = new List<string>();
+             
             var parameters = new Dictionary<string, object>
             {
                 { StoredProcedures.Params.StudentId, scannedImagesOTP.StudentId },
                 { StoredProcedures.Params.TestID, scannedImagesOTP.TestId },
-                { StoredProcedures.Params.Event, scannedImagesOTP.OTP }
+                { StoredProcedures.Params.OTP, scannedImagesOTP.OTP }
             };
-            result = (List<string>)await _repository.ExecuteStoredProcAsync<ScannedImagesOTP>(StoredProcedures.VerifyScannedImagesOTP, parameters);
-            result.Add("");
-            return (List<string>)scannedImagesOTPResult;
+            var result = await _repository.ExecuteStoredProcAsync<ScannedImageOTPResult>(StoredProcedures.VerifyScannedImagesOTP, parameters);
+            return result;
         }
+
+         /*Task<IEnumerable<ScannedImageOTPResult>> IInTestWriteRepository.VerifyImagesOTP(ScannedImagesOTP scannedImagesOTP)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<string>> VerifyImagesOTP(ScannedImageOTPResult scannedImagesOTP)
+         {
+             throw new NotImplementedException();
+         }
+         public Task<List<string>> VerifyImagesOTP(List<string> scannedImagesOTP)
+ {
+    throw new NotImplementedException();
+ }*/
 
         /*Task<bool> IInTestWriteRepository.SaveIrregularKeyPress(InvalidKeyPressEntries invalidKeyPressEntries)
         {

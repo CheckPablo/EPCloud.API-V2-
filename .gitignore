@@ -25,3 +25,4 @@ ExamPortalApp.API/Uploads/*
 ExamPortalApp.API/Uploads/Answers/*
 ExamPortalApp.API/Uploads/Tests/*
 .DS_Store
+ExamPortalApp.API/ExamPortalApp.API.sln

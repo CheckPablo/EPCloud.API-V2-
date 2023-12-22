@@ -4,14 +4,9 @@ using ExamPortalApp.Contracts.Data.Entities;
 using ExamPortalApp.Contracts.Data.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Speech.Synthesis;
-using System.Speech.AudioFormat;
 using ExamPortalApp.Contracts.Data.Dtos.Params;
-using ExamPortalApp.Infrastructure.Data.Repositories;
 using Newtonsoft.Json;
-using static SkiaSharp.HarfBuzz.SKShaper;
-using ExamPortalApp.Infrastructure.Helpers;
 using ExamPortalApp.Infrastructure.Extensions;
 //using SpeechLib;
 
@@ -199,12 +194,35 @@ namespace ExamPortalApp.Api.Controllers
                 var result = await _inTestWriteRepository.VerifyImagesOTP(scannedImagesOTP);
 
                 return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+             }
+             catch (Exception ex)
+             {
+                 return BadRequest(ex.Message);
+             }
+         }
+
+        /*[HttpPost("verify-scanned-imagesotp")]
+       public async Task<ActionResult> VerifyScannedImagesOTP(ScannedImagesOTP scannedImagesOTP)
+       {
+           //var path = $@"d:\smth\upload\{id}.jpeg";
+           var result = (List<string>)await _inTestWriteRepository.VerifyImagesOTP(scannedImagesOTP);
+           foreach(var c in result)
+           {
+               scannedImagesOTP.URL = ""; 
+           }
+           //byte[] bytes = System.IO.File.ReadAllBytes(result);
+           return  PhysicalFile(scannedImagesOTP.URL, "image/jpeg");
+       }
+      [HttpGet]
+       public ActionResult Get(string id)
+       {
+                  //byte[] bytes = System.IO.File.ReadAllBytes(scannedImagesOTP.URL);
+                //string base64String = Convert.ToBase64String(bytes);
+                //return Content("data:application/image;jpeg," + base64String);
+           var path = $@"d:\smth\upload\{id}.jpeg";
+           byte[] bytes = System.IO.File.ReadAllBytes(path);
+           return File(bytes, "image/jpeg");
+       }*/
 
 
         [HttpPost("scandocument")]
@@ -261,7 +279,7 @@ namespace ExamPortalApp.Api.Controllers
 
                 var scanResultOTP = await _inTestWriteRepository.UploadScannedImagetoDB(fileNames, testId, studentId);
 
-                return Ok(new { count = files.Count, size, otp = scanResultOTP[0].OTP });
+                return Ok(new { count = files.Count, size, otp = scanResultOTP });
             }
             catch (Exception ex)
             {
