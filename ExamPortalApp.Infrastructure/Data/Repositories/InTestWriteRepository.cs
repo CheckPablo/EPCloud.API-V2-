@@ -229,32 +229,25 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             //}
             return resultToReturn;
         }
-        public async Task<List<ScannedImageResult>> UploadScannedImagetoDB(string?[] fileNames, string testId, string studentId)
+        public async Task<int> UploadScannedImagetoDB(string?[] fileNames, string testId, string studentId)
         {
-            Random random = new Random();
+            if (fileNames?.Length == 0) throw new Exception("No Files uploaded");  
+            Random random = new();
             var OTP = random.Next(10000, 99999);
             var expirydate = DateTime.Now.AddMinutes(10);
             var parameters = new Dictionary<string, object>();
-            List<ScannedImageResult> resultOTP = new List<ScannedImageResult>();
-            if (fileNames?.Length > 0)
+            
+            foreach (var fileName in fileNames)
             {
-                foreach (var imgFileName in fileNames)
-                {
-                    parameters.Add(StoredProcedures.Params.FileName, imgFileName);
-                    parameters.Add(StoredProcedures.Params.OTP, OTP);
-                    parameters.Add(StoredProcedures.Params.StudentId, studentId);
-                    parameters.Add(StoredProcedures.Params.TestID, testId);
-                    parameters.Add(StoredProcedures.Params.ExpiryDate, expirydate);
-                      resultOTP = (List<ScannedImageResult>)await _repository.ExecuteStoredProcAsync<ScannedImageResult>(StoredProcedures.UploadScannedImageDetails, parameters);
-
-                }
-                //resultOTP.Add("");
-                return resultOTP;
+                parameters.Add(StoredProcedures.Params.FileName, fileName);
+                parameters.Add(StoredProcedures.Params.OTP, OTP);
+                parameters.Add(StoredProcedures.Params.StudentId, studentId);
+                parameters.Add(StoredProcedures.Params.TestID, testId);
+                parameters.Add(StoredProcedures.Params.ExpiryDate, expirydate);
+                _ = await _repository.ExecuteStoredProcAsync<ScannedImageResult>(StoredProcedures.UploadScannedImageDetails, parameters);
+                parameters.Clear();
             }
-            else
-            {
-                return resultOTP; 
-            }
+            return OTP;
         }
 
         public async Task<IEnumerable<KeyPressTracking>> SaveIrregularKeyPress(InvalidKeyPressEntries invalidKeyPressEntries)
