@@ -7,15 +7,8 @@ using ExamPortalApp.Infrastructure.Constants;
 using ExamPortalApp.Infrastructure.Exceptions;
 using ExamPortalApp.Infrastructure.Helpers;
 using Microsoft.AspNetCore.Http;
-using Microsoft.IdentityModel.Protocols;
-using Microsoft.Office.Interop.Word;
-using Newtonsoft.Json;
 using Syncfusion.DocIO;
 using Syncfusion.DocIO.DLS;
-using System.IO;
-using System.Security.Cryptography;
-using static SkiaSharp.HarfBuzz.SKShaper;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace ExamPortalApp.Infrastructure.Data.Repositories
 {
@@ -128,19 +121,21 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
 
 
             await _repository.CompleteAsync();
-            var trackingInfoToSave = new StudentTestAnswerModel(); 
-            trackingInfoToSave.TestId = testId;
-            trackingInfoToSave.StudentId = studentId;
-            trackingInfoToSave.Accomodation = accomodation; 
-            trackingInfoToSave.Offline = offline;
-            trackingInfoToSave.FullScreenClosed = accomodation;
-            trackingInfoToSave.KeyPress = accomodation;
-            trackingInfoToSave.LeftExamArea = accomodation;
-            trackingInfoToSave.TimeRemaining = timeRemaining;
-            trackingInfoToSave.AnswerText = textToSave;
-            trackingInfoToSave.FileName = file.FileName;
+            var trackingInfoToSave = new StudentTestAnswerModel
+            {
+                TestId = testId,
+                StudentId = studentId,
+                Accomodation = accomodation,
+                Offline = offline,
+                FullScreenClosed = accomodation,
+                KeyPress = accomodation,
+                LeftExamArea = accomodation,
+                TimeRemaining = timeRemaining,
+                AnswerText = textToSave,
+                FileName = file.FileName
+            };
             // answerText ?: string | null;
-           await SaveAnswersInterval(trackingInfoToSave); 
+            await SaveAnswersInterval(trackingInfoToSave); 
             return true;
         }
 
@@ -256,12 +251,13 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
         public async Task<IEnumerable<KeyPressTracking>> SaveIrregularKeyPress(InvalidKeyPressEntries invalidKeyPressEntries)
         {
 
-            var parameters = new Dictionary<string, object>();
-
-            parameters.Add(StoredProcedures.Params.StudentId, invalidKeyPressEntries.StudentId);
-            parameters.Add(StoredProcedures.Params.TestID, invalidKeyPressEntries.TestId);
-            parameters.Add(StoredProcedures.Params.Event, invalidKeyPressEntries.Event);
-            parameters.Add(StoredProcedures.Params.Reason, invalidKeyPressEntries.Reason);
+            var parameters = new Dictionary<string, object>
+            {
+                { StoredProcedures.Params.StudentId, invalidKeyPressEntries.StudentId },
+                { StoredProcedures.Params.TestID, invalidKeyPressEntries.TestId },
+                { StoredProcedures.Params.Event, invalidKeyPressEntries.Event },
+                { StoredProcedures.Params.Reason, invalidKeyPressEntries.Reason }
+            };
        
             var result = await _repository.ExecuteStoredProcAsync<KeyPressTracking>(StoredProcedures.KeyPressTracking_ins, parameters);
             return result;
@@ -282,11 +278,12 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
         public async Task<List<string>> VerifyImagesOTP(ScannedImagesOTP scannedImagesOTP)
         {
             List<string> result = new List<string>();
-            var parameters = new Dictionary<string, object>();
-
-            parameters.Add(StoredProcedures.Params.StudentId, scannedImagesOTP.StudentId);
-            parameters.Add(StoredProcedures.Params.TestID, scannedImagesOTP.TestId);
-            parameters.Add(StoredProcedures.Params.Event, scannedImagesOTP.OTP);
+            var parameters = new Dictionary<string, object>
+            {
+                { StoredProcedures.Params.StudentId, scannedImagesOTP.StudentId },
+                { StoredProcedures.Params.TestID, scannedImagesOTP.TestId },
+                { StoredProcedures.Params.Event, scannedImagesOTP.OTP }
+            };
             result = (List<string>)await _repository.ExecuteStoredProcAsync<ScannedImagesOTP>(StoredProcedures.VerifyScannedImagesOTP, parameters);
             result.Add("");
             return (List<string>)scannedImagesOTPResult;
