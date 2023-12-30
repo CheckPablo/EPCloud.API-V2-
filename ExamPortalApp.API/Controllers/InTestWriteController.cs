@@ -187,7 +187,7 @@ namespace ExamPortalApp.Api.Controllers
 
 
         [HttpPost("verify-scanned-imagesotp")]
-        public async Task<ActionResult<List<String>>> VerifyScannedImagesOTP(ScannedImagesOTP scannedImagesOTP)
+        public async Task<ActionResult<List<string>>> VerifyScannedImagesOTP(ScannedImagesOTP scannedImagesOTP)
         {
             try
             {

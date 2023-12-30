@@ -109,10 +109,16 @@ try
 {
     app.UseStaticFiles();
     app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+           Path.Combine(builder.Environment.ContentRootPath, "Uploads")),
+    RequestPath = "/Uploads"
+});
+    /*app.UseStaticFiles(new StaticFileOptions
     {
         FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Uploads")),
-        RequestPath = new PathString("/Uploads")
-    });
+       // RequestPath = new PathString("/Uploads")
+    });*/
 }
 catch (Exception ex)
 {

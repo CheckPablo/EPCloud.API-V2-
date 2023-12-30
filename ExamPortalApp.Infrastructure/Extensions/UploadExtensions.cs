@@ -35,15 +35,15 @@ namespace ExamPortalApp.Infrastructure.Extensions
 
        public static async Task<Upload> WriteFile(IFormFileCollection files, string path, string? url = null)
         { 
-            var folder = "TestFolder";
-            var folderName = Path.Combine("Uploads", folder);
+            var folder = "";
+            var folderName = Path.Combine("Uploads/", folder);
             if (!(Directory.Exists(folderName)))
             {
                 Directory.CreateDirectory(folderName);
             }
            
             //var fileName = prefix + ContentDispositionHeaderValue.Parse(file.ContentDisposition)?.FileName?.Trim('"') ;
-            folderName = Path.Combine("Uploads", folder);
+            folderName = Path.Combine("Uploads/", folder);
             var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
             foreach (var file in files)
             {

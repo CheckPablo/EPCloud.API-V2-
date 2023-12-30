@@ -289,7 +289,7 @@ namespace ExamPortalApp.Infrastructure.Data.Repositories
             return result;
         }
 
-         /*Task<IEnumerable<ScannedImageOTPResult>> IInTestWriteRepository.VerifyImagesOTP(ScannedImagesOTP scannedImagesOTP)
+        /*Task<IEnumerable<ScannedImageOTPResult>> IInTestWriteRepository.VerifyImagesOTP(ScannedImagesOTP scannedImagesOTP)
         {
             throw new NotImplementedException();
         }
